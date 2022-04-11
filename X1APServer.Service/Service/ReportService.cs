@@ -2309,7 +2309,7 @@ namespace X1APServer.Service
                                 gender = table.Rows[i][patientInfoDict[PatientInfoKey.Gender]].ToString().Trim().ToLower();
                                 birthStr = table.Rows[i][patientInfoDict[PatientInfoKey.Birth]].ToString().Trim();
 
-                                cellphone = table.Rows[i][patientInfoDict[PatientInfoKey.Cellphone]].ToString().Trim();
+                                //cellphone = table.Rows[i][patientInfoDict[PatientInfoKey.Cellphone]].ToString().Trim();
                                 contactphone = table.Rows[i][patientInfoDict[PatientInfoKey.ContactPhone]].ToString().Trim();
                                 contactrelation = table.Rows[i][patientInfoDict[PatientInfoKey.ContactRelation]].ToString().Trim();
                                 education = table.Rows[i][patientInfoDict[PatientInfoKey.Education]].ToString().Trim();
@@ -2635,13 +2635,15 @@ namespace X1APServer.Service
             {
                 if (ct.Status < 6)
                     continue;
-                if (request.StartDate != null && request.StartDate >= ct.FillingDate)
+                //if (request.StartDate != null && request.StartDate >= ct.FillingDate)
+                //    continue;
+                if (request.StartDate != null && request.StartDate >= ct.FillingDate)//改成搜尋收件日期
                     continue;
                 if (request.EndDate != null && request.EndDate <= ct.FillingDate)
                     continue;
                 if (request.Status != 0 && request.Status + 5 != ct.Status)
                     continue;
-
+                
                 // 開始 mapping 表單
                 CervixExport ce = new CervixExport()
                 {

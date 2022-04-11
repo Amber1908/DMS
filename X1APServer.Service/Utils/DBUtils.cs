@@ -20,7 +20,7 @@ namespace X1APServer.Service.Utils
                 var CA = _uow.Get<IX1_PatientInfoRepository>().GetAll().ToList();
                 var RQ = _uow.Get<IX1_ReportQuestionRepository>().GetAll().ToList();
                 var RD = _uow.Get<IX1_ReportAnswerDRepository>().GetAll().ToList();
-
+               
                 foreach (var Xam in Xams)
                 {
                     var CAs = CA.Where(x => x.ID == Xam.PID).FirstOrDefault();
