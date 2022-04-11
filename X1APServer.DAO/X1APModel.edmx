@@ -1,0 +1,2699 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="X1APModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExportTemplateExtraQuest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExportTemplateID" Type="int" Nullable="false" />
+          <Property Name="QuestName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="QuestText" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="QuestType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Required" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FileGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FloderKey" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="FGState" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ManType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CreateMan" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FileSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FGID" Type="bigint" Nullable="false" />
+          <Property Name="FileKey" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="FType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="FileEName" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="FileState" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuncGroup">
+          <Key>
+            <PropertyRef Name="SysCode" />
+            <PropertyRef Name="GroupCode" />
+          </Key>
+          <Property Name="SysCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="GroupCode" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="GroupType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="GroupState" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CreateMan" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FunctionReportMap">
+          <Key>
+            <PropertyRef Name="ReportCategory" />
+            <PropertyRef Name="FuncCode" />
+          </Key>
+          <Property Name="ReportCategory" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FuncCode" Type="char" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Functions">
+          <Key>
+            <PropertyRef Name="SysCode" />
+            <PropertyRef Name="FuncCode" />
+          </Key>
+          <Property Name="SysCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="GroupCode" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="FuncCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="FuncName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="FuncPath" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FuncStatus" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AuthFlag1" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AuthName1" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AuthFlag2" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AuthName2" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AuthFlag3" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AuthName3" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AuthFlag4" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AuthName4" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AuthFlag5" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AuthName5" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CreateMan" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OTPToken">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ReqSysCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="RspSysCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="OTPTokenKey" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="OTPStatus" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="RegTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OTPTSysMap">
+          <Key>
+            <PropertyRef Name="ReqSysCode" />
+            <PropertyRef Name="RspSysCode" />
+          </Key>
+          <Property Name="ReqSysCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="RspSysCode" Type="char" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personal_Pinned_Question">
+          <Key>
+            <PropertyRef Name="PatientID" />
+            <PropertyRef Name="PinnedID" />
+          </Key>
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="PinnedID" Type="int" Nullable="false" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+          <Property Name="Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pinned_Question">
+          <Key>
+            <PropertyRef Name="PinnedID" />
+          </Key>
+          <Property Name="PinnedID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PinnedName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+          <Property Name="Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PinnedQuestionMap">
+          <Key>
+            <PropertyRef Name="PinnedID" />
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="PinnedID" Type="int" Nullable="false" />
+          <Property Name="QuestionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuestionValidation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionID" Type="int" Nullable="false" />
+          <Property Name="Operator" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="50" />
+          <Property Name="Normal" Type="bit" Nullable="false" />
+          <Property Name="GroupNum" Type="int" />
+        </EntityType>
+        <EntityType Name="RoleAuthMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="SysCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="FuncCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="AuthNo1" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AuthNo2" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AuthNo3" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AuthNo4" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AuthNo5" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CreateMan" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleCode" />
+          </Key>
+          <Property Name="RoleCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="RoleTitle" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Hidden" Type="bit" Nullable="false" />
+          <Property Name="RoleBackendName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="ContentText" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ReturnDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreateMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifyMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="DeleteDate" Type="datetime2" Precision="7" />
+          <Property Name="DeleteMan" Type="varchar" MaxLength="254" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="SysInfo">
+          <Key>
+            <PropertyRef Name="SysCode" />
+          </Key>
+          <Property Name="SysCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="SysName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="SysStatus" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CreateMan" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemFile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FilePath" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MimeType" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreateMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifyMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="DeleteDate" Type="datetime2" Precision="7" />
+          <Property Name="DeleteMan" Type="varchar" MaxLength="254" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TLogData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ListID" Type="bigint" Nullable="false" />
+          <Property Name="LogData" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TLogList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MainID" Type="int" Nullable="false" />
+          <Property Name="ActionType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FGID" Type="bigint" />
+          <Property Name="DetailFlag" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CreateMan" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TLogMain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SysCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="LogType" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="LogKey" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateMan" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="GroupCode" />
+          </Key>
+          <Property Name="GroupCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="State" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoleMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="CreateMan" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccID" Type="varchar" MaxLength="254" />
+          <Property Name="UserGUID" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="UseState" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="StateUDate" Type="datetime" Nullable="false" />
+          <Property Name="StateUMan" Type="int" Nullable="false" />
+          <Property Name="UserStatus" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="StatusUDate" Type="datetime" Nullable="false" />
+          <Property Name="StatusUMan" Type="int" Nullable="false" />
+          <Property Name="IsAdmin" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CreateMan" Type="int" Nullable="false" />
+          <Property Name="UpdateMan" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="Hidden" Type="bit" Nullable="false" />
+          <Property Name="Valid" Type="bit" Nullable="false" />
+          <Property Name="AccName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DoctorNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="Senior" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserToken">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="SysCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="AccessToken" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="RefreshToken" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="TokenTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ValidationCondition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionID" Type="int" Nullable="false" />
+          <Property Name="AttributeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Operator1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Operator2" Type="varchar" MaxLength="50" />
+          <Property Name="GroupNum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="X1_PatientGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreateMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifyMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="DeleteDate" Type="datetime2" Precision="7" />
+          <Property Name="DeleteMan" Type="varchar" MaxLength="254" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="X1_PatientGroupMap">
+          <Key>
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="PGID" />
+          </Key>
+          <Property Name="PID" Type="int" Nullable="false" />
+          <Property Name="PGID" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreateMan" Type="varchar" MaxLength="254" Nullable="false" />
+        </EntityType>
+        <EntityType Name="X1_PatientInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PUCountry" Type="int" Nullable="false" />
+          <Property Name="PUName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IDNo" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="PUDOB" Type="date" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="Height" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Weight" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Cellphone" Type="varchar" MaxLength="50" />
+          <Property Name="ContactPhone" Type="varchar" MaxLength="50" />
+          <Property Name="ContactRelation" Type="nvarchar" MaxLength="100" />
+          <Property Name="Education" Type="int" />
+          <Property Name="AddrCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="HCCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Addr" Type="nvarchar" MaxLength="100" />
+          <Property Name="Domicile" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="X1_Report_Answer_Detail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnswerMID" Type="int" Nullable="false" />
+          <Property Name="QuestionID" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="3000" />
+        </EntityType>
+        <EntityType Name="X1_Report_Answer_Extra">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnswerMID" Type="int" Nullable="false" />
+          <Property Name="X1Data" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="X1_Report_Answer_File">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnswerMID" Type="int" Nullable="false" />
+          <Property Name="QuestionID" Type="int" Nullable="false" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FileExt" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="MimeType" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="X1_Report_Answer_Main">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MainID" Type="int" />
+          <Property Name="ReportID" Type="int" Nullable="false" />
+          <Property Name="PID" Type="int" Nullable="false" />
+          <Property Name="OID" Type="int" />
+          <Property Name="FillingDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteMan" Type="varchar" MaxLength="254" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Lock" Type="bit" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="X1_Report_Authorization">
+          <Key>
+            <PropertyRef Name="ReportID" />
+            <PropertyRef Name="PGID" />
+          </Key>
+          <Property Name="ReportID" Type="int" Nullable="false" />
+          <Property Name="PGID" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreateMan" Type="varchar" MaxLength="254" Nullable="false" />
+        </EntityType>
+        <EntityType Name="X1_Report_Export_File">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RAMID" Type="int" Nullable="false" />
+          <Property Name="GUID" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MimeType" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyMan" Type="varchar" MaxLength="254" Nullable="false" />
+        </EntityType>
+        <EntityType Name="X1_Report_Export_Template">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SystemFileID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreateMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifyMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="DeleteDate" Type="datetime2" Precision="7" />
+          <Property Name="DeleteMan" Type="varchar" MaxLength="254" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="X1_Report_Main">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IndexNum" Type="int" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Description" Type="nvarchar" MaxLength="3000" />
+          <Property Name="OutputJson" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyMan" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteMan" Type="varchar" MaxLength="254" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="PublishDate" Type="datetime2" Precision="7" />
+          <Property Name="IsPublish" Type="bit" Nullable="false" />
+          <Property Name="ReserveDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="FuncCode" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="X1_Report_Question">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="QuestionType" Type="int" Nullable="false" />
+          <Property Name="ReportID" Type="int" Nullable="false" />
+          <Property Name="QuestionText" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Description" Type="nvarchar" MaxLength="3000" />
+          <Property Name="Required" Type="bit" Nullable="false" />
+          <Property Name="CodingBookTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodingBookIndex" Type="int" Nullable="false" />
+          <Property Name="AnswerOption" Type="nvarchar" MaxLength="4000" />
+          <Property Name="OtherAnsID" Type="int" />
+          <Property Name="Pin" Type="bit" Nullable="false" />
+          <Property Name="ParentQuestID" Type="int" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="X1_Report_Question_File">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RMID" Type="int" Nullable="false" />
+          <Property Name="RQID" Type="int" Nullable="false" />
+          <Property Name="FileData" Type="varbinary(max)" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="MimeType" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="X1_Report_Question_Group">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Description" Type="nvarchar" MaxLength="3000" />
+        </EntityType>
+        <EntityType Name="X1_Report_Question_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ExportTemplateExtraQuest_X1_Report_Export_Template">
+          <End Role="X1_Report_Export_Template" Type="Self.X1_Report_Export_Template" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ExportTemplateExtraQuest" Type="Self.ExportTemplateExtraQuest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Export_Template">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExportTemplateExtraQuest">
+              <PropertyRef Name="ExportTemplateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_Pinned_Question_Pinned_Question">
+          <End Role="Pinned_Question" Type="Self.Pinned_Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Personal_Pinned_Question" Type="Self.Personal_Pinned_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pinned_Question">
+              <PropertyRef Name="PinnedID" />
+            </Principal>
+            <Dependent Role="Personal_Pinned_Question">
+              <PropertyRef Name="PinnedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_Pinned_Question_X1_PatientInfo">
+          <End Role="X1_PatientInfo" Type="Self.X1_PatientInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Personal_Pinned_Question" Type="Self.Personal_Pinned_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_PatientInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Personal_Pinned_Question">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PinnedQuestionMap_ToPinned_Question">
+          <End Role="Pinned_Question" Type="Self.Pinned_Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PinnedQuestionMap" Type="Self.PinnedQuestionMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pinned_Question">
+              <PropertyRef Name="PinnedID" />
+            </Principal>
+            <Dependent Role="PinnedQuestionMap">
+              <PropertyRef Name="PinnedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PinnedQuestionMap_ToX1_Report_Question">
+          <End Role="X1_Report_Question" Type="Self.X1_Report_Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PinnedQuestionMap" Type="Self.PinnedQuestionMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PinnedQuestionMap">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionValidation_X1_Report_Question">
+          <End Role="X1_Report_Question" Type="Self.X1_Report_Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QuestionValidation" Type="Self.QuestionValidation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QuestionValidation">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_X1_PatientInfo">
+          <End Role="X1_PatientInfo" Type="Self.X1_PatientInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_PatientInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ValidationCondition_Question">
+          <End Role="X1_Report_Question" Type="Self.X1_Report_Question" Multiplicity="1" />
+          <End Role="ValidationCondition" Type="Self.ValidationCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ValidationCondition">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_PatientGroupMap_X1_PatientGroup">
+          <End Role="X1_PatientGroup" Type="Self.X1_PatientGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_PatientGroupMap" Type="Self.X1_PatientGroupMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_PatientGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_PatientGroupMap">
+              <PropertyRef Name="PGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_PatientGroupMap_X1_PatientInfo">
+          <End Role="X1_PatientInfo" Type="Self.X1_PatientInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_PatientGroupMap" Type="Self.X1_PatientGroupMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_PatientInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_PatientGroupMap">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_Detail_X1_Report_Answer_Detail">
+          <End Role="X1_Report_Answer_Main" Type="Self.X1_Report_Answer_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Answer_Detail" Type="Self.X1_Report_Answer_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Answer_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_Detail">
+              <PropertyRef Name="AnswerMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_Detail_X1_Report_Question">
+          <End Role="X1_Report_Question" Type="Self.X1_Report_Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Answer_Detail" Type="Self.X1_Report_Answer_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_Detail">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_Extra_X1_Report_Answer_Main">
+          <End Role="X1_Report_Answer_Main" Type="Self.X1_Report_Answer_Main" Multiplicity="1" />
+          <End Role="X1_Report_Answer_Extra" Type="Self.X1_Report_Answer_Extra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Answer_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_Extra">
+              <PropertyRef Name="AnswerMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_File_X1_Report_Answer_Main">
+          <End Role="X1_Report_Answer_Main" Type="Self.X1_Report_Answer_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Answer_File" Type="Self.X1_Report_Answer_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Answer_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_File">
+              <PropertyRef Name="AnswerMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_File_X1_Report_Question">
+          <End Role="X1_Report_Question" Type="Self.X1_Report_Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Answer_File" Type="Self.X1_Report_Answer_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_File">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_Main_X1_PatientInfo">
+          <End Role="X1_PatientInfo" Type="Self.X1_PatientInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Answer_Main" Type="Self.X1_Report_Answer_Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_PatientInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_Main">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_Main_X1_Report_Main">
+          <End Role="X1_Report_Main" Type="Self.X1_Report_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Answer_Main" Type="Self.X1_Report_Answer_Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_Main">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Authorization_X1_PatientGroup">
+          <End Role="X1_PatientGroup" Type="Self.X1_PatientGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Authorization" Type="Self.X1_Report_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_PatientGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Authorization">
+              <PropertyRef Name="PGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Authorization_X1_Report_Main">
+          <End Role="X1_Report_Main" Type="Self.X1_Report_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Authorization" Type="Self.X1_Report_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Authorization">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Export_File_X1_Report_Answer_Main">
+          <End Role="X1_Report_Answer_Main" Type="Self.X1_Report_Answer_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Export_File" Type="Self.X1_Report_Export_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Answer_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Export_File">
+              <PropertyRef Name="RAMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Export_Template_SystemFile">
+          <End Role="SystemFile" Type="Self.SystemFile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Export_Template" Type="Self.X1_Report_Export_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemFile">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Export_Template">
+              <PropertyRef Name="SystemFileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Question_File_X1_Report_Main">
+          <End Role="X1_Report_Main" Type="Self.X1_Report_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Question_File" Type="Self.X1_Report_Question_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Question_File">
+              <PropertyRef Name="RMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Question_File_X1_Report_Question">
+          <End Role="X1_Report_Question" Type="Self.X1_Report_Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Question_File" Type="Self.X1_Report_Question_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Question_File">
+              <PropertyRef Name="RQID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Question_Group_X1_Report_Main">
+          <End Role="X1_Report_Main" Type="Self.X1_Report_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Question_Group" Type="Self.X1_Report_Question_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Question_Group">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Question_X1_Report_Main">
+          <End Role="X1_Report_Main" Type="Self.X1_Report_Main" Multiplicity="1" />
+          <End Role="X1_Report_Question" Type="Self.X1_Report_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Question">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Question_X1_Report_Question_Type">
+          <End Role="X1_Report_Question_Type" Type="Self.X1_Report_Question_Type" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="X1_Report_Question" Type="Self.X1_Report_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Question_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Question">
+              <PropertyRef Name="QuestionType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="X1APModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExportTemplateExtraQuest" EntityType="Self.ExportTemplateExtraQuest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileGroup" EntityType="Self.FileGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileSet" EntityType="Self.FileSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuncGroup" EntityType="Self.FuncGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FunctionReportMap" EntityType="Self.FunctionReportMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Functions" EntityType="Self.Functions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTPToken" EntityType="Self.OTPToken" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTPTSysMap" EntityType="Self.OTPTSysMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personal_Pinned_Question" EntityType="Self.Personal_Pinned_Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pinned_Question" EntityType="Self.Pinned_Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PinnedQuestionMap" EntityType="Self.PinnedQuestionMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionValidation" EntityType="Self.QuestionValidation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleAuthMap" EntityType="Self.RoleAuthMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysInfo" EntityType="Self.SysInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemFile" EntityType="Self.SystemFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TLogData" EntityType="Self.TLogData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TLogList" EntityType="Self.TLogList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TLogMain" EntityType="Self.TLogMain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserGroup" EntityType="Self.UserGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoleMap" EntityType="Self.UserRoleMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserToken" EntityType="Self.UserToken" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ValidationCondition" EntityType="Self.ValidationCondition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_PatientGroup" EntityType="Self.X1_PatientGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_PatientGroupMap" EntityType="Self.X1_PatientGroupMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_PatientInfo" EntityType="Self.X1_PatientInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_Report_Answer_Detail" EntityType="Self.X1_Report_Answer_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_Report_Answer_Extra" EntityType="Self.X1_Report_Answer_Extra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_Report_Answer_File" EntityType="Self.X1_Report_Answer_File" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_Report_Answer_Main" EntityType="Self.X1_Report_Answer_Main" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_Report_Authorization" EntityType="Self.X1_Report_Authorization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_Report_Export_File" EntityType="Self.X1_Report_Export_File" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_Report_Export_Template" EntityType="Self.X1_Report_Export_Template" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_Report_Main" EntityType="Self.X1_Report_Main" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_Report_Question" EntityType="Self.X1_Report_Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_Report_Question_File" EntityType="Self.X1_Report_Question_File" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_Report_Question_Group" EntityType="Self.X1_Report_Question_Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="X1_Report_Question_Type" EntityType="Self.X1_Report_Question_Type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ExportTemplateExtraQuest_X1_Report_Export_Template" Association="Self.FK_ExportTemplateExtraQuest_X1_Report_Export_Template">
+            <End Role="X1_Report_Export_Template" EntitySet="X1_Report_Export_Template" />
+            <End Role="ExportTemplateExtraQuest" EntitySet="ExportTemplateExtraQuest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_Pinned_Question_Pinned_Question" Association="Self.FK_Personal_Pinned_Question_Pinned_Question">
+            <End Role="Pinned_Question" EntitySet="Pinned_Question" />
+            <End Role="Personal_Pinned_Question" EntitySet="Personal_Pinned_Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_Pinned_Question_X1_PatientInfo" Association="Self.FK_Personal_Pinned_Question_X1_PatientInfo">
+            <End Role="X1_PatientInfo" EntitySet="X1_PatientInfo" />
+            <End Role="Personal_Pinned_Question" EntitySet="Personal_Pinned_Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PinnedQuestionMap_ToPinned_Question" Association="Self.FK_PinnedQuestionMap_ToPinned_Question">
+            <End Role="Pinned_Question" EntitySet="Pinned_Question" />
+            <End Role="PinnedQuestionMap" EntitySet="PinnedQuestionMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PinnedQuestionMap_ToX1_Report_Question" Association="Self.FK_PinnedQuestionMap_ToX1_Report_Question">
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+            <End Role="PinnedQuestionMap" EntitySet="PinnedQuestionMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionValidation_X1_Report_Question" Association="Self.FK_QuestionValidation_X1_Report_Question">
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+            <End Role="QuestionValidation" EntitySet="QuestionValidation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_X1_PatientInfo" Association="Self.FK_Schedule_X1_PatientInfo">
+            <End Role="X1_PatientInfo" EntitySet="X1_PatientInfo" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ValidationCondition_Question" Association="Self.FK_ValidationCondition_Question">
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+            <End Role="ValidationCondition" EntitySet="ValidationCondition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_PatientGroupMap_X1_PatientGroup" Association="Self.FK_X1_PatientGroupMap_X1_PatientGroup">
+            <End Role="X1_PatientGroup" EntitySet="X1_PatientGroup" />
+            <End Role="X1_PatientGroupMap" EntitySet="X1_PatientGroupMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_PatientGroupMap_X1_PatientInfo" Association="Self.FK_X1_PatientGroupMap_X1_PatientInfo">
+            <End Role="X1_PatientInfo" EntitySet="X1_PatientInfo" />
+            <End Role="X1_PatientGroupMap" EntitySet="X1_PatientGroupMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_Detail_X1_Report_Answer_Detail" Association="Self.FK_X1_Report_Answer_Detail_X1_Report_Answer_Detail">
+            <End Role="X1_Report_Answer_Main" EntitySet="X1_Report_Answer_Main" />
+            <End Role="X1_Report_Answer_Detail" EntitySet="X1_Report_Answer_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_Detail_X1_Report_Question" Association="Self.FK_X1_Report_Answer_Detail_X1_Report_Question">
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+            <End Role="X1_Report_Answer_Detail" EntitySet="X1_Report_Answer_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_Extra_X1_Report_Answer_Main" Association="Self.FK_X1_Report_Answer_Extra_X1_Report_Answer_Main">
+            <End Role="X1_Report_Answer_Main" EntitySet="X1_Report_Answer_Main" />
+            <End Role="X1_Report_Answer_Extra" EntitySet="X1_Report_Answer_Extra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_File_X1_Report_Answer_Main" Association="Self.FK_X1_Report_Answer_File_X1_Report_Answer_Main">
+            <End Role="X1_Report_Answer_Main" EntitySet="X1_Report_Answer_Main" />
+            <End Role="X1_Report_Answer_File" EntitySet="X1_Report_Answer_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_File_X1_Report_Question" Association="Self.FK_X1_Report_Answer_File_X1_Report_Question">
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+            <End Role="X1_Report_Answer_File" EntitySet="X1_Report_Answer_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_Main_X1_PatientInfo" Association="Self.FK_X1_Report_Answer_Main_X1_PatientInfo">
+            <End Role="X1_PatientInfo" EntitySet="X1_PatientInfo" />
+            <End Role="X1_Report_Answer_Main" EntitySet="X1_Report_Answer_Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_Main_X1_Report_Main" Association="Self.FK_X1_Report_Answer_Main_X1_Report_Main">
+            <End Role="X1_Report_Main" EntitySet="X1_Report_Main" />
+            <End Role="X1_Report_Answer_Main" EntitySet="X1_Report_Answer_Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Authorization_X1_PatientGroup" Association="Self.FK_X1_Report_Authorization_X1_PatientGroup">
+            <End Role="X1_PatientGroup" EntitySet="X1_PatientGroup" />
+            <End Role="X1_Report_Authorization" EntitySet="X1_Report_Authorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Authorization_X1_Report_Main" Association="Self.FK_X1_Report_Authorization_X1_Report_Main">
+            <End Role="X1_Report_Main" EntitySet="X1_Report_Main" />
+            <End Role="X1_Report_Authorization" EntitySet="X1_Report_Authorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Export_File_X1_Report_Answer_Main" Association="Self.FK_X1_Report_Export_File_X1_Report_Answer_Main">
+            <End Role="X1_Report_Answer_Main" EntitySet="X1_Report_Answer_Main" />
+            <End Role="X1_Report_Export_File" EntitySet="X1_Report_Export_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Export_Template_SystemFile" Association="Self.FK_X1_Report_Export_Template_SystemFile">
+            <End Role="SystemFile" EntitySet="SystemFile" />
+            <End Role="X1_Report_Export_Template" EntitySet="X1_Report_Export_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Question_File_X1_Report_Main" Association="Self.FK_X1_Report_Question_File_X1_Report_Main">
+            <End Role="X1_Report_Main" EntitySet="X1_Report_Main" />
+            <End Role="X1_Report_Question_File" EntitySet="X1_Report_Question_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Question_File_X1_Report_Question" Association="Self.FK_X1_Report_Question_File_X1_Report_Question">
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+            <End Role="X1_Report_Question_File" EntitySet="X1_Report_Question_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Question_Group_X1_Report_Main" Association="Self.FK_X1_Report_Question_Group_X1_Report_Main">
+            <End Role="X1_Report_Main" EntitySet="X1_Report_Main" />
+            <End Role="X1_Report_Question_Group" EntitySet="X1_Report_Question_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Question_X1_Report_Main" Association="Self.FK_X1_Report_Question_X1_Report_Main">
+            <End Role="X1_Report_Main" EntitySet="X1_Report_Main" />
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Question_X1_Report_Question_Type" Association="Self.FK_X1_Report_Question_X1_Report_Question_Type">
+            <End Role="X1_Report_Question_Type" EntitySet="X1_Report_Question_Type" />
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="X1APModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="X1APEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="X1APModel.C__RefactorLog" />
+          <EntitySet Name="ExportTemplateExtraQuest" EntityType="X1APModel.ExportTemplateExtraQuest" />
+          <EntitySet Name="FileGroup" EntityType="X1APModel.FileGroup" />
+          <EntitySet Name="FileSet" EntityType="X1APModel.FileSet" />
+          <EntitySet Name="FuncGroup" EntityType="X1APModel.FuncGroup" />
+          <EntitySet Name="FunctionReportMap" EntityType="X1APModel.FunctionReportMap" />
+          <EntitySet Name="Functions" EntityType="X1APModel.Functions" />
+          <EntitySet Name="OTPToken" EntityType="X1APModel.OTPToken" />
+          <EntitySet Name="OTPTSysMap" EntityType="X1APModel.OTPTSysMap" />
+          <EntitySet Name="Personal_Pinned_Question" EntityType="X1APModel.Personal_Pinned_Question" />
+          <EntitySet Name="Pinned_Question" EntityType="X1APModel.Pinned_Question" />
+          <EntitySet Name="QuestionValidation" EntityType="X1APModel.QuestionValidation" />
+          <EntitySet Name="RoleAuthMap" EntityType="X1APModel.RoleAuthMap" />
+          <EntitySet Name="Roles" EntityType="X1APModel.Roles" />
+          <EntitySet Name="Schedule" EntityType="X1APModel.Schedule" />
+          <EntitySet Name="sysdiagrams" EntityType="X1APModel.sysdiagrams" />
+          <EntitySet Name="SysInfo" EntityType="X1APModel.SysInfo" />
+          <EntitySet Name="SystemFile" EntityType="X1APModel.SystemFile" />
+          <EntitySet Name="TLogData" EntityType="X1APModel.TLogData" />
+          <EntitySet Name="TLogList" EntityType="X1APModel.TLogList" />
+          <EntitySet Name="TLogMain" EntityType="X1APModel.TLogMain" />
+          <EntitySet Name="UserGroup" EntityType="X1APModel.UserGroup" />
+          <EntitySet Name="UserRoleMap" EntityType="X1APModel.UserRoleMap" />
+          <EntitySet Name="Users" EntityType="X1APModel.Users" />
+          <EntitySet Name="UserToken" EntityType="X1APModel.UserToken" />
+          <EntitySet Name="ValidationCondition" EntityType="X1APModel.ValidationCondition" />
+          <EntitySet Name="X1_PatientGroup" EntityType="X1APModel.X1_PatientGroup" />
+          <EntitySet Name="X1_PatientGroupMap" EntityType="X1APModel.X1_PatientGroupMap" />
+          <EntitySet Name="X1_PatientInfo" EntityType="X1APModel.X1_PatientInfo" />
+          <EntitySet Name="X1_Report_Answer_Detail" EntityType="X1APModel.X1_Report_Answer_Detail" />
+          <EntitySet Name="X1_Report_Answer_Extra" EntityType="X1APModel.X1_Report_Answer_Extra" />
+          <EntitySet Name="X1_Report_Answer_File" EntityType="X1APModel.X1_Report_Answer_File" />
+          <EntitySet Name="X1_Report_Answer_Main" EntityType="X1APModel.X1_Report_Answer_Main" />
+          <EntitySet Name="X1_Report_Authorization" EntityType="X1APModel.X1_Report_Authorization" />
+          <EntitySet Name="X1_Report_Export_File" EntityType="X1APModel.X1_Report_Export_File" />
+          <EntitySet Name="X1_Report_Export_Template" EntityType="X1APModel.X1_Report_Export_Template" />
+          <EntitySet Name="X1_Report_Main" EntityType="X1APModel.X1_Report_Main" />
+          <EntitySet Name="X1_Report_Question" EntityType="X1APModel.X1_Report_Question" />
+          <EntitySet Name="X1_Report_Question_File" EntityType="X1APModel.X1_Report_Question_File" />
+          <EntitySet Name="X1_Report_Question_Group" EntityType="X1APModel.X1_Report_Question_Group" />
+          <EntitySet Name="X1_Report_Question_Type" EntityType="X1APModel.X1_Report_Question_Type" />
+          <AssociationSet Name="FK_ExportTemplateExtraQuest_X1_Report_Export_Template" Association="X1APModel.FK_ExportTemplateExtraQuest_X1_Report_Export_Template">
+            <End Role="X1_Report_Export_Template" EntitySet="X1_Report_Export_Template" />
+            <End Role="ExportTemplateExtraQuest" EntitySet="ExportTemplateExtraQuest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_Pinned_Question_Pinned_Question" Association="X1APModel.FK_Personal_Pinned_Question_Pinned_Question">
+            <End Role="Pinned_Question" EntitySet="Pinned_Question" />
+            <End Role="Personal_Pinned_Question" EntitySet="Personal_Pinned_Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personal_Pinned_Question_X1_PatientInfo" Association="X1APModel.FK_Personal_Pinned_Question_X1_PatientInfo">
+            <End Role="X1_PatientInfo" EntitySet="X1_PatientInfo" />
+            <End Role="Personal_Pinned_Question" EntitySet="Personal_Pinned_Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionValidation_X1_Report_Question" Association="X1APModel.FK_QuestionValidation_X1_Report_Question">
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+            <End Role="QuestionValidation" EntitySet="QuestionValidation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_X1_PatientInfo" Association="X1APModel.FK_Schedule_X1_PatientInfo">
+            <End Role="X1_PatientInfo" EntitySet="X1_PatientInfo" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Export_Template_SystemFile" Association="X1APModel.FK_X1_Report_Export_Template_SystemFile">
+            <End Role="SystemFile" EntitySet="SystemFile" />
+            <End Role="X1_Report_Export_Template" EntitySet="X1_Report_Export_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ValidationCondition_Question" Association="X1APModel.FK_ValidationCondition_Question">
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+            <End Role="ValidationCondition" EntitySet="ValidationCondition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_PatientGroupMap_X1_PatientGroup" Association="X1APModel.FK_X1_PatientGroupMap_X1_PatientGroup">
+            <End Role="X1_PatientGroup" EntitySet="X1_PatientGroup" />
+            <End Role="X1_PatientGroupMap" EntitySet="X1_PatientGroupMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Authorization_X1_PatientGroup" Association="X1APModel.FK_X1_Report_Authorization_X1_PatientGroup">
+            <End Role="X1_PatientGroup" EntitySet="X1_PatientGroup" />
+            <End Role="X1_Report_Authorization" EntitySet="X1_Report_Authorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_PatientGroupMap_X1_PatientInfo" Association="X1APModel.FK_X1_PatientGroupMap_X1_PatientInfo">
+            <End Role="X1_PatientInfo" EntitySet="X1_PatientInfo" />
+            <End Role="X1_PatientGroupMap" EntitySet="X1_PatientGroupMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_Main_X1_PatientInfo" Association="X1APModel.FK_X1_Report_Answer_Main_X1_PatientInfo">
+            <End Role="X1_PatientInfo" EntitySet="X1_PatientInfo" />
+            <End Role="X1_Report_Answer_Main" EntitySet="X1_Report_Answer_Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_Detail_X1_Report_Answer_Detail" Association="X1APModel.FK_X1_Report_Answer_Detail_X1_Report_Answer_Detail">
+            <End Role="X1_Report_Answer_Main" EntitySet="X1_Report_Answer_Main" />
+            <End Role="X1_Report_Answer_Detail" EntitySet="X1_Report_Answer_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_Detail_X1_Report_Question" Association="X1APModel.FK_X1_Report_Answer_Detail_X1_Report_Question">
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+            <End Role="X1_Report_Answer_Detail" EntitySet="X1_Report_Answer_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_Extra_X1_Report_Answer_Main" Association="X1APModel.FK_X1_Report_Answer_Extra_X1_Report_Answer_Main">
+            <End Role="X1_Report_Answer_Main" EntitySet="X1_Report_Answer_Main" />
+            <End Role="X1_Report_Answer_Extra" EntitySet="X1_Report_Answer_Extra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_File_X1_Report_Answer_Main" Association="X1APModel.FK_X1_Report_Answer_File_X1_Report_Answer_Main">
+            <End Role="X1_Report_Answer_Main" EntitySet="X1_Report_Answer_Main" />
+            <End Role="X1_Report_Answer_File" EntitySet="X1_Report_Answer_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_File_X1_Report_Question" Association="X1APModel.FK_X1_Report_Answer_File_X1_Report_Question">
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+            <End Role="X1_Report_Answer_File" EntitySet="X1_Report_Answer_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Answer_Main_X1_Report_Main" Association="X1APModel.FK_X1_Report_Answer_Main_X1_Report_Main">
+            <End Role="X1_Report_Main" EntitySet="X1_Report_Main" />
+            <End Role="X1_Report_Answer_Main" EntitySet="X1_Report_Answer_Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Export_File_X1_Report_Answer_Main" Association="X1APModel.FK_X1_Report_Export_File_X1_Report_Answer_Main">
+            <End Role="X1_Report_Answer_Main" EntitySet="X1_Report_Answer_Main" />
+            <End Role="X1_Report_Export_File" EntitySet="X1_Report_Export_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Authorization_X1_Report_Main" Association="X1APModel.FK_X1_Report_Authorization_X1_Report_Main">
+            <End Role="X1_Report_Main" EntitySet="X1_Report_Main" />
+            <End Role="X1_Report_Authorization" EntitySet="X1_Report_Authorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Question_File_X1_Report_Main" Association="X1APModel.FK_X1_Report_Question_File_X1_Report_Main">
+            <End Role="X1_Report_Main" EntitySet="X1_Report_Main" />
+            <End Role="X1_Report_Question_File" EntitySet="X1_Report_Question_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Question_Group_X1_Report_Main" Association="X1APModel.FK_X1_Report_Question_Group_X1_Report_Main">
+            <End Role="X1_Report_Main" EntitySet="X1_Report_Main" />
+            <End Role="X1_Report_Question_Group" EntitySet="X1_Report_Question_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Question_X1_Report_Main" Association="X1APModel.FK_X1_Report_Question_X1_Report_Main">
+            <End Role="X1_Report_Main" EntitySet="X1_Report_Main" />
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Question_File_X1_Report_Question" Association="X1APModel.FK_X1_Report_Question_File_X1_Report_Question">
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+            <End Role="X1_Report_Question_File" EntitySet="X1_Report_Question_File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_X1_Report_Question_X1_Report_Question_Type" Association="X1APModel.FK_X1_Report_Question_X1_Report_Question_Type">
+            <End Role="X1_Report_Question_Type" EntitySet="X1_Report_Question_Type" />
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+          </AssociationSet>
+          <AssociationSet Name="PinnedQuestionMap" Association="X1APModel.PinnedQuestionMap">
+            <End Role="Pinned_Question" EntitySet="Pinned_Question" />
+            <End Role="X1_Report_Question" EntitySet="X1_Report_Question" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExportTemplateExtraQuest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExportTemplateID" Type="Int32" Nullable="false" />
+          <Property Name="QuestName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="QuestText" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QuestType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Required" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="X1_Report_Export_Template" Relationship="X1APModel.FK_ExportTemplateExtraQuest_X1_Report_Export_Template" FromRole="ExportTemplateExtraQuest" ToRole="X1_Report_Export_Template" />
+        </EntityType>
+        <EntityType Name="FileGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FloderKey" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="FGState" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ManType" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CreateMan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreateName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FileSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FGID" Type="Int64" Nullable="false" />
+          <Property Name="FileKey" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="FType" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="FileEName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="FileState" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FuncGroup">
+          <Key>
+            <PropertyRef Name="SysCode" />
+            <PropertyRef Name="GroupCode" />
+          </Key>
+          <Property Name="SysCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="GroupCode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="GroupType" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GroupState" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CreateMan" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FunctionReportMap">
+          <Key>
+            <PropertyRef Name="ReportCategory" />
+            <PropertyRef Name="FuncCode" />
+          </Key>
+          <Property Name="ReportCategory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FuncCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Functions">
+          <Key>
+            <PropertyRef Name="SysCode" />
+            <PropertyRef Name="FuncCode" />
+          </Key>
+          <Property Name="SysCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="GroupCode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="FuncCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="FuncName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="FuncPath" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FuncStatus" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AuthFlag1" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AuthName1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AuthFlag2" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AuthName2" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AuthFlag3" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AuthName3" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AuthFlag4" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AuthName4" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AuthFlag5" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AuthName5" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CreateMan" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="OTPToken">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ReqSysCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="RspSysCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="OTPTokenKey" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="OTPStatus" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="RegTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="OTPTSysMap">
+          <Key>
+            <PropertyRef Name="ReqSysCode" />
+            <PropertyRef Name="RspSysCode" />
+          </Key>
+          <Property Name="ReqSysCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="RspSysCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Personal_Pinned_Question">
+          <Key>
+            <PropertyRef Name="PatientID" />
+            <PropertyRef Name="PinnedID" />
+          </Key>
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <Property Name="PinnedID" Type="Int32" Nullable="false" />
+          <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <Property Name="Index" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pinned_Question" Relationship="X1APModel.FK_Personal_Pinned_Question_Pinned_Question" FromRole="Personal_Pinned_Question" ToRole="Pinned_Question" />
+          <NavigationProperty Name="X1_PatientInfo" Relationship="X1APModel.FK_Personal_Pinned_Question_X1_PatientInfo" FromRole="Personal_Pinned_Question" ToRole="X1_PatientInfo" />
+        </EntityType>
+        <EntityType Name="Pinned_Question">
+          <Key>
+            <PropertyRef Name="PinnedID" />
+          </Key>
+          <Property Name="PinnedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PinnedName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <Property Name="Index" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personal_Pinned_Question" Relationship="X1APModel.FK_Personal_Pinned_Question_Pinned_Question" FromRole="Pinned_Question" ToRole="Personal_Pinned_Question" />
+          <NavigationProperty Name="X1_Report_Question" Relationship="X1APModel.PinnedQuestionMap" FromRole="Pinned_Question" ToRole="X1_Report_Question" />
+        </EntityType>
+        <EntityType Name="QuestionValidation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionID" Type="Int32" Nullable="false" />
+          <Property Name="Operator" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Normal" Type="Boolean" Nullable="false" />
+          <Property Name="GroupNum" Type="Int32" />
+          <NavigationProperty Name="X1_Report_Question" Relationship="X1APModel.FK_QuestionValidation_X1_Report_Question" FromRole="QuestionValidation" ToRole="X1_Report_Question" />
+        </EntityType>
+        <EntityType Name="RoleAuthMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="SysCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="FuncCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="AuthNo1" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AuthNo2" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AuthNo3" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AuthNo4" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AuthNo5" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CreateMan" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleCode" />
+          </Key>
+          <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RoleTitle" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hidden" Type="Boolean" Nullable="false" />
+          <Property Name="RoleBackendName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <Property Name="ContentText" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ReturnDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreateMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ModifyMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="7" />
+          <Property Name="DeleteMan" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="X1_PatientInfo" Relationship="X1APModel.FK_Schedule_X1_PatientInfo" FromRole="Schedule" ToRole="X1_PatientInfo" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SysInfo">
+          <Key>
+            <PropertyRef Name="SysCode" />
+          </Key>
+          <Property Name="SysCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="SysName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SysStatus" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CreateMan" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SystemFile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="FilePath" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MimeType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreateMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ModifyMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="7" />
+          <Property Name="DeleteMan" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="X1_Report_Export_Template" Relationship="X1APModel.FK_X1_Report_Export_Template_SystemFile" FromRole="SystemFile" ToRole="X1_Report_Export_Template" />
+        </EntityType>
+        <EntityType Name="TLogData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ListID" Type="Int64" Nullable="false" />
+          <Property Name="LogData" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TLogList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MainID" Type="Int32" Nullable="false" />
+          <Property Name="ActionType" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FGID" Type="Int64" />
+          <Property Name="DetailFlag" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CreateMan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreateName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TLogMain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SysCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="LogType" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="LogKey" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreateMan" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreateName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="GroupCode" />
+          </Key>
+          <Property Name="GroupCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserRoleMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="CreateMan" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccID" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="UserGUID" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="UseState" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="StateUDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StateUMan" Type="Int32" Nullable="false" />
+          <Property Name="UserStatus" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="StatusUDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StatusUMan" Type="Int32" Nullable="false" />
+          <Property Name="IsAdmin" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CreateMan" Type="Int32" Nullable="false" />
+          <Property Name="UpdateMan" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hidden" Type="Boolean" Nullable="false" />
+          <Property Name="Valid" Type="Boolean" Nullable="false" />
+          <Property Name="AccName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DoctorNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Senior" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserToken">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="SysCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="AccessToken" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="RefreshToken" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="TokenTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ValidationCondition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionID" Type="Int32" Nullable="false" />
+          <Property Name="AttributeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Operator1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Operator2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupNum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="X1_Report_Question" Relationship="X1APModel.FK_ValidationCondition_Question" FromRole="ValidationCondition" ToRole="X1_Report_Question" />
+        </EntityType>
+        <EntityType Name="X1_PatientGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreateMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ModifyMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="7" />
+          <Property Name="DeleteMan" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="X1_PatientGroupMap" Relationship="X1APModel.FK_X1_PatientGroupMap_X1_PatientGroup" FromRole="X1_PatientGroup" ToRole="X1_PatientGroupMap" />
+          <NavigationProperty Name="X1_Report_Authorization" Relationship="X1APModel.FK_X1_Report_Authorization_X1_PatientGroup" FromRole="X1_PatientGroup" ToRole="X1_Report_Authorization" />
+        </EntityType>
+        <EntityType Name="X1_PatientGroupMap">
+          <Key>
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="PGID" />
+          </Key>
+          <Property Name="PID" Type="Int32" Nullable="false" />
+          <Property Name="PGID" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreateMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="X1_PatientGroup" Relationship="X1APModel.FK_X1_PatientGroupMap_X1_PatientGroup" FromRole="X1_PatientGroupMap" ToRole="X1_PatientGroup" />
+          <NavigationProperty Name="X1_PatientInfo" Relationship="X1APModel.FK_X1_PatientGroupMap_X1_PatientInfo" FromRole="X1_PatientGroupMap" ToRole="X1_PatientInfo" />
+        </EntityType>
+        <EntityType Name="X1_PatientInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PUCountry" Type="Int32" Nullable="false" />
+          <Property Name="PUName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IDNo" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="PUDOB" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="Height" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Weight" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cellphone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactRelation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Education" Type="Int32" />
+          <Property Name="AddrCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HCCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Addr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Domicile" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Personal_Pinned_Question" Relationship="X1APModel.FK_Personal_Pinned_Question_X1_PatientInfo" FromRole="X1_PatientInfo" ToRole="Personal_Pinned_Question" />
+          <NavigationProperty Name="Schedule" Relationship="X1APModel.FK_Schedule_X1_PatientInfo" FromRole="X1_PatientInfo" ToRole="Schedule" />
+          <NavigationProperty Name="X1_PatientGroupMap" Relationship="X1APModel.FK_X1_PatientGroupMap_X1_PatientInfo" FromRole="X1_PatientInfo" ToRole="X1_PatientGroupMap" />
+          <NavigationProperty Name="X1_Report_Answer_Main" Relationship="X1APModel.FK_X1_Report_Answer_Main_X1_PatientInfo" FromRole="X1_PatientInfo" ToRole="X1_Report_Answer_Main" />
+        </EntityType>
+        <EntityType Name="X1_Report_Answer_Detail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnswerMID" Type="Int32" Nullable="false" />
+          <Property Name="QuestionID" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="X1_Report_Answer_Main" Relationship="X1APModel.FK_X1_Report_Answer_Detail_X1_Report_Answer_Detail" FromRole="X1_Report_Answer_Detail" ToRole="X1_Report_Answer_Main" />
+          <NavigationProperty Name="X1_Report_Question" Relationship="X1APModel.FK_X1_Report_Answer_Detail_X1_Report_Question" FromRole="X1_Report_Answer_Detail" ToRole="X1_Report_Question" />
+        </EntityType>
+        <EntityType Name="X1_Report_Answer_Extra">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnswerMID" Type="Int32" Nullable="false" />
+          <Property Name="X1Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="X1_Report_Answer_Main" Relationship="X1APModel.FK_X1_Report_Answer_Extra_X1_Report_Answer_Main" FromRole="X1_Report_Answer_Extra" ToRole="X1_Report_Answer_Main" />
+        </EntityType>
+        <EntityType Name="X1_Report_Answer_File">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnswerMID" Type="Int32" Nullable="false" />
+          <Property Name="QuestionID" Type="Int32" Nullable="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FileExt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FilePath" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MimeType" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="X1_Report_Answer_Main" Relationship="X1APModel.FK_X1_Report_Answer_File_X1_Report_Answer_Main" FromRole="X1_Report_Answer_File" ToRole="X1_Report_Answer_Main" />
+          <NavigationProperty Name="X1_Report_Question" Relationship="X1APModel.FK_X1_Report_Answer_File_X1_Report_Question" FromRole="X1_Report_Answer_File" ToRole="X1_Report_Question" />
+        </EntityType>
+        <EntityType Name="X1_Report_Answer_Main">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MainID" Type="Int32" />
+          <Property Name="ReportID" Type="Int32" Nullable="false" />
+          <Property Name="PID" Type="Int32" Nullable="false" />
+          <Property Name="OID" Type="Int32" />
+          <Property Name="FillingDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteMan" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Lock" Type="Boolean" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="X1_PatientInfo" Relationship="X1APModel.FK_X1_Report_Answer_Main_X1_PatientInfo" FromRole="X1_Report_Answer_Main" ToRole="X1_PatientInfo" />
+          <NavigationProperty Name="X1_Report_Answer_Detail" Relationship="X1APModel.FK_X1_Report_Answer_Detail_X1_Report_Answer_Detail" FromRole="X1_Report_Answer_Main" ToRole="X1_Report_Answer_Detail" />
+          <NavigationProperty Name="X1_Report_Answer_Extra" Relationship="X1APModel.FK_X1_Report_Answer_Extra_X1_Report_Answer_Main" FromRole="X1_Report_Answer_Main" ToRole="X1_Report_Answer_Extra" />
+          <NavigationProperty Name="X1_Report_Answer_File" Relationship="X1APModel.FK_X1_Report_Answer_File_X1_Report_Answer_Main" FromRole="X1_Report_Answer_Main" ToRole="X1_Report_Answer_File" />
+          <NavigationProperty Name="X1_Report_Main" Relationship="X1APModel.FK_X1_Report_Answer_Main_X1_Report_Main" FromRole="X1_Report_Answer_Main" ToRole="X1_Report_Main" />
+          <NavigationProperty Name="X1_Report_Export_File" Relationship="X1APModel.FK_X1_Report_Export_File_X1_Report_Answer_Main" FromRole="X1_Report_Answer_Main" ToRole="X1_Report_Export_File" />
+        </EntityType>
+        <EntityType Name="X1_Report_Authorization">
+          <Key>
+            <PropertyRef Name="ReportID" />
+            <PropertyRef Name="PGID" />
+          </Key>
+          <Property Name="ReportID" Type="Int32" Nullable="false" />
+          <Property Name="PGID" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreateMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="X1_PatientGroup" Relationship="X1APModel.FK_X1_Report_Authorization_X1_PatientGroup" FromRole="X1_Report_Authorization" ToRole="X1_PatientGroup" />
+          <NavigationProperty Name="X1_Report_Main" Relationship="X1APModel.FK_X1_Report_Authorization_X1_Report_Main" FromRole="X1_Report_Authorization" ToRole="X1_Report_Main" />
+        </EntityType>
+        <EntityType Name="X1_Report_Export_File">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RAMID" Type="Int32" Nullable="false" />
+          <Property Name="GUID" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MimeType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="X1_Report_Answer_Main" Relationship="X1APModel.FK_X1_Report_Export_File_X1_Report_Answer_Main" FromRole="X1_Report_Export_File" ToRole="X1_Report_Answer_Main" />
+        </EntityType>
+        <EntityType Name="X1_Report_Export_Template">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SystemFileID" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreateMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ModifyMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="7" />
+          <Property Name="DeleteMan" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExportTemplateExtraQuest" Relationship="X1APModel.FK_ExportTemplateExtraQuest_X1_Report_Export_Template" FromRole="X1_Report_Export_Template" ToRole="ExportTemplateExtraQuest" />
+          <NavigationProperty Name="SystemFile" Relationship="X1APModel.FK_X1_Report_Export_Template_SystemFile" FromRole="X1_Report_Export_Template" ToRole="SystemFile" />
+        </EntityType>
+        <EntityType Name="X1_Report_Main">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IndexNum" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="OutputJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyMan" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteMan" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="PublishDate" Type="DateTime" Precision="7" />
+          <Property Name="IsPublish" Type="Boolean" Nullable="false" />
+          <Property Name="ReserveDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="FuncCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="X1_Report_Answer_Main" Relationship="X1APModel.FK_X1_Report_Answer_Main_X1_Report_Main" FromRole="X1_Report_Main" ToRole="X1_Report_Answer_Main" />
+          <NavigationProperty Name="X1_Report_Authorization" Relationship="X1APModel.FK_X1_Report_Authorization_X1_Report_Main" FromRole="X1_Report_Main" ToRole="X1_Report_Authorization" />
+          <NavigationProperty Name="X1_Report_Question_File" Relationship="X1APModel.FK_X1_Report_Question_File_X1_Report_Main" FromRole="X1_Report_Main" ToRole="X1_Report_Question_File" />
+          <NavigationProperty Name="X1_Report_Question_Group" Relationship="X1APModel.FK_X1_Report_Question_Group_X1_Report_Main" FromRole="X1_Report_Main" ToRole="X1_Report_Question_Group" />
+          <NavigationProperty Name="X1_Report_Question" Relationship="X1APModel.FK_X1_Report_Question_X1_Report_Main" FromRole="X1_Report_Main" ToRole="X1_Report_Question" />
+        </EntityType>
+        <EntityType Name="X1_Report_Question">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionType" Type="Int32" Nullable="false" />
+          <Property Name="ReportID" Type="Int32" Nullable="false" />
+          <Property Name="QuestionText" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="Required" Type="Boolean" Nullable="false" />
+          <Property Name="CodingBookTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodingBookIndex" Type="Int32" Nullable="false" />
+          <Property Name="AnswerOption" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="OtherAnsID" Type="Int32" />
+          <Property Name="Pin" Type="Boolean" Nullable="false" />
+          <Property Name="ParentQuestID" Type="Int32" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="QuestionValidation" Relationship="X1APModel.FK_QuestionValidation_X1_Report_Question" FromRole="X1_Report_Question" ToRole="QuestionValidation" />
+          <NavigationProperty Name="ValidationCondition" Relationship="X1APModel.FK_ValidationCondition_Question" FromRole="X1_Report_Question" ToRole="ValidationCondition" />
+          <NavigationProperty Name="X1_Report_Answer_Detail" Relationship="X1APModel.FK_X1_Report_Answer_Detail_X1_Report_Question" FromRole="X1_Report_Question" ToRole="X1_Report_Answer_Detail" />
+          <NavigationProperty Name="X1_Report_Answer_File" Relationship="X1APModel.FK_X1_Report_Answer_File_X1_Report_Question" FromRole="X1_Report_Question" ToRole="X1_Report_Answer_File" />
+          <NavigationProperty Name="X1_Report_Main" Relationship="X1APModel.FK_X1_Report_Question_X1_Report_Main" FromRole="X1_Report_Question" ToRole="X1_Report_Main" />
+          <NavigationProperty Name="X1_Report_Question_File" Relationship="X1APModel.FK_X1_Report_Question_File_X1_Report_Question" FromRole="X1_Report_Question" ToRole="X1_Report_Question_File" />
+          <NavigationProperty Name="X1_Report_Question_Type" Relationship="X1APModel.FK_X1_Report_Question_X1_Report_Question_Type" FromRole="X1_Report_Question" ToRole="X1_Report_Question_Type" />
+          <NavigationProperty Name="Pinned_Question" Relationship="X1APModel.PinnedQuestionMap" FromRole="X1_Report_Question" ToRole="Pinned_Question" />
+        </EntityType>
+        <EntityType Name="X1_Report_Question_File">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RMID" Type="Int32" Nullable="false" />
+          <Property Name="RQID" Type="Int32" Nullable="false" />
+          <Property Name="FileData" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MimeType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="X1_Report_Main" Relationship="X1APModel.FK_X1_Report_Question_File_X1_Report_Main" FromRole="X1_Report_Question_File" ToRole="X1_Report_Main" />
+          <NavigationProperty Name="X1_Report_Question" Relationship="X1APModel.FK_X1_Report_Question_File_X1_Report_Question" FromRole="X1_Report_Question_File" ToRole="X1_Report_Question" />
+        </EntityType>
+        <EntityType Name="X1_Report_Question_Group">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="X1_Report_Main" Relationship="X1APModel.FK_X1_Report_Question_Group_X1_Report_Main" FromRole="X1_Report_Question_Group" ToRole="X1_Report_Main" />
+        </EntityType>
+        <EntityType Name="X1_Report_Question_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="X1_Report_Question" Relationship="X1APModel.FK_X1_Report_Question_X1_Report_Question_Type" FromRole="X1_Report_Question_Type" ToRole="X1_Report_Question" />
+        </EntityType>
+        <Association Name="FK_ExportTemplateExtraQuest_X1_Report_Export_Template">
+          <End Type="X1APModel.X1_Report_Export_Template" Role="X1_Report_Export_Template" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.ExportTemplateExtraQuest" Role="ExportTemplateExtraQuest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Export_Template">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExportTemplateExtraQuest">
+              <PropertyRef Name="ExportTemplateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_Pinned_Question_Pinned_Question">
+          <End Type="X1APModel.Pinned_Question" Role="Pinned_Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.Personal_Pinned_Question" Role="Personal_Pinned_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pinned_Question">
+              <PropertyRef Name="PinnedID" />
+            </Principal>
+            <Dependent Role="Personal_Pinned_Question">
+              <PropertyRef Name="PinnedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personal_Pinned_Question_X1_PatientInfo">
+          <End Type="X1APModel.X1_PatientInfo" Role="X1_PatientInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.Personal_Pinned_Question" Role="Personal_Pinned_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_PatientInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Personal_Pinned_Question">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionValidation_X1_Report_Question">
+          <End Type="X1APModel.X1_Report_Question" Role="X1_Report_Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.QuestionValidation" Role="QuestionValidation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QuestionValidation">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_X1_PatientInfo">
+          <End Type="X1APModel.X1_PatientInfo" Role="X1_PatientInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_PatientInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Export_Template_SystemFile">
+          <End Type="X1APModel.SystemFile" Role="SystemFile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Export_Template" Role="X1_Report_Export_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemFile">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Export_Template">
+              <PropertyRef Name="SystemFileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ValidationCondition_Question">
+          <End Type="X1APModel.X1_Report_Question" Role="X1_Report_Question" Multiplicity="1" />
+          <End Type="X1APModel.ValidationCondition" Role="ValidationCondition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ValidationCondition">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_PatientGroupMap_X1_PatientGroup">
+          <End Type="X1APModel.X1_PatientGroup" Role="X1_PatientGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_PatientGroupMap" Role="X1_PatientGroupMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_PatientGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_PatientGroupMap">
+              <PropertyRef Name="PGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Authorization_X1_PatientGroup">
+          <End Type="X1APModel.X1_PatientGroup" Role="X1_PatientGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Authorization" Role="X1_Report_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_PatientGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Authorization">
+              <PropertyRef Name="PGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_PatientGroupMap_X1_PatientInfo">
+          <End Type="X1APModel.X1_PatientInfo" Role="X1_PatientInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_PatientGroupMap" Role="X1_PatientGroupMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_PatientInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_PatientGroupMap">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_Main_X1_PatientInfo">
+          <End Type="X1APModel.X1_PatientInfo" Role="X1_PatientInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Answer_Main" Role="X1_Report_Answer_Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_PatientInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_Main">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_Detail_X1_Report_Answer_Detail">
+          <End Type="X1APModel.X1_Report_Answer_Main" Role="X1_Report_Answer_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Answer_Detail" Role="X1_Report_Answer_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Answer_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_Detail">
+              <PropertyRef Name="AnswerMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_Detail_X1_Report_Question">
+          <End Type="X1APModel.X1_Report_Question" Role="X1_Report_Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Answer_Detail" Role="X1_Report_Answer_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_Detail">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_Extra_X1_Report_Answer_Main">
+          <End Type="X1APModel.X1_Report_Answer_Main" Role="X1_Report_Answer_Main" Multiplicity="1" />
+          <End Type="X1APModel.X1_Report_Answer_Extra" Role="X1_Report_Answer_Extra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Answer_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_Extra">
+              <PropertyRef Name="AnswerMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_File_X1_Report_Answer_Main">
+          <End Type="X1APModel.X1_Report_Answer_Main" Role="X1_Report_Answer_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Answer_File" Role="X1_Report_Answer_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Answer_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_File">
+              <PropertyRef Name="AnswerMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_File_X1_Report_Question">
+          <End Type="X1APModel.X1_Report_Question" Role="X1_Report_Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Answer_File" Role="X1_Report_Answer_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_File">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Answer_Main_X1_Report_Main">
+          <End Type="X1APModel.X1_Report_Main" Role="X1_Report_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Answer_Main" Role="X1_Report_Answer_Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Answer_Main">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Export_File_X1_Report_Answer_Main">
+          <End Type="X1APModel.X1_Report_Answer_Main" Role="X1_Report_Answer_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Export_File" Role="X1_Report_Export_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Answer_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Export_File">
+              <PropertyRef Name="RAMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Authorization_X1_Report_Main">
+          <End Type="X1APModel.X1_Report_Main" Role="X1_Report_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Authorization" Role="X1_Report_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Authorization">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Question_File_X1_Report_Main">
+          <End Type="X1APModel.X1_Report_Main" Role="X1_Report_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Question_File" Role="X1_Report_Question_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Question_File">
+              <PropertyRef Name="RMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Question_Group_X1_Report_Main">
+          <End Type="X1APModel.X1_Report_Main" Role="X1_Report_Main" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Question_Group" Role="X1_Report_Question_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Question_Group">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Question_X1_Report_Main">
+          <End Type="X1APModel.X1_Report_Main" Role="X1_Report_Main" Multiplicity="1" />
+          <End Type="X1APModel.X1_Report_Question" Role="X1_Report_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Main">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Question">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Question_File_X1_Report_Question">
+          <End Type="X1APModel.X1_Report_Question" Role="X1_Report_Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Question_File" Role="X1_Report_Question_File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Question_File">
+              <PropertyRef Name="RQID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_X1_Report_Question_X1_Report_Question_Type">
+          <End Type="X1APModel.X1_Report_Question_Type" Role="X1_Report_Question_Type" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="X1APModel.X1_Report_Question" Role="X1_Report_Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="X1_Report_Question_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="X1_Report_Question">
+              <PropertyRef Name="QuestionType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PinnedQuestionMap">
+          <End Type="X1APModel.Pinned_Question" Role="Pinned_Question" Multiplicity="*" />
+          <End Type="X1APModel.X1_Report_Question" Role="X1_Report_Question" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="X1APModelStoreContainer" CdmEntityContainer="X1APEntities">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="X1APModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExportTemplateExtraQuest">
+            <EntityTypeMapping TypeName="X1APModel.ExportTemplateExtraQuest">
+              <MappingFragment StoreEntitySet="ExportTemplateExtraQuest">
+                <ScalarProperty Name="Required" ColumnName="Required" />
+                <ScalarProperty Name="QuestType" ColumnName="QuestType" />
+                <ScalarProperty Name="QuestText" ColumnName="QuestText" />
+                <ScalarProperty Name="QuestName" ColumnName="QuestName" />
+                <ScalarProperty Name="ExportTemplateID" ColumnName="ExportTemplateID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileGroup">
+            <EntityTypeMapping TypeName="X1APModel.FileGroup">
+              <MappingFragment StoreEntitySet="FileGroup">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateName" ColumnName="CreateName" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="ManType" ColumnName="ManType" />
+                <ScalarProperty Name="FGState" ColumnName="FGState" />
+                <ScalarProperty Name="FloderKey" ColumnName="FloderKey" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileSet">
+            <EntityTypeMapping TypeName="X1APModel.FileSet">
+              <MappingFragment StoreEntitySet="FileSet">
+                <ScalarProperty Name="FileState" ColumnName="FileState" />
+                <ScalarProperty Name="FileEName" ColumnName="FileEName" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FType" ColumnName="FType" />
+                <ScalarProperty Name="FileKey" ColumnName="FileKey" />
+                <ScalarProperty Name="FGID" ColumnName="FGID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuncGroup">
+            <EntityTypeMapping TypeName="X1APModel.FuncGroup">
+              <MappingFragment StoreEntitySet="FuncGroup">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="GroupState" ColumnName="GroupState" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupType" ColumnName="GroupType" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="SysCode" ColumnName="SysCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FunctionReportMap">
+            <EntityTypeMapping TypeName="X1APModel.FunctionReportMap">
+              <MappingFragment StoreEntitySet="FunctionReportMap">
+                <ScalarProperty Name="FuncCode" ColumnName="FuncCode" />
+                <ScalarProperty Name="ReportCategory" ColumnName="ReportCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Functions">
+            <EntityTypeMapping TypeName="X1APModel.Functions">
+              <MappingFragment StoreEntitySet="Functions">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="AuthName5" ColumnName="AuthName5" />
+                <ScalarProperty Name="AuthFlag5" ColumnName="AuthFlag5" />
+                <ScalarProperty Name="AuthName4" ColumnName="AuthName4" />
+                <ScalarProperty Name="AuthFlag4" ColumnName="AuthFlag4" />
+                <ScalarProperty Name="AuthName3" ColumnName="AuthName3" />
+                <ScalarProperty Name="AuthFlag3" ColumnName="AuthFlag3" />
+                <ScalarProperty Name="AuthName2" ColumnName="AuthName2" />
+                <ScalarProperty Name="AuthFlag2" ColumnName="AuthFlag2" />
+                <ScalarProperty Name="AuthName1" ColumnName="AuthName1" />
+                <ScalarProperty Name="AuthFlag1" ColumnName="AuthFlag1" />
+                <ScalarProperty Name="FuncStatus" ColumnName="FuncStatus" />
+                <ScalarProperty Name="FuncPath" ColumnName="FuncPath" />
+                <ScalarProperty Name="FuncName" ColumnName="FuncName" />
+                <ScalarProperty Name="FuncCode" ColumnName="FuncCode" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="SysCode" ColumnName="SysCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTPToken">
+            <EntityTypeMapping TypeName="X1APModel.OTPToken">
+              <MappingFragment StoreEntitySet="OTPToken">
+                <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+                <ScalarProperty Name="OTPStatus" ColumnName="OTPStatus" />
+                <ScalarProperty Name="OTPTokenKey" ColumnName="OTPTokenKey" />
+                <ScalarProperty Name="RspSysCode" ColumnName="RspSysCode" />
+                <ScalarProperty Name="ReqSysCode" ColumnName="ReqSysCode" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTPTSysMap">
+            <EntityTypeMapping TypeName="X1APModel.OTPTSysMap">
+              <MappingFragment StoreEntitySet="OTPTSysMap">
+                <ScalarProperty Name="RspSysCode" ColumnName="RspSysCode" />
+                <ScalarProperty Name="ReqSysCode" ColumnName="ReqSysCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personal_Pinned_Question">
+            <EntityTypeMapping TypeName="X1APModel.Personal_Pinned_Question">
+              <MappingFragment StoreEntitySet="Personal_Pinned_Question">
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="PinnedID" ColumnName="PinnedID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pinned_Question">
+            <EntityTypeMapping TypeName="X1APModel.Pinned_Question">
+              <MappingFragment StoreEntitySet="Pinned_Question">
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="PinnedName" ColumnName="PinnedName" />
+                <ScalarProperty Name="PinnedID" ColumnName="PinnedID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionValidation">
+            <EntityTypeMapping TypeName="X1APModel.QuestionValidation">
+              <MappingFragment StoreEntitySet="QuestionValidation">
+                <ScalarProperty Name="GroupNum" ColumnName="GroupNum" />
+                <ScalarProperty Name="Normal" ColumnName="Normal" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleAuthMap">
+            <EntityTypeMapping TypeName="X1APModel.RoleAuthMap">
+              <MappingFragment StoreEntitySet="RoleAuthMap">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="AuthNo5" ColumnName="AuthNo5" />
+                <ScalarProperty Name="AuthNo4" ColumnName="AuthNo4" />
+                <ScalarProperty Name="AuthNo3" ColumnName="AuthNo3" />
+                <ScalarProperty Name="AuthNo2" ColumnName="AuthNo2" />
+                <ScalarProperty Name="AuthNo1" ColumnName="AuthNo1" />
+                <ScalarProperty Name="FuncCode" ColumnName="FuncCode" />
+                <ScalarProperty Name="SysCode" ColumnName="SysCode" />
+                <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="X1APModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleBackendName" ColumnName="RoleBackendName" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="RoleTitle" ColumnName="RoleTitle" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedule">
+            <EntityTypeMapping TypeName="X1APModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteMan" ColumnName="DeleteMan" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="ModifyMan" ColumnName="ModifyMan" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="ContentText" ColumnName="ContentText" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="X1APModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysInfo">
+            <EntityTypeMapping TypeName="X1APModel.SysInfo">
+              <MappingFragment StoreEntitySet="SysInfo">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="SysStatus" ColumnName="SysStatus" />
+                <ScalarProperty Name="SysName" ColumnName="SysName" />
+                <ScalarProperty Name="SysCode" ColumnName="SysCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemFile">
+            <EntityTypeMapping TypeName="X1APModel.SystemFile">
+              <MappingFragment StoreEntitySet="SystemFile">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteMan" ColumnName="DeleteMan" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="ModifyMan" ColumnName="ModifyMan" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TLogData">
+            <EntityTypeMapping TypeName="X1APModel.TLogData">
+              <MappingFragment StoreEntitySet="TLogData">
+                <ScalarProperty Name="LogData" ColumnName="LogData" />
+                <ScalarProperty Name="ListID" ColumnName="ListID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TLogList">
+            <EntityTypeMapping TypeName="X1APModel.TLogList">
+              <MappingFragment StoreEntitySet="TLogList">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateName" ColumnName="CreateName" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="DetailFlag" ColumnName="DetailFlag" />
+                <ScalarProperty Name="FGID" ColumnName="FGID" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="MainID" ColumnName="MainID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TLogMain">
+            <EntityTypeMapping TypeName="X1APModel.TLogMain">
+              <MappingFragment StoreEntitySet="TLogMain">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateName" ColumnName="CreateName" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="LogKey" ColumnName="LogKey" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="SysCode" ColumnName="SysCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGroup">
+            <EntityTypeMapping TypeName="X1APModel.UserGroup">
+              <MappingFragment StoreEntitySet="UserGroup">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleMap">
+            <EntityTypeMapping TypeName="X1APModel.UserRoleMap">
+              <MappingFragment StoreEntitySet="UserRoleMap">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="X1APModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Senior" ColumnName="Senior" />
+                <ScalarProperty Name="DoctorNo" ColumnName="DoctorNo" />
+                <ScalarProperty Name="AccName" ColumnName="AccName" />
+                <ScalarProperty Name="Valid" ColumnName="Valid" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateMan" ColumnName="UpdateMan" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="StatusUMan" ColumnName="StatusUMan" />
+                <ScalarProperty Name="StatusUDate" ColumnName="StatusUDate" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="StateUMan" ColumnName="StateUMan" />
+                <ScalarProperty Name="StateUDate" ColumnName="StateUDate" />
+                <ScalarProperty Name="UseState" ColumnName="UseState" />
+                <ScalarProperty Name="UserGUID" ColumnName="UserGUID" />
+                <ScalarProperty Name="AccID" ColumnName="AccID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserToken">
+            <EntityTypeMapping TypeName="X1APModel.UserToken">
+              <MappingFragment StoreEntitySet="UserToken">
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TokenTime" ColumnName="TokenTime" />
+                <ScalarProperty Name="RefreshToken" ColumnName="RefreshToken" />
+                <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+                <ScalarProperty Name="SysCode" ColumnName="SysCode" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ValidationCondition">
+            <EntityTypeMapping TypeName="X1APModel.ValidationCondition">
+              <MappingFragment StoreEntitySet="ValidationCondition">
+                <ScalarProperty Name="GroupNum" ColumnName="GroupNum" />
+                <ScalarProperty Name="Operator2" ColumnName="Operator2" />
+                <ScalarProperty Name="Value2" ColumnName="Value2" />
+                <ScalarProperty Name="Operator1" ColumnName="Operator1" />
+                <ScalarProperty Name="Value1" ColumnName="Value1" />
+                <ScalarProperty Name="AttributeName" ColumnName="AttributeName" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_PatientGroup">
+            <EntityTypeMapping TypeName="X1APModel.X1_PatientGroup">
+              <MappingFragment StoreEntitySet="X1_PatientGroup">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteMan" ColumnName="DeleteMan" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="ModifyMan" ColumnName="ModifyMan" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_PatientGroupMap">
+            <EntityTypeMapping TypeName="X1APModel.X1_PatientGroupMap">
+              <MappingFragment StoreEntitySet="X1_PatientGroupMap">
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="PGID" ColumnName="PGID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_PatientInfo">
+            <EntityTypeMapping TypeName="X1APModel.X1_PatientInfo">
+              <MappingFragment StoreEntitySet="X1_PatientInfo">
+                <ScalarProperty Name="Domicile" ColumnName="Domicile" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="HCCode" ColumnName="HCCode" />
+                <ScalarProperty Name="AddrCode" ColumnName="AddrCode" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="ContactRelation" ColumnName="ContactRelation" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="Cellphone" ColumnName="Cellphone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="ModifyMan" ColumnName="ModifyMan" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PUDOB" ColumnName="PUDOB" />
+                <ScalarProperty Name="IDNo" ColumnName="IDNo" />
+                <ScalarProperty Name="PUName" ColumnName="PUName" />
+                <ScalarProperty Name="PUCountry" ColumnName="PUCountry" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_Report_Answer_Detail">
+            <EntityTypeMapping TypeName="X1APModel.X1_Report_Answer_Detail">
+              <MappingFragment StoreEntitySet="X1_Report_Answer_Detail">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="AnswerMID" ColumnName="AnswerMID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_Report_Answer_Extra">
+            <EntityTypeMapping TypeName="X1APModel.X1_Report_Answer_Extra">
+              <MappingFragment StoreEntitySet="X1_Report_Answer_Extra">
+                <ScalarProperty Name="X1Data" ColumnName="X1Data" />
+                <ScalarProperty Name="AnswerMID" ColumnName="AnswerMID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_Report_Answer_File">
+            <EntityTypeMapping TypeName="X1APModel.X1_Report_Answer_File">
+              <MappingFragment StoreEntitySet="X1_Report_Answer_File">
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileExt" ColumnName="FileExt" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="AnswerMID" ColumnName="AnswerMID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_Report_Answer_Main">
+            <EntityTypeMapping TypeName="X1APModel.X1_Report_Answer_Main">
+              <MappingFragment StoreEntitySet="X1_Report_Answer_Main">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Lock" ColumnName="Lock" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteMan" ColumnName="DeleteMan" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="ModifyMan" ColumnName="ModifyMan" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="FillingDate" ColumnName="FillingDate" />
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+                <ScalarProperty Name="MainID" ColumnName="MainID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_Report_Authorization">
+            <EntityTypeMapping TypeName="X1APModel.X1_Report_Authorization">
+              <MappingFragment StoreEntitySet="X1_Report_Authorization">
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="PGID" ColumnName="PGID" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_Report_Export_File">
+            <EntityTypeMapping TypeName="X1APModel.X1_Report_Export_File">
+              <MappingFragment StoreEntitySet="X1_Report_Export_File">
+                <ScalarProperty Name="ModifyMan" ColumnName="ModifyMan" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="RAMID" ColumnName="RAMID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_Report_Export_Template">
+            <EntityTypeMapping TypeName="X1APModel.X1_Report_Export_Template">
+              <MappingFragment StoreEntitySet="X1_Report_Export_Template">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteMan" ColumnName="DeleteMan" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="ModifyMan" ColumnName="ModifyMan" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="SystemFileID" ColumnName="SystemFileID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_Report_Main">
+            <EntityTypeMapping TypeName="X1APModel.X1_Report_Main">
+              <MappingFragment StoreEntitySet="X1_Report_Main">
+                <ScalarProperty Name="FuncCode" ColumnName="FuncCode" />
+                <ScalarProperty Name="ReserveDate" ColumnName="ReserveDate" />
+                <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
+                <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeleteMan" ColumnName="DeleteMan" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="ModifyMan" ColumnName="ModifyMan" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateMan" ColumnName="CreateMan" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="OutputJson" ColumnName="OutputJson" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="IndexNum" ColumnName="IndexNum" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_Report_Question">
+            <EntityTypeMapping TypeName="X1APModel.X1_Report_Question">
+              <MappingFragment StoreEntitySet="X1_Report_Question">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="ParentQuestID" ColumnName="ParentQuestID" />
+                <ScalarProperty Name="Pin" ColumnName="Pin" />
+                <ScalarProperty Name="OtherAnsID" ColumnName="OtherAnsID" />
+                <ScalarProperty Name="AnswerOption" ColumnName="AnswerOption" />
+                <ScalarProperty Name="CodingBookIndex" ColumnName="CodingBookIndex" />
+                <ScalarProperty Name="CodingBookTitle" ColumnName="CodingBookTitle" />
+                <ScalarProperty Name="Required" ColumnName="Required" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+                <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
+                <ScalarProperty Name="QuestionNo" ColumnName="QuestionNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_Report_Question_File">
+            <EntityTypeMapping TypeName="X1APModel.X1_Report_Question_File">
+              <MappingFragment StoreEntitySet="X1_Report_Question_File">
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileData" ColumnName="FileData" />
+                <ScalarProperty Name="RQID" ColumnName="RQID" />
+                <ScalarProperty Name="RMID" ColumnName="RMID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_Report_Question_Group">
+            <EntityTypeMapping TypeName="X1APModel.X1_Report_Question_Group">
+              <MappingFragment StoreEntitySet="X1_Report_Question_Group">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="X1_Report_Question_Type">
+            <EntityTypeMapping TypeName="X1APModel.X1_Report_Question_Type">
+              <MappingFragment StoreEntitySet="X1_Report_Question_Type">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="PinnedQuestionMap" TypeName="X1APModel.PinnedQuestionMap" StoreEntitySet="PinnedQuestionMap">
+            <EndProperty Name="X1_Report_Question">
+              <ScalarProperty Name="ID" ColumnName="QuestionID" />
+            </EndProperty>
+            <EndProperty Name="Pinned_Question">
+              <ScalarProperty Name="PinnedID" ColumnName="PinnedID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

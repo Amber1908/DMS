@@ -1,0 +1,17 @@
+﻿@using WebApplication1.ViewModels
+@model ReportViewerViewModel
+
+@{
+    ViewBag.Title = "TCTC 台成細胞中心-病程管理系統";
+}
+
+@section styles {
+    @Styles.Render("~/Content/PDFViewer")
+}
+
+@section scripts {
+    @Scripts.Render("~/Scripts/PDFViewer")
+}
+
+<input id="pid" type="hidden" value="@Model.PID" />
+<div id="App"></div>

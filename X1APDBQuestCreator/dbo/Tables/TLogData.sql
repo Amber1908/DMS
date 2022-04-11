@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[TLogData] (
+    [ID]      BIGINT IDENTITY (1, 1) NOT NULL,
+    [ListID]  BIGINT NOT NULL,
+    [LogData] NTEXT  NOT NULL,
+    CONSTRAINT [PK_TLogData] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_TLogData_ListID]
+    ON [dbo].[TLogData]([ListID] ASC);
+

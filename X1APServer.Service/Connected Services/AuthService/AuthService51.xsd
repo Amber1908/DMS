@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BMDC.Models.Auth" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BMDC.Models.Auth" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54843/AuthService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:54843/AuthService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/BMDC.Models.Auth.Enums" />
+  <xs:complexType name="AuthCommon.ServiceInfo">
+    <xs:sequence>
+      <xs:element name="_x003C_ServiceKey_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SysCode_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthCommon.ServiceInfo" nillable="true" type="tns:AuthCommon.ServiceInfo" />
+  <xs:complexType name="CheckAuthLoginM.LoginReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element name="_x003C_AccID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_AccPWD_x003E_k__BackingField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CheckAuthLoginM.LoginReq" nillable="true" type="tns:CheckAuthLoginM.LoginReq" />
+  <xs:complexType name="REQBase">
+    <xs:sequence>
+      <xs:element name="_x003C_DBName_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="REQBase" nillable="true" type="tns:REQBase" />
+  <xs:complexType name="CheckAuthLoginM.LoginRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element name="_x003C_AccID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_AccName_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_AccTitle_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_ChgPwdFlag_x003E_k__BackingField" type="xs:boolean" />
+          <xs:element name="_x003C_Hospital_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_RoleCode_x003E_k__BackingField" nillable="true" type="tns:ArrayOfCheckAuthLoginM.Role" />
+          <xs:element name="_x003C_UserGUID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_UserSecurityInfo_x003E_k__BackingField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CheckAuthLoginM.LoginRsp" nillable="true" type="tns:CheckAuthLoginM.LoginRsp" />
+  <xs:complexType name="RSPBase">
+    <xs:sequence>
+      <xs:element name="_x003C_ReturnCode_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_ReturnMsg_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RSPBase" nillable="true" type="tns:RSPBase" />
+  <xs:complexType name="ArrayOfCheckAuthLoginM.Role">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CheckAuthLoginM.Role" nillable="true" type="tns:CheckAuthLoginM.Role" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCheckAuthLoginM.Role" nillable="true" type="tns:ArrayOfCheckAuthLoginM.Role" />
+  <xs:complexType name="CheckAuthLoginM.Role">
+    <xs:sequence>
+      <xs:element name="_x003C_RoleCode_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_RoleName_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CheckAuthLoginM.Role" nillable="true" type="tns:CheckAuthLoginM.Role" />
+  <xs:complexType name="CheckTokenM.CheckTokenReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element name="_x003C_AccID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_UserSecurityInfo_x003E_k__BackingField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CheckTokenM.CheckTokenReq" nillable="true" type="tns:CheckTokenM.CheckTokenReq" />
+  <xs:complexType name="CheckTokenM.CheckTokenRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element name="_x003C_TokenChgFlag_x003E_k__BackingField" type="xs:boolean" />
+          <xs:element name="_x003C_UserSecurityInfo_x003E_k__BackingField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CheckTokenM.CheckTokenRsp" nillable="true" type="tns:CheckTokenM.CheckTokenRsp" />
+  <xs:complexType name="CheckTokenAuthM.CheckAuthReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element name="_x003C_AccID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_FuncCode_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_UserSecurityInfo_x003E_k__BackingField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CheckTokenAuthM.CheckAuthReq" nillable="true" type="tns:CheckTokenAuthM.CheckAuthReq" />
+  <xs:complexType name="CheckTokenAuthM.CheckAuthRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element name="_x003C_FuncAuths_x003E_k__BackingField" nillable="true" type="tns:ArrayOfCheckTokenAuthM.FuncAuthInfo" />
+          <xs:element name="_x003C_TokenChgFlag_x003E_k__BackingField" type="xs:boolean" />
+          <xs:element name="_x003C_UserSecurityInfo_x003E_k__BackingField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CheckTokenAuthM.CheckAuthRsp" nillable="true" type="tns:CheckTokenAuthM.CheckAuthRsp" />
+  <xs:complexType name="ArrayOfCheckTokenAuthM.FuncAuthInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CheckTokenAuthM.FuncAuthInfo" nillable="true" type="tns:CheckTokenAuthM.FuncAuthInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCheckTokenAuthM.FuncAuthInfo" nillable="true" type="tns:ArrayOfCheckTokenAuthM.FuncAuthInfo" />
+  <xs:complexType name="CheckTokenAuthM.FuncAuthInfo">
+    <xs:sequence>
+      <xs:element name="_x003C_AuthNo1_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AuthNo2_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AuthNo3_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AuthNo4_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AuthNo5_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_RoleName_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CheckTokenAuthM.FuncAuthInfo" nillable="true" type="tns:CheckTokenAuthM.FuncAuthInfo" />
+  <xs:complexType name="GetSysMenuListM.GetSysMenuListReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element name="_x003C_AccID_x003E_k__BackingField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSysMenuListM.GetSysMenuListReq" nillable="true" type="tns:GetSysMenuListM.GetSysMenuListReq" />
+  <xs:complexType name="GetSysMenuListM.GetSysMenuListRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element name="_x003C_MenuInfo_x003E_k__BackingField" nillable="true" type="tns:ArrayOfGetSysMenuListM.MenuListInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSysMenuListM.GetSysMenuListRsp" nillable="true" type="tns:GetSysMenuListM.GetSysMenuListRsp" />
+  <xs:complexType name="ArrayOfGetSysMenuListM.MenuListInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetSysMenuListM.MenuListInfo" nillable="true" type="tns:GetSysMenuListM.MenuListInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetSysMenuListM.MenuListInfo" nillable="true" type="tns:ArrayOfGetSysMenuListM.MenuListInfo" />
+  <xs:complexType name="GetSysMenuListM.MenuListInfo">
+    <xs:sequence>
+      <xs:element name="_x003C_AuthNo1_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AuthNo2_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AuthNo3_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AuthNo4_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AuthNo5_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_FuncCode_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_FuncName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_FuncPath_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_GroupCode_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_GroupName_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetSysMenuListM.MenuListInfo" nillable="true" type="tns:GetSysMenuListM.MenuListInfo" />
+  <xs:complexType name="GetOTPWithAuthM.GetOTPReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element name="_x003C_AccID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_RspSysCode_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_UserSecurityInfo_x003E_k__BackingField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetOTPWithAuthM.GetOTPReq" nillable="true" type="tns:GetOTPWithAuthM.GetOTPReq" />
+  <xs:complexType name="GetOTPWithAuthM.GetOTPRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element name="_x003C_OTPSecurityStr_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_TokenChgFlag_x003E_k__BackingField" type="xs:boolean" />
+          <xs:element name="_x003C_UserSecurityInfo_x003E_k__BackingField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetOTPWithAuthM.GetOTPRsp" nillable="true" type="tns:GetOTPWithAuthM.GetOTPRsp" />
+  <xs:complexType name="CheckOTPTokenM.CheckOTPReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element name="_x003C_AccID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_OTPSecurityStr_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_ReqSysCode_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_UserSecurityInfo_x003E_k__BackingField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CheckOTPTokenM.CheckOTPReq" nillable="true" type="tns:CheckOTPTokenM.CheckOTPReq" />
+  <xs:complexType name="CheckOTPTokenM.CheckOTPRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element name="_x003C_PassFlag_x003E_k__BackingField" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CheckOTPTokenM.CheckOTPRsp" nillable="true" type="tns:CheckOTPTokenM.CheckOTPRsp" />
+  <xs:complexType name="RegisterM.RegisterReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element name="_x003C_AccID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_AccName_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_AccPWD_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_AccTitle_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_CellPhone_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_DoctorNo_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_Email_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_Hospital_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_IsAdmin_x003E_k__BackingField" type="xs:boolean" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="_x003C_RoleCode_x003E_k__BackingField" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element name="_x003C_Senior_x003E_k__BackingField" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegisterM.RegisterReq" nillable="true" type="tns:RegisterM.RegisterReq" />
+  <xs:complexType name="RegisterM.RegisterRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element name="_x003C_AccID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_UserGUID_x003E_k__BackingField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegisterM.RegisterRsp" nillable="true" type="tns:RegisterM.RegisterRsp" />
+  <xs:complexType name="GetUserM.GetUserReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element name="_x003C_AccID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_ID_x003E_k__BackingField" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetUserM.GetUserReq" nillable="true" type="tns:GetUserM.GetUserReq" />
+  <xs:complexType name="GetUserM.GetUserRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element name="_x003C_AccID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_AccName_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_AccTitle_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_CellPhone_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_ChangePwdFlag_x003E_k__BackingField" type="xs:boolean" />
+          <xs:element name="_x003C_CreateDate_x003E_k__BackingField" type="xs:dateTime" />
+          <xs:element name="_x003C_DoctorNo_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_Email_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_Hospital_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_ID_x003E_k__BackingField" type="xs:int" />
+          <xs:element name="_x003C_IsAdmin_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_ModifyDate_x003E_k__BackingField" type="xs:dateTime" />
+          <xs:element name="_x003C_RoleList_x003E_k__BackingField" nillable="true" type="tns:ArrayOfGetRoleListM.Role" />
+          <xs:element name="_x003C_Senior_x003E_k__BackingField" type="xs:int" />
+          <xs:element name="_x003C_StateUDate_x003E_k__BackingField" type="xs:dateTime" />
+          <xs:element name="_x003C_StatusUDate_x003E_k__BackingField" type="xs:dateTime" />
+          <xs:element name="_x003C_UseState_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_UserGUID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_UserState_x003E_k__BackingField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetUserM.GetUserRsp" nillable="true" type="tns:GetUserM.GetUserRsp" />
+  <xs:complexType name="ArrayOfGetRoleListM.Role">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetRoleListM.Role" nillable="true" type="tns:GetRoleListM.Role" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetRoleListM.Role" nillable="true" type="tns:ArrayOfGetRoleListM.Role" />
+  <xs:complexType name="GetRoleListM.Role">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RoleBackendName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleTitle" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetRoleListM.Role" nillable="true" type="tns:GetRoleListM.Role" />
+  <xs:complexType name="UpdateUserM.UpdateUserReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AccName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AccTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CellPhone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DoctorNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RoleCode" nillable="true" type="q2:ArrayOfstring" />
+          <xs:element minOccurs="0" name="Senior" type="xs:int" />
+          <xs:element minOccurs="0" name="UpdateMan" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateUserM.UpdateUserReq" nillable="true" type="tns:UpdateUserM.UpdateUserReq" />
+  <xs:complexType name="UpdateUserM.UpdateUserRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateUserM.UpdateUserRsp" nillable="true" type="tns:UpdateUserM.UpdateUserRsp" />
+  <xs:complexType name="UpdateUserPasswordM.UpdateUserPasswordReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NewPassword" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OldPassword" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateUserPasswordM.UpdateUserPasswordReq" nillable="true" type="tns:UpdateUserPasswordM.UpdateUserPasswordReq" />
+  <xs:complexType name="UpdateUserPasswordM.UpdateUserPasswordRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateUserPasswordM.UpdateUserPasswordRsp" nillable="true" type="tns:UpdateUserPasswordM.UpdateUserPasswordRsp" />
+  <xs:complexType name="UpdateUseStateM.UpdateUseStateReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UpdateMan" nillable="true" type="xs:string" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BMDC.Models.Auth.Enums" minOccurs="0" name="UseState" type="q3:UserEnum.UseState" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateUseStateM.UpdateUseStateReq" nillable="true" type="tns:UpdateUseStateM.UpdateUseStateReq" />
+  <xs:complexType name="UpdateUseStateM.UpdateUseStateRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateUseStateM.UpdateUseStateRsp" nillable="true" type="tns:UpdateUseStateM.UpdateUseStateRsp" />
+  <xs:complexType name="GetUserListM.GetUserListReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AccName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CellPhone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RoleCodes" nillable="true" type="q4:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetUserListM.GetUserListReq" nillable="true" type="tns:GetUserListM.GetUserListReq" />
+  <xs:complexType name="GetUserListM.GetUserListRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UserList" nillable="true" type="tns:ArrayOfGetUserListM.User" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetUserListM.GetUserListRsp" nillable="true" type="tns:GetUserListM.GetUserListRsp" />
+  <xs:complexType name="ArrayOfGetUserListM.User">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetUserListM.User" nillable="true" type="tns:GetUserListM.User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetUserListM.User" nillable="true" type="tns:ArrayOfGetUserListM.User" />
+  <xs:complexType name="GetUserListM.User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CellPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DoctorNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAdmin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifyDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RoleCodeList" nillable="true" type="tns:ArrayOfGetUserListM.Role" />
+      <xs:element minOccurs="0" name="Senior" type="xs:int" />
+      <xs:element minOccurs="0" name="StateUDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StatusUDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UseState" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserStatus" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetUserListM.User" nillable="true" type="tns:GetUserListM.User" />
+  <xs:complexType name="ArrayOfGetUserListM.Role">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetUserListM.Role" nillable="true" type="tns:GetUserListM.Role" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetUserListM.Role" nillable="true" type="tns:ArrayOfGetUserListM.Role" />
+  <xs:complexType name="GetUserListM.Role">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RoleCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetUserListM.Role" nillable="true" type="tns:GetUserListM.Role" />
+  <xs:complexType name="GetRoleListM.GetRoleListReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetRoleListM.GetRoleListReq" nillable="true" type="tns:GetRoleListM.GetRoleListReq" />
+  <xs:complexType name="GetRoleListM.GetRoleListRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Roles" nillable="true" type="tns:ArrayOfGetRoleListM.Role" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetRoleListM.GetRoleListRsp" nillable="true" type="tns:GetRoleListM.GetRoleListRsp" />
+  <xs:complexType name="DeleteUserM.DeleteUserReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteUserM.DeleteUserReq" nillable="true" type="tns:DeleteUserM.DeleteUserReq" />
+  <xs:complexType name="DeleteUserM.DeleteUserRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteUserM.DeleteUserRsp" nillable="true" type="tns:DeleteUserM.DeleteUserRsp" />
+  <xs:complexType name="LogoutM.LogoutReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SysCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LogoutM.LogoutReq" nillable="true" type="tns:LogoutM.LogoutReq" />
+  <xs:complexType name="LogoutM.LogoutRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LogoutM.LogoutRsp" nillable="true" type="tns:LogoutM.LogoutRsp" />
+  <xs:complexType name="IsOnlineM.IsOnlineReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element name="_x003C_AccID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_AccPWD_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_SysCode_x003E_k__BackingField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IsOnlineM.IsOnlineReq" nillable="true" type="tns:IsOnlineM.IsOnlineReq" />
+  <xs:complexType name="IsOnlineM.IsOnlineRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element name="_x003C_AccID_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_IsOnline_x003E_k__BackingField" type="xs:boolean" />
+          <xs:element name="_x003C_SysCode_x003E_k__BackingField" nillable="true" type="xs:string" />
+          <xs:element name="_x003C_TokenTime_x003E_k__BackingField" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IsOnlineM.IsOnlineRsp" nillable="true" type="tns:IsOnlineM.IsOnlineRsp" />
+  <xs:complexType name="ResetPasswordM.ResetPasswordReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResetPasswordM.ResetPasswordReq" nillable="true" type="tns:ResetPasswordM.ResetPasswordReq" />
+  <xs:complexType name="ResetPasswordM.ResetPasswordRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResetPasswordM.ResetPasswordRsp" nillable="true" type="tns:ResetPasswordM.ResetPasswordRsp" />
+  <xs:complexType name="RefreshTokenM.RefreshTokenReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserSecurityInfo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RefreshTokenM.RefreshTokenReq" nillable="true" type="tns:RefreshTokenM.RefreshTokenReq" />
+  <xs:complexType name="RefreshTokenM.RefreshTokenRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TokenChgFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UserSecurityInfo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RefreshTokenM.RefreshTokenRsp" nillable="true" type="tns:RefreshTokenM.RefreshTokenRsp" />
+  <xs:complexType name="SyncUserListM.Request">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UserList" nillable="true" type="tns:ArrayOfSyncUserListM.User" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SyncUserListM.Request" nillable="true" type="tns:SyncUserListM.Request" />
+  <xs:complexType name="ArrayOfSyncUserListM.User">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SyncUserListM.User" nillable="true" type="tns:SyncUserListM.User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSyncUserListM.User" nillable="true" type="tns:ArrayOfSyncUserListM.User" />
+  <xs:complexType name="SyncUserListM.User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAdmin" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SyncUserListM.User" nillable="true" type="tns:SyncUserListM.User" />
+  <xs:complexType name="SyncUserListM.Response">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SyncUserListM.Response" nillable="true" type="tns:SyncUserListM.Response" />
+  <xs:complexType name="GenerateTokenM.Request">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GenerateTokenM.Request" nillable="true" type="tns:GenerateTokenM.Request" />
+  <xs:complexType name="GenerateTokenM.Response">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecurityInfo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GenerateTokenM.Response" nillable="true" type="tns:GenerateTokenM.Response" />
+  <xs:complexType name="AddOrUpdateRole.Request">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Data" nillable="true" type="tns:AddOrUpdateRole.AddOrUpdateRoleCotent" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddOrUpdateRole.Request" nillable="true" type="tns:AddOrUpdateRole.Request" />
+  <xs:complexType name="AddOrUpdateRole.AddOrUpdateRoleCotent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FunctionList" nillable="true" type="tns:ArrayOfAddOrUpdateRole.Function" />
+      <xs:element minOccurs="0" name="RoleCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddOrUpdateRole.AddOrUpdateRoleCotent" nillable="true" type="tns:AddOrUpdateRole.AddOrUpdateRoleCotent" />
+  <xs:complexType name="ArrayOfAddOrUpdateRole.Function">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AddOrUpdateRole.Function" nillable="true" type="tns:AddOrUpdateRole.Function" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAddOrUpdateRole.Function" nillable="true" type="tns:ArrayOfAddOrUpdateRole.Function" />
+  <xs:complexType name="AddOrUpdateRole.Function">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthNo1" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AuthNo2" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AuthNo3" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AuthNo4" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AuthNo5" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FuncCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddOrUpdateRole.Function" nillable="true" type="tns:AddOrUpdateRole.Function" />
+  <xs:complexType name="AddOrUpdateRole.Resposne">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RoleCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddOrUpdateRole.Resposne" nillable="true" type="tns:AddOrUpdateRole.Resposne" />
+  <xs:complexType name="GetFunctionListM.Request">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FuncStatus" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFunctionListM.Request" nillable="true" type="tns:GetFunctionListM.Request" />
+  <xs:complexType name="GetFunctionListM.Response">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FunctionList" nillable="true" type="tns:ArrayOfGetFunctionListM.Function" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFunctionListM.Response" nillable="true" type="tns:GetFunctionListM.Response" />
+  <xs:complexType name="ArrayOfGetFunctionListM.Function">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetFunctionListM.Function" nillable="true" type="tns:GetFunctionListM.Function" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetFunctionListM.Function" nillable="true" type="tns:ArrayOfGetFunctionListM.Function" />
+  <xs:complexType name="GetFunctionListM.Function">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthName1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthName2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthName3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthName4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthName5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FuncCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FuncName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetFunctionListM.Function" nillable="true" type="tns:GetFunctionListM.Function" />
+  <xs:complexType name="GetRoleM.Request">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RoleCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetRoleM.Request" nillable="true" type="tns:GetRoleM.Request" />
+  <xs:complexType name="GetRoleM.Response">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Data" nillable="true" type="tns:GetRoleM.Role" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetRoleM.Response" nillable="true" type="tns:GetRoleM.Response" />
+  <xs:complexType name="GetRoleM.Role">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FunctionList" nillable="true" type="tns:ArrayOfGetRoleM.Function" />
+      <xs:element minOccurs="0" name="RoleCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetRoleM.Role" nillable="true" type="tns:GetRoleM.Role" />
+  <xs:complexType name="ArrayOfGetRoleM.Function">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetRoleM.Function" nillable="true" type="tns:GetRoleM.Function" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetRoleM.Function" nillable="true" type="tns:ArrayOfGetRoleM.Function" />
+  <xs:complexType name="GetRoleM.Function">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthNo1" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AuthNo2" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AuthNo3" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AuthNo4" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AuthNo5" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FuncCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FuncName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetRoleM.Function" nillable="true" type="tns:GetRoleM.Function" />
+  <xs:complexType name="AddFunctionM.Request">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:REQBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AuthFlag1" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AuthFlag2" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AuthFlag3" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AuthFlag4" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AuthFlag5" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AuthName1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AuthName2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AuthName3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AuthName4" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AuthName5" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FuncName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FuncPath" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FuncStatus" type="xs:boolean" />
+          <xs:element minOccurs="0" name="GroupCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddFunctionM.Request" nillable="true" type="tns:AddFunctionM.Request" />
+  <xs:complexType name="AddFunctionM.Response">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RSPBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FuncCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddFunctionM.Response" nillable="true" type="tns:AddFunctionM.Response" />
+</xs:schema>

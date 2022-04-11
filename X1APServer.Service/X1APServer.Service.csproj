@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{99036111-3F83-4996-9379-A71DB18DAF90}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>X1APServer.Service</RootNamespace>
+    <AssemblyName>X1APServer.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\X1APServer.WebAP\App_Data\DTOXmlDocument.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TMWHRelease|AnyCPU'">
+    <OutputPath>bin\TMWHRelease\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>..\X1APServer.WebAP\App_Data\DTOXmlDocument.xml</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DMDMS|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DMDMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>..\X1APServer.WebAP\App_Data\DTOXmlDocument.xml</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="BMDC.Models.Auth, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\BMDC.Models.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="BMDC.Models.Log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\BMDC.Models.Log.dll</HintPath>
+    </Reference>
+    <Reference Include="Chessie, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Chessie.0.6.0\lib\net40\Chessie.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FSharp.Core.5.0.0\lib\netstandard2.0\FSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil, Version=0.11.1.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.1\lib\net40\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb, Version=0.11.1.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.1\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb, Version=0.11.1.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.1\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks, Version=0.11.1.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.1\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.6.7\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Frameworks, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Frameworks.3.2.0\lib\net45\NuGet.Frameworks.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Logging, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Logging.3.2.0\lib\net45\NuGet.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Packaging, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Packaging.3.2.0\lib\net45\NuGet.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Packaging.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Packaging.Core.3.2.0\lib\net45\NuGet.Packaging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Packaging.Core.Types, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Packaging.Core.Types.3.2.0\lib\net45\NuGet.Packaging.Core.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Versioning, Version=3.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Versioning.3.2.0\lib\net45\NuGet.Versioning.dll</HintPath>
+    </Reference>
+    <Reference Include="Paket.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paket.Core.6.0.3\lib\net461\Paket.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.1.0\lib\net463\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Console, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.0.0\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracing, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.Tracing.4.1.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Globalization.Calendars, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Globalization.Calendars.4.0.1\lib\net46\System.Globalization.Calendars.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.1.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.1.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.0.1\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.0.1\lib\net46\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.1.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Expressions.4.1.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.0\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.1.0\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WinHttpHandler, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.WinHttpHandler.4.5.0\lib\net461\System.Net.Http.WinHttpHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.1.0\lib\net46\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.4.1.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.1.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.1.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.1.0\lib\net462\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.2.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.0.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.0.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.ProtectedData.4.4.0\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.1.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.1.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xceed.Document.NET">
+      <HintPath>References\Xceed.Document.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Words.NET, Version=1.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\Xceed.Words.NET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\AuthService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Enum.cs" />
+    <Compile Include="Enum\QuestionType.cs" />
+    <Compile Include="iDoctorModel\AREACODE.cs" />
+    <Compile Include="iDoctorModel\HOSPITALCODE.cs" />
+    <Compile Include="iDoctorModel\HOSPITALCODELAZY.cs" />
+    <Compile Include="iDoctorModel\UserChangePassword.cs" />
+    <Compile Include="Misc\CustomHttpClient.cs" />
+    <Compile Include="Model\AddOrUpdateScheduleM.cs" />
+    <Compile Include="Model\BasicAuthHttpModule.cs" />
+    <Compile Include="Model\CervixExport.cs" />
+    <Compile Include="Model\CervixTable.cs" />
+    <Compile Include="Model\CloseoutReportM.cs" />
+    <Compile Include="Model\DeletePersonalPinnedQuestM.cs" />
+    <Compile Include="Model\DeleteScheduleM.cs" />
+    <Compile Include="Model\ExportCervixDataM.cs" />
+    <Compile Include="Model\GetAllSequenceNumM.cs" />
+    <Compile Include="Model\GetAreaCodeLazyM.cs" />
+    <Compile Include="Model\GetAreaCodeM.cs" />
+    <Compile Include="Model\GetCervixFormM.cs" />
+    <Compile Include="Model\GetCervixTableM.cs" />
+    <Compile Include="Model\GetHospitalCodeLazyM.cs" />
+    <Compile Include="Model\GetHospitalCodeM.cs" />
+    <Compile Include="Model\GetPersonalPinnedQuestListM.cs" />
+    <Compile Include="Model\GetPinnedQuestListM.cs" />
+    <Compile Include="Model\GetPinQuestM.cs" />
+    <Compile Include="Model\GetScheduleListM.cs" />
+    <Compile Include="Model\GetX1DataM.cs" />
+    <Compile Include="Model\MaxSeqId.cs" />
+    <Compile Include="iDoctorModel\ActionResultModel.cs" />
+    <Compile Include="iDoctorModel\StatusCode.cs" />
+    <Compile Include="iDoctorModel\HEALTHWEB.cs" />
+    <Compile Include="iDoctorModel\IMAGE_FILE.cs" />
+    <Compile Include="iDoctorModel\PUSID.cs" />
+    <Compile Include="iDoctorModel\SESSION.cs" />
+    <Compile Include="iDoctorModel\USER.cs" />
+    <Compile Include="iDoctorModel\USERGROUP.cs" />
+    <Compile Include="iDoctorModel\X1AI.cs" />
+    <Compile Include="iDoctorModel\X1AIREDUCERECORD.cs" />
+    <Compile Include="iDoctorModel\X1FUNCTION.cs" />
+    <Compile Include="Misc\CustomUriBuilder.cs" />
+    <Compile Include="Model\AddDMSSettingM.cs" />
+    <Compile Include="Model\AddWebSettingM.cs" />
+    <Compile Include="Model\GetHealthWebM.cs" />
+    <Compile Include="Model\UpdateCervixStatusM.cs" />
+    <Compile Include="Model\UpdateCervixTableM.cs" />
+    <Compile Include="Model\UpdateReportStatusM.cs" />
+    <Compile Include="Model\UpdateX1DataM.cs" />
+    <Compile Include="Model\WebGetRoleM.cs" />
+    <Compile Include="Model\WebAddOrUpdateRoleM.cs" />
+    <Compile Include="Model\WebGetFunctionListM.cs" />
+    <Compile Include="Model\GetHealthWebByUserM.cs" />
+    <Compile Include="Model\GetTokenM.cs" />
+    <Compile Include="Service\DMSShareService.cs" />
+    <Compile Include="Service\IDoctorService.cs" />
+    <Compile Include="Service\Interface\IDMSShareService.cs" />
+    <Compile Include="Service\Interface\IIDoctorService.cs" />
+    <Compile Include="Service\Interface\IX1APService.cs" />
+    <Compile Include="Service\X1APService.cs" />
+    <Compile Include="Utils\Base64Utility.cs" />
+    <Compile Include="Model\UpdatePersonalPinnedQuestM.cs" />
+    <Compile Include="Model\UpdatePinnedQuestM.cs" />
+    <Compile Include="Service\FileService.cs" />
+    <Compile Include="Service\Interface\IFileService.cs" />
+    <Compile Include="Utils\DBUtils.cs" />
+    <Compile Include="Utils\IDoctorResponseConverter.cs" />
+    <Compile Include="Utils\ListUtils.cs" />
+    <Compile Include="Utils\ROC.cs" />
+    <Compile Include="ExtMethod\DictionaryExt.cs" />
+    <Compile Include="ExtMethod\EnumExt.cs" />
+    <Compile Include="Misc\NextVisitTime.cs" />
+    <Compile Include="Misc\CustomException.cs" />
+    <Compile Include="Model\AddFileM.cs" />
+    <Compile Include="Model\AddGroupM.cs" />
+    <Compile Include="Model\AddOrUpdateReportTemplateM.cs" />
+    <Compile Include="Model\AddReportAnsFileM.cs" />
+    <Compile Include="Model\AddReportAuthM.cs" />
+    <Compile Include="Model\AddReportMainFileM.cs" />
+    <Compile Include="Model\AddReportMainM.cs" />
+    <Compile Include="Model\AnswerOption.cs" />
+    <Compile Include="Model\AnsWithPatient.cs" />
+    <Compile Include="Model\DeleteFileM.cs" />
+    <Compile Include="Model\DeleteGroupM.cs" />
+    <Compile Include="Model\DeleteReportMainM.cs" />
+    <Compile Include="Model\ExportCodingBookM.cs" />
+    <Compile Include="Model\ExportDataM.cs" />
+    <Compile Include="Model\ExportExcelM.cs" />
+    <Compile Include="Model\GetAllGroupM.cs" />
+    <Compile Include="Model\GetAllReportMainM.cs" />
+    <Compile Include="Model\GetAllVerionReportM.cs" />
+    <Compile Include="Model\GetETemplateEQuestListM.cs" />
+    <Compile Include="Model\GetFileM.cs" />
+    <Compile Include="Model\GetICD10LazyM.cs" />
+    <Compile Include="Model\GetLatestCBCExportDateM.cs" />
+    <Compile Include="Model\GetQuestM.cs" />
+    <Compile Include="Model\GetReportAnsFileM.cs" />
+    <Compile Include="Model\GetReportMainFileM.cs" />
+    <Compile Include="Model\GetReportMainM.cs" />
+    <Compile Include="Model\GetReportTemplateListM.cs" />
+    <Compile Include="Model\GetReportTemplateM.cs" />
+    <Compile Include="Model\ImportDataM.cs" />
+    <Compile Include="Model\PublishReportM.cs" />
+    <Compile Include="Model\Quest.cs" />
+    <Compile Include="Model\QuestColumnMap.cs" />
+    <Compile Include="Model\Report.cs" />
+    <Compile Include="Model\UnlockReportM.cs" />
+    <Compile Include="Model\UpdateFileM.cs" />
+    <Compile Include="Model\UpdateGroupM.cs" />
+    <Compile Include="Model\UpdateReportMainM.cs" />
+    <Compile Include="Service\SystemFileService.cs" />
+    <Compile Include="Service\Interface\ISystemFileService.cs" />
+    <Compile Include="Utils\EnumUtils.cs" />
+    <Compile Include="Model\AddDoctorInfoM.cs" />
+    <Compile Include="Model\AddMultipleDoctorInfoM.cs" />
+    <Compile Include="Model\DeleteDoctorInfoM.cs" />
+    <Compile Include="Model\GetDoctorInfoListM.cs" />
+    <Compile Include="Model\GetDoctorInfoM.cs" />
+    <Compile Include="Model\UpdateMultipleDoctorInfoM.cs" />
+    <Compile Include="Model\X1GetMorphInfoM.cs" />
+    <Compile Include="Model\UpdateDoctorInfoM.cs" />
+    <Compile Include="Model\X1BeginDiffCompareM.cs" />
+    <Compile Include="Service\PatientService.cs" />
+    <Compile Include="Service\ReportService.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="DataAnnotaionExt\MaxFileNameAttribute.cs" />
+    <Compile Include="DataAnnotaionExt\MinValueAttribute.cs" />
+    <Compile Include="Service\Interface\IPatientService.cs" />
+    <Compile Include="Service\Interface\IReportService.cs" />
+    <Compile Include="Model\AddPatientM.cs" />
+    <Compile Include="Model\GetExportReportListLazyM.cs" />
+    <Compile Include="Model\GetPanelDataM.cs" />
+    <Compile Include="Model\GetPanelMappingIgM.cs" />
+    <Compile Include="Model\GetPanelTextTemplateM.cs" />
+    <Compile Include="Model\GetQuestionListM.cs" />
+    <Compile Include="Model\GetTextTemplateM.cs" />
+    <Compile Include="Model\UpdateReportFileM.cs" />
+    <Compile Include="Model\UpdateSpecimenM.cs" />
+    <Compile Include="Model\GetBasePathM.cs" />
+    <Compile Include="Model\ExportReportM.cs" />
+    <Compile Include="Model\GetICD10M.cs" />
+    <Compile Include="Model\GetReportInfoM.cs" />
+    <Compile Include="Model\WebLogoutM.cs" />
+    <Compile Include="Model\WebDeleteUserM.cs" />
+    <Compile Include="Model\WebGetRoleListM.cs" />
+    <Compile Include="Model\X1GetAllUserMorphListM.cs" />
+    <Compile Include="Model\REQBase.cs" />
+    <Compile Include="Model\RSPBase.cs" />
+    <Compile Include="Model\UpdateUserInfoM.cs" />
+    <Compile Include="Model\WebGetUserListM.cs" />
+    <Compile Include="Model\WebUpdateUseStateM.cs" />
+    <Compile Include="Model\WebGetUserM.cs" />
+    <Compile Include="Model\WebUpdatePasswordM.cs" />
+    <Compile Include="Model\WebUpdateUserM.cs" />
+    <Compile Include="Model\X1AddAIReportM.cs" />
+    <Compile Include="Model\X1AddCountingDataM.cs" />
+    <Compile Include="Model\AddGeneralReportM.cs" />
+    <Compile Include="Model\X1AddMorphDataM.cs" />
+    <Compile Include="Model\AddPatientInfoM.cs" />
+    <Compile Include="Model\X1AddReportM.cs" />
+    <Compile Include="Model\X1DoFileLogM.cs" />
+    <Compile Include="Model\X1GetConfigM.cs" />
+    <Compile Include="Model\X1GetCountingDataM.cs" />
+    <Compile Include="Model\X1GetCPM.cs" />
+    <Compile Include="Model\X1GetDiffResultM.cs" />
+    <Compile Include="Model\GetPatientInfoM.cs" />
+    <Compile Include="Model\GetPatientsLazyM.cs" />
+    <Compile Include="Model\GetReportM.cs" />
+    <Compile Include="Model\GetReportsM.cs" />
+    <Compile Include="Model\X1GetSettingM.cs" />
+    <Compile Include="Model\RegisterM.cs" />
+    <Compile Include="Model\X1ResetReportStateM.cs" />
+    <Compile Include="Model\X1SaveConfigM.cs" />
+    <Compile Include="Model\X1SaveDiffResultM.cs" />
+    <Compile Include="Model\X1SaveSettingM.cs" />
+    <Compile Include="Model\X1ShareFileUpdateM.cs" />
+    <Compile Include="Model\UpdateReportM.cs" />
+    <Compile Include="Model\X1UserDataGetM.cs" />
+    <Compile Include="Model\X1ShowListQueryM.cs" />
+    <Compile Include="Model\X1UserDataSaveM.cs" />
+    <Compile Include="Model\X1TokenAuthCheckM.cs" />
+    <Compile Include="Model\X1LoginCheckM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ExcelUtils.cs" />
+    <Compile Include="Utils\IDNoUtility.cs" />
+    <Compile Include="Utils\ResponseHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\AuthService\AuthService1.wsdl" />
+    <None Include="Connected Services\AuthService\AuthService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthService\AuthService51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthService\AuthService52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthService\AuthService53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AuthService\AuthService54.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.AddFunctionM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.AddOrUpdateRole.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.CheckAuthLoginM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.CheckOTPTokenM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.CheckTokenAuthM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.CheckTokenM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.DeleteUserM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.GenerateTokenM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.GetFunctionListM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.GetOTPWithAuthM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.GetRoleListM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.GetRoleM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.GetSysMenuListM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.GetUserListM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.GetUserM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.IsOnlineM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.LogoutM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.RefreshTokenM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.RegisterM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.ResetPasswordM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.SyncUserListM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.UpdateUserM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.UpdateUserPasswordM.datasource" />
+    <None Include="Properties\DataSources\BMDC.Models.Auth.UpdateUseStateM.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\X1APServer.DAO\X1APServer.Repository.csproj">
+      <Project>{72b60811-70d8-4a61-b8a6-7f4bc22f2380}</Project>
+      <Name>X1APServer.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AuthService\configuration91.svcinfo" />
+    <None Include="Connected Services\AuthService\configuration.svcinfo" />
+    <None Include="Connected Services\AuthService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\AuthService\AuthService1.disco" />
+    <Content Include="References\BMDC.DAO.dll" />
+    <Content Include="References\BMDC.Models.Auth.dll" />
+    <Content Include="References\BMDC.Models.Log.dll" />
+    <Content Include="References\Xceed.Document.NET.dll" />
+    <Content Include="References\Xceed.Document.NET.xml" />
+    <Content Include="References\Xceed.Words.NET.dll" />
+    <Content Include="References\Xceed.Words.NET.pdb" />
+    <Content Include="References\Xceed.Words.NET.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\AuthService\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,2 @@
+﻿CREATE USER [DMSShareUser] FOR LOGIN [DMSShareUser];
+

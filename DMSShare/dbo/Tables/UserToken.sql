@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[UserToken] (
+    [AccID] VARCHAR (254)    NOT NULL,
+    [Token] UNIQUEIDENTIFIER NOT NULL,
+    CONSTRAINT [PK_UserToken] PRIMARY KEY CLUSTERED ([AccID] ASC)
+);
+

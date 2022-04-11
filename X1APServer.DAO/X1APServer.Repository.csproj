@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{72B60811-70D8-4A61-B8A6-7F4BC22F2380}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>X1APServer.Repository</RootNamespace>
+    <AssemblyName>X1APServer.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TMWHRelease|AnyCPU'">
+    <OutputPath>bin\TMWHRelease\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DMDMS|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DMDMS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.2.0\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Practices.EnterpriseLibrary.Common.dll.3.1.0\lib\2.0\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Practices.ObjectBuilder.dll.3.1.0\lib\2.0\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.6.7\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UrlBase64, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UrlBase64.0.1.2\lib\net40\UrlBase64.dll</HintPath>
+    </Reference>
+    <Reference Include="Z.EntityFramework.Extensions, Version=5.1.1.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Extensions.5.1.1\lib\net45\Z.EntityFramework.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C__RefactorLog.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContexts\X1APEntities.cs" />
+    <Compile Include="DMSSetting.cs">
+      <DependentUpon>DMSShareModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DMSShareModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DMSShareModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DMSShareModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DMSShareModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DMSShareModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DMSShareModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ExportTemplateExtraQuest.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FileGroup.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FileSet.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FuncGroup.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FunctionReportMap.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Functions.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OTPToken.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OTPTSysMap.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Personal_Pinned_Question.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pinned_Question.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionValidation.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Interface\IFunctionsRepository.cs" />
+    <Compile Include="Repository\Interface\IRoleAuthMapRepository.cs" />
+    <Compile Include="Repository\FunctionsRepository.cs" />
+    <Compile Include="Repository\Interface\IUserRoleMapRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_ReportAnswerExtraRepository.cs" />
+    <Compile Include="Repository\Interface\IUsersRepository.cs" />
+    <Compile Include="Repository\RoleAuthMapRepository.cs" />
+    <Compile Include="Repository\UserRoleMapRepository.cs" />
+    <Compile Include="Repository\ValidationConditionRepository.cs" />
+    <Compile Include="Repository\Interface\IValidationConditionRepository.cs" />
+    <Compile Include="Repository\Interface\IPinnedQuestionRepository.cs" />
+    <Compile Include="Repository\Interface\IPersonalPinnedQuestRepository.cs" />
+    <Compile Include="Repository\Interface\IScheduleRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_ReportQuestionTypeRepository.cs" />
+    <Compile Include="Repository\UserTokenRepository.cs" />
+    <Compile Include="Repository\Interface\IUserTokenRepository.cs" />
+    <Compile Include="Repository\SessionDMSMapRepository.cs" />
+    <Compile Include="Repository\DMSSettingRepository.cs" />
+    <Compile Include="Repository\Interface\IDMSSettingRepository.cs" />
+    <Compile Include="Repository\Interface\ISessionDMSMapRepository.cs" />
+    <Compile Include="Repository\SystemFileRepository.cs" />
+    <Compile Include="Repository\ETemplateEQuestRepository.cs" />
+    <Compile Include="Repository\Interface\ISystemFileRepository.cs" />
+    <Compile Include="Repository\Interface\IETemplateEQuestRepository.cs" />
+    <Compile Include="Repository\X1_ReportAnswerExtraRepository.cs" />
+    <Compile Include="Repository\X1_ReportExportTemplateRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_ReportExportTemplateRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_ReportETRepository.cs" />
+    <Compile Include="Repository\Interface\IX1APDataRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_PatientGroupMapRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_PatientInfoRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_ReportAnswerDRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_ReportAnswerFileRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_ReportAnswerMRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_ReportAuthRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_ReportMRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_ReportQuestFileRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_ReportQuestionRepository.cs" />
+    <Compile Include="Repository\Interface\IQuestionValidationRepository.cs" />
+    <Compile Include="Repository\Interface\IX1_PatientGroupRepository.cs" />
+    <Compile Include="Repository\X1_ReportETRepository.cs" />
+    <Compile Include="Repository\X1_PatientGroupMapRepository.cs" />
+    <Compile Include="Repository\X1_PatientGroupRepository.cs" />
+    <Compile Include="Repository\X1_PatientInfoRepository.cs" />
+    <Compile Include="Repository\X1_ReportAnswerDRepository.cs" />
+    <Compile Include="Repository\X1_ReportAnswerFileRepository.cs" />
+    <Compile Include="Repository\X1_ReportAnswerMRepository.cs" />
+    <Compile Include="Repository\X1_ReportAuthRepository.cs" />
+    <Compile Include="Repository\X1_ReportMRepository.cs" />
+    <Compile Include="Repository\X1_ReportQuestFileRepository.cs" />
+    <Compile Include="Repository\PinnedQuestionRepository.cs" />
+    <Compile Include="Repository\QuestionValidationRepository.cs" />
+    <Compile Include="Repository\PersonalPinnedQuestRepository.cs" />
+    <Compile Include="Repository\X1_ReportQuestionRepository.cs" />
+    <Compile Include="Repository\ScheduleRepository.cs" />
+    <Compile Include="Repository\UsersRepository.cs" />
+    <Compile Include="Repository\X1_ReportQuestionTypeRepository.cs" />
+    <Compile Include="RoleAuthMap.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Roles.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SessionDMSMap.cs">
+      <DependentUpon>DMSShareModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SysInfo.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemFile.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TLogData.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TLogList.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TLogMain.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserGroup.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRoleMap.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserToken.cs">
+      <DependentUpon>DMSShareModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\AESHelper.cs" />
+    <Compile Include="Utility\BasicRepository.cs" />
+    <Compile Include="Utility\DMSShareDbContextProxy.cs" />
+    <Compile Include="Utility\X1DbContextProxy.cs" />
+    <Compile Include="Utility\DMSShareBasicRepository.cs" />
+    <Compile Include="Utility\Interface\IDMSShareUnitOfWork.cs" />
+    <Compile Include="Utility\Interface\IDMSShareDbContextProxy.cs" />
+    <Compile Include="Utility\Interface\IX1UnitOfWork.cs" />
+    <Compile Include="Utility\Interface\IX1DbContextProxy.cs" />
+    <Compile Include="Utility\X1APBasicRepository.cs" />
+    <Compile Include="Utility\DbContextProxy.cs" />
+    <Compile Include="Utility\EntityExceptionHandler.cs" />
+    <Compile Include="Utility\Formatter\MyDbConfiguration.cs" />
+    <Compile Include="Utility\Formatter\OneLineFormatter.cs" />
+    <Compile Include="Utility\Interface\IBasicRepository.cs" />
+    <Compile Include="Utility\Interface\IDbContextProxy.cs" />
+    <Compile Include="Utility\Interface\IUnitOfWork.cs" />
+    <Compile Include="Utility\ListExtension.cs" />
+    <Compile Include="Utility\PaginateHelper.cs" />
+    <Compile Include="Utility\Result.cs" />
+    <Compile Include="Utility\StringExtension.cs" />
+    <Compile Include="Repository\X1APDataRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidationCondition.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1APModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>X1APModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1APModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1APModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>X1APModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="X1_PatientGroup.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_PatientGroupMap.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_PatientInfo.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_Report_Answer_Detail.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_Report_Answer_Extra.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_Report_Answer_File.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_Report_Answer_Main.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_Report_Authorization.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_Report_Export_File.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_Report_Export_Template.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_Report_Main.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_Report_Question.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_Report_Question_File.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_Report_Question_Group.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="X1_Report_Question_Type.cs">
+      <DependentUpon>X1APModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="X1APModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>X1APModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="DMSShareModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DMSShareModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DMSShareModel.edmx.diagram">
+      <DependentUpon>DMSShareModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="X1APModel.edmx.diagram">
+      <DependentUpon>X1APModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DMSShareModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DMSShareModel.edmx</DependentUpon>
+      <LastGenOutput>DMSShareModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DMSShareModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DMSShareModel.edmx</DependentUpon>
+      <LastGenOutput>DMSShareModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="X1APModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>X1APModel.edmx</DependentUpon>
+      <LastGenOutput>X1APModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="X1APModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>X1APModel.edmx</DependentUpon>
+      <LastGenOutput>X1APModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

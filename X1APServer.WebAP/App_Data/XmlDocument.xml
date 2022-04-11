@@ -1,0 +1,1218 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApplication1</name>
+    </assembly>
+    <members>
+        <member name="M:X1APServer.Infrastructure.Common.DMSShareUnitOfWork.Get``1">
+            <summary>
+            取回對映的Repository或Service
+            </summary>  
+            <typeparam name="T">Repository ex:IMenuRepository</typeparam>
+            <returns>Repository</returns>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.DMSShareUnitOfWork.Commit">
+            <summary>
+            儲存變更並回傳受影響的資料筆數
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.DMSShareUnitOfWork.BeginTransaction">
+            <summary>
+            開始一個Transaction
+            </summary>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.DMSShareUnitOfWork.RollBackTransaction">
+            <summary>
+            RollBack Transaction
+            </summary>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.DMSShareUnitOfWork.CommitTransaction">
+            <summary>
+            Commit Transaction
+            </summary>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.X1UnitOfWork.Get``1">
+            <summary>
+            取回對映的Repository或Service
+            </summary>  
+            <typeparam name="T">Repository ex:IMenuRepository</typeparam>
+            <returns>Repository</returns>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.X1UnitOfWork.Commit">
+            <summary>
+            儲存變更並回傳受影響的資料筆數
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.X1UnitOfWork.BeginTransaction">
+            <summary>
+            開始一個Transaction
+            </summary>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.X1UnitOfWork.RollBackTransaction">
+            <summary>
+            RollBack Transaction
+            </summary>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.X1UnitOfWork.CommitTransaction">
+            <summary>
+            Commit Transaction
+            </summary>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.UnitOfWork.Get``1">
+            <summary>
+            取回對映的Repository或Service
+            </summary>  
+            <typeparam name="T">Repository ex:IMenuRepository</typeparam>
+            <returns>Repository</returns>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.UnitOfWork.Commit">
+            <summary>
+            儲存變更並回傳受影響的資料筆數
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.UnitOfWork.BeginTransaction">
+            <summary>
+            開始一個Transaction
+            </summary>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.UnitOfWork.RollBackTransaction">
+            <summary>
+            RollBack Transaction
+            </summary>
+        </member>
+        <member name="M:X1APServer.Infrastructure.Common.UnitOfWork.CommitTransaction">
+            <summary>
+            Commit Transaction
+            </summary>
+        </member>
+        <member name="T:X1APServer.WEB.UnityConfig">
+            <summary>
+            Specifies the Unity configuration for the main container.
+            </summary>
+        </member>
+        <member name="P:X1APServer.WEB.UnityConfig.Container">
+            <summary>
+            Configured Unity Container.
+            </summary>
+        </member>
+        <member name="M:X1APServer.WEB.UnityConfig.RegisterTypes(Unity.IUnityContainer)">
+            <summary>
+            Registers the type mappings with the Unity container.
+            </summary>
+            <param name="container">The unity container to configure.</param>
+            <remarks>
+            There is no need to register concrete types such as controllers or
+            API controllers (unless you want to change the defaults), as Unity
+            allows resolving a concrete type even if it was not previously
+            registered.
+            </remarks>
+        </member>
+        <member name="T:X1APServer.UnityMvcActivator">
+            <summary>
+            Provides the bootstrapping for integrating Unity with ASP.NET MVC.
+            </summary>
+        </member>
+        <member name="M:X1APServer.UnityMvcActivator.Start">
+            <summary>
+            Integrates Unity when the application starts.
+            </summary>
+        </member>
+        <member name="M:X1APServer.UnityMvcActivator.Shutdown">
+            <summary>
+            Disposes the Unity container when the application is shut down.
+            </summary>
+        </member>
+        <member name="T:NHRI.UnityWebApiActivator">
+            <summary>
+            Provides the bootstrapping for integrating Unity with WebApi when it is hosted in ASP.NET.
+            </summary>
+        </member>
+        <member name="M:NHRI.UnityWebApiActivator.Start">
+            <summary>
+            Integrates Unity when the application starts.
+            </summary>
+        </member>
+        <member name="M:NHRI.UnityWebApiActivator.Shutdown">
+            <summary>
+            Disposes the Unity container when the application is shut down.
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,WebApplication1.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:WebApplication1.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:WebApplication1.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:WebApplication1.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:WebApplication1.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:WebApplication1.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:WebApplication1.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:WebApplication1.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageSampleKey.#ctor(WebApplication1.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:WebApplication1.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:WebApplication1.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:WebApplication1.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,WebApplication1.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:WebApplication1.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:WebApplication1.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:WebApplication1.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:WebApplication1.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApplication1.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApplication1.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="T:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:WebApplication1.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,WebApplication1.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,WebApplication1.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(WebApplication1.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:WebApplication1.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},WebApplication1.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:WebApplication1.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Infrastructure.Common.HttpContextUtils.GetRequestContent(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            取得 Request Content
+            </summary>
+            <param name="actionContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Infrastructure.Common.HttpContextUtils.GetResponseContent(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            取得 Response Content
+            </summary>
+            <param name="actionContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Infrastructure.Common.LogUtils.SkipLogging(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            判斷是否要 Log
+            </summary>
+            <param name="actionContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Infrastructure.Common.LogUtils.IgnoreRequestContent(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            判斷是否要 Log Request Content
+            </summary>
+            <param name="actionContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.Infrastructure.Common.LogUtils.IgnoreResponseContent(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            判斷是否要 Log Response Content
+            </summary>
+            <param name="actionContext"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApplication1.Misc.MultiXmlDocumentationProvider">
+            <summary>A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from a collection of XML documentation files.</summary>
+        </member>
+        <member name="F:WebApplication1.Misc.MultiXmlDocumentationProvider.Providers">
+            <summary>The internal documentation providers for specific files.</summary>
+        </member>
+        <member name="M:WebApplication1.Misc.MultiXmlDocumentationProvider.#ctor(System.String[])">
+            <summary>Construct an instance.</summary>
+            <param name="paths">The physical paths to the XML documents.</param>
+        </member>
+        <member name="M:WebApplication1.Misc.MultiXmlDocumentationProvider.GetDocumentation(System.Reflection.MemberInfo)">
+            <summary>Gets the documentation for a subject.</summary>
+            <param name="subject">The subject to document.</param>
+        </member>
+        <member name="M:WebApplication1.Misc.MultiXmlDocumentationProvider.GetDocumentation(System.Type)">
+            <summary>Gets the documentation for a subject.</summary>
+            <param name="subject">The subject to document.</param>
+        </member>
+        <member name="M:WebApplication1.Misc.MultiXmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpControllerDescriptor)">
+            <summary>Gets the documentation for a subject.</summary>
+            <param name="subject">The subject to document.</param>
+        </member>
+        <member name="M:WebApplication1.Misc.MultiXmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>Gets the documentation for a subject.</summary>
+            <param name="subject">The subject to document.</param>
+        </member>
+        <member name="M:WebApplication1.Misc.MultiXmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpParameterDescriptor)">
+            <summary>Gets the documentation for a subject.</summary>
+            <param name="subject">The subject to document.</param>
+        </member>
+        <member name="M:WebApplication1.Misc.MultiXmlDocumentationProvider.GetResponseDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>Gets the documentation for a subject.</summary>
+            <param name="subject">The subject to document.</param>
+        </member>
+        <member name="M:WebApplication1.Misc.MultiXmlDocumentationProvider.GetFirstMatch(System.Func{WebApplication1.Areas.HelpPage.XmlDocumentationProvider,System.String})">
+            <summary>Get the first valid result from the collection of XML documentation providers.</summary>
+            <param name="expr">The method to invoke.</param>
+        </member>
+        <member name="M:WebApplication1.WebApi.SystemFileController.AddFile">
+            <summary>
+            上傳檔案
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.SystemFileController.UpdateFile">
+            <summary>
+            上傳檔案
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.PatientController.AddPatientInfo(X1APServer.Service.Model.AddPatientInfoM.AddPatientInfoReq)">
+            <summary>
+            新增個案
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.PatientController.GetPatientInfo(X1APServer.Service.Model.GetPatientInfoM.GetPatientInfoReq)">
+            <summary>
+            取得單一個案
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.PatientController.GetPatientsLazy(X1APServer.Service.Model.GetPatientsLazyM.GetPatientLazyReq)">
+            <summary>
+            延遲取得個案清單列表
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.PatientController.UpdateGroup(X1APServer.Service.Model.UpdateGroupM.UpdateGroupReq)">
+            <summary>
+            更新病患群組
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.PatientController.GetAllGroup(X1APServer.Service.Model.GetAllGroupM.GetAllGroupReq)">
+            <summary>
+            取得所有群組
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.PatientController.AddOrUpdateSchedule(X1APServer.Service.Model.AddOrUpdateScheduleM.Request)">
+            <summary>
+            新增或更新回診時間
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.PatientController.GetScheduleList(X1APServer.Service.Model.GetScheduleListM.Request)">
+            <summary>
+            取回診時間清單
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.PatientController.DeleteSchedule(X1APServer.Service.Model.DeleteScheduleM.Request)">
+            <summary>
+            刪除回診時間
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.PatientController.AddPatient(X1APServer.Service.Model.AddPatientM.AddPatientReq)">
+            <summary>
+            新增個案、診斷、檢體
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetReport(X1APServer.Service.Model.GetReportM.GetReportReq)">
+            <summary>
+            取得單一Report
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetReports(X1APServer.Service.Model.GetReportsM.GetReportsReq)">
+            <summary>
+            取得 Report 清單
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.UpdateReport(X1APServer.Service.Model.UpdateReportM.UpdateReportReq)">
+            <summary>
+            更新Report
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.UpdateReportFile">
+            <summary>
+            更新 Report 檔案
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.AddGeneralReport(X1APServer.Service.Model.AddGeneralReportM.AddGeneralReportReq)">
+            <summary>
+            新增一般 Report
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.ExportReport(X1APServer.Service.Model.ExportReportM.ExportReportReq)">
+            <summary>
+            匯出PDF
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetExportReportListLazy(X1APServer.Service.Model.GetExportReportListLazyM.GetExportReportListLazyReq)">
+            <summary>
+            取得匯出Report清單
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetQuestionList(X1APServer.Service.Model.GetQuestionListM.GetQuestionListReq)">
+            <summary>
+            取得問卷清單
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetLatestCBCExportDate(X1APServer.Service.Model.GetLatestCBCExportDateM.GetLatestCBCExportDateReq)">
+            <summary>
+            取得 Convention 最近的匯出時間
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.UnlockReport(X1APServer.Service.Model.UnlockReportM.UnlockReportReq)">
+            <summary>
+            解鎖Report
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.CloseoutReport(X1APServer.Service.Model.CloseoutReportM.CloseoutReportReq)">
+            <summary>
+            結案Report
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetAllReportMain(X1APServer.Service.Model.GetAllReportMainM.GetAllReportMainReq)">
+            <summary>
+            取得所有Report Main
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetReportMain(X1APServer.Service.Model.GetReportMainM.GetReportMainReq)">
+            <summary>
+            取得 Report Main 資料
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.UpdateReportMain(X1APServer.Service.Model.UpdateReportMainM.UpdateReportMainReq)">
+            <summary>
+            更新 Report Main 資料
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.UpdateReportStatus(X1APServer.Service.Model.UpdateReportStatusM.UpdateReportStatusReq)">
+            <summary>
+            更新檢驗單狀態
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.AddReportMain(X1APServer.Service.Model.AddReportMainM.AddReportMainReq)">
+            <summary>
+            新增 Report Main 資料
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.DeleteReportMain(X1APServer.Service.Model.DeleteReportMainM.DeleteReportMainReq)">
+            <summary>
+            刪除Report Main
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.PublishReport(X1APServer.Service.Model.PublishReportM.PublishReportReq)">
+            <summary>
+            發佈 Report
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetAllVersionReport(X1APServer.Service.Model.GetAllVerionReportM.GetAllVersionReportReq)">
+            <summary>
+            取得所有版本的Report
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.AddReportMainFile">
+            <summary>
+            上傳 Report Main 圖片
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.AddReportAnsFile">
+            <summary>
+            上傳 Report Answer 檔案
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetReportMainFile(System.Int32,System.String)">
+            <summary>
+            取得 Report Main 檔案
+            </summary>
+            <param name="RQID"></param>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetReportAnsFile(System.Int32)">
+            <summary>
+            取得 Report Answer 檔案
+            </summary>
+            <param name="RQID"></param>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.ExportCodingBook(X1APServer.Service.Model.ExportCodingBookM.ExportCodingBookReq)">
+            <summary>
+            匯出 Coding Book
+            </summary>
+            <param name="ID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.ExportData(System.Int32)">
+            <summary>
+            匯出資料
+            </summary>
+            <param name="ID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.AddReportAuth(X1APServer.Service.Model.AddReportAuthM.AddReportAuthReq)">
+            <summary>
+            新增 Report 權限
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.ImportData">
+            <summary>
+            匯入資料
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetReportTemplateList(X1APServer.Service.Model.GetReportTemplateListM.GetReportTemplateListReq)">
+            <summary>
+            取得報告模板清單
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetETemplateEQuestList(X1APServer.Service.Model.GetETemplateEQuestListM.Request)">
+            <summary>
+            取得匯出報告模板額外問題清單
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetReportTemplate(X1APServer.Service.Model.GetReportTemplateM.Request)">
+            <summary>
+            取得報告模板資料
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.ExportCervixData(X1APServer.Service.Model.ExportCervixDataM.Request)">
+            <summary>
+            匯出子宮頸國建署資料
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.ExportExcel(X1APServer.Service.Model.ExportExcelM.Request)">
+            <summary>
+            匯出Excel
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.CheckQuestNo(X1APServer.Service.Model.CheckQuestNo.Request)">
+            <summary>
+            取得問題資料
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetPinQuest(X1APServer.Service.Model.GetPinQuestM.Request)">
+            <summary>
+            取得關注問題清單
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.UpdatePinnedQuest(X1APServer.Service.Model.UpdatePinnedQuestM.Request)">
+            <summary>
+            更新關注問題顯示及排序
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetPinnedQuestList(X1APServer.Service.Model.GetPinnedQuestListM.Request)">
+            <summary>
+            取得所有關注問題
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.UpdatePersonalPinnedQuest(X1APServer.Service.Model.UpdatePersonalPinnedQuestM.Request)">
+            <summary>
+            更新病患個人關注問題
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.GetPersonalPinnedQuestList(X1APServer.Service.Model.GetPersonalPinnedQuestListM.Request)">
+            <summary>
+            取得所有病患個人關注問題
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.ReportController.DeletePersonalPinnedQuest(X1APServer.Service.Model.DeletePersonalPinnedQuestM.Request)">
+            <summary>
+            刪除所有病患個人關注項目
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.Login(X1APServer.Service.Model.X1LoginCheckM.X1LoginCheckReq)">
+            <summary>
+            Web 登入
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.RegisterUser(X1APServer.Service.Model.WebRegisterM.WebRegisterReq)">
+            <summary>
+            註冊使用者
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.UpdateUser(X1APServer.Service.Model.WebUpdateUserM.WebUpdateUserReq)">
+            <summary>
+            更新使用者資料
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.UpdateUserPassword(X1APServer.Service.Model.WebUpdatePasswordM.WebUpdatePasswordReq)">
+            <summary>
+            更新使用者密碼
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.UpdateUseState(X1APServer.Service.Model.WebUpdateUseStateM.WebUpdateUseStateReq)">
+            <summary>
+            更新使用者使用狀態
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.GetUser(X1APServer.Service.Model.WebGetUserM.WebGetUserReq)">
+            <summary>
+            取得單一使用者
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.GetUserList(X1APServer.Service.Model.WebGetUserListM.WebGetUserListReq)">
+            <summary>
+            取得使用者清單
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.GetRoleList(X1APServer.Service.Model.WebGetRoleListM.WebGetRoleListReq)">
+            <summary>
+            取得角色清單
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.DeleteUser(X1APServer.Service.Model.WebDeleteUserM.WebDeleteUserReq)">
+            <summary>
+            刪除使用者
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.Logout(X1APServer.Service.Model.WebLogoutM.WebLogoutReq)">
+            <summary>
+            登出
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.GetHealthWebByUser(System.String)">
+            <summary>
+            取得使用者擁有站台清單
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.GetAreaCode">
+            <summary>
+            取得地區代碼表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.GetAreaCodeLazy">
+            <summary>
+            取得地區代碼表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.GetHospitalCode(System.String)">
+            <summary>
+            取得醫療機構代碼表
+            </summary>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.GetHospitalCodeLazy(X1APServer.Service.Model.GetHospitalCodeLazyM.Request)">
+            <summary>
+            取得醫療機構代碼表字串
+            </summary>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.GetHealthWeb(X1APServer.Service.Model.GetHealthWebM.Request)">
+            <summary>
+            取得病程站台資訊
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.GetToken(X1APServer.Service.Model.GetTokenM.Request)">
+            <summary>
+            取得使用者Token
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.UserController.TokenAuthCheck(X1APServer.Service.Model.X1TokenAuthCheckM.X1TokenAuthCheckReq)">
+            <summary>
+            定時檢核Token狀態與更新(檢查權限)
+            1.點擊功能時呼叫(有查詢或可合併)   2.Set TimeOut 呼叫
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApplication1.WebApi.X1APServerController">
+            <summary>
+            X1 Imaging 系統專用 API.
+            </summary>
+        </member>
+        <member name="M:WebApplication1.WebApi.X1APServerController.GetUserList(X1APServer.Service.Model.X1UserDataGetM.X1UserDataGetReq)">
+            <summary>
+            取得醫生資訊
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.X1APServerController.GetCervixForm(X1APServer.Service.Model.GetCervixFormM.GetCervixFormReq)">
+            <summary>
+            取得檢體清單
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.X1APServerController.GetCervixTable(X1APServer.Service.Model.GetCervixTableM.GetCervixTableReq)">
+            <summary>
+            取得檢驗單明細
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.X1APServerController.UpdateCervixStatus(X1APServer.Service.Model.UpdateCervixStatusM.UpdateCervixStatusReq)">
+            <summary>
+            更新檢驗單狀態
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.X1APServerController.UpdateCervixTable(X1APServer.Service.Model.UpdateCervixTableM.UpdateCervixTableReq)">
+            <summary>
+            更新檢驗單詳細資料
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.X1APServerController.GetX1Data(X1APServer.Service.Model.GetX1DataM.Request)">
+            <summary>
+            取得X1儲存資料
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApplication1.WebApi.X1APServerController.UpdateX1Data(X1APServer.Service.Model.UpdateX1DataM.UpdateX1DataReq)">
+            <summary>
+            X1儲存資料
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

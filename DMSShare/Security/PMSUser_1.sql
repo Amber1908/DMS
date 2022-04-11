@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [PMSUser]
+    WITH PASSWORD = N'MGF{sTfhqnen!f6wkhhkb`1smsFT7_&#$!~<mi&SRbonkf:.', SID = 0xAEEE02F89F9F044E95A7B727FFBD6230, DEFAULT_LANGUAGE = [us_english];
+

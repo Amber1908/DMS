@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DMSShareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DMSSetting">
+          <Key>
+            <PropertyRef Name="Web_sn" />
+          </Key>
+          <Property Name="Web_sn" Type="int" Nullable="false" />
+          <Property Name="Web_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Web_db" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Logo" Type="int" />
+        </EntityType>
+        <EntityType Name="SessionDMSMap">
+          <Key>
+            <PropertyRef Name="Sessionkey" />
+            <PropertyRef Name="Web_sn" />
+          </Key>
+          <Property Name="Sessionkey" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Web_sn" Type="int" Nullable="false" />
+          <Property Name="AccID" Type="varchar" MaxLength="254" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserToken">
+          <Key>
+            <PropertyRef Name="AccID" />
+          </Key>
+          <Property Name="AccID" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="Token" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DMSShareModelStoreContainer">
+          <EntitySet Name="DMSSetting" EntityType="Self.DMSSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SessionDMSMap" EntityType="Self.SessionDMSMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserToken" EntityType="Self.UserToken" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DMSShareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DMSShareEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DMSSetting" EntityType="DMSShareModel.DMSSetting" />
+          <EntitySet Name="SessionDMSMap" EntityType="DMSShareModel.SessionDMSMap" />
+          <EntitySet Name="UserToken" EntityType="DMSShareModel.UserToken" />
+        </EntityContainer>
+        <EntityType Name="DMSSetting">
+          <Key>
+            <PropertyRef Name="Web_sn" />
+          </Key>
+          <Property Name="Web_sn" Type="Int32" Nullable="false" />
+          <Property Name="Web_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Web_db" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Logo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SessionDMSMap">
+          <Key>
+            <PropertyRef Name="Sessionkey" />
+            <PropertyRef Name="Web_sn" />
+          </Key>
+          <Property Name="Sessionkey" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Web_sn" Type="Int32" Nullable="false" />
+          <Property Name="AccID" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserToken">
+          <Key>
+            <PropertyRef Name="AccID" />
+          </Key>
+          <Property Name="AccID" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="Token" Type="Guid" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DMSShareModelStoreContainer" CdmEntityContainer="DMSShareEntities">
+          <EntitySetMapping Name="DMSSetting">
+            <EntityTypeMapping TypeName="DMSShareModel.DMSSetting">
+              <MappingFragment StoreEntitySet="DMSSetting">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Web_db" ColumnName="Web_db" />
+                <ScalarProperty Name="Web_name" ColumnName="Web_name" />
+                <ScalarProperty Name="Web_sn" ColumnName="Web_sn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SessionDMSMap">
+            <EntityTypeMapping TypeName="DMSShareModel.SessionDMSMap">
+              <MappingFragment StoreEntitySet="SessionDMSMap">
+                <ScalarProperty Name="AccID" ColumnName="AccID" />
+                <ScalarProperty Name="Web_sn" ColumnName="Web_sn" />
+                <ScalarProperty Name="Sessionkey" ColumnName="Sessionkey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserToken">
+            <EntityTypeMapping TypeName="DMSShareModel.UserToken">
+              <MappingFragment StoreEntitySet="UserToken">
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="AccID" ColumnName="AccID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

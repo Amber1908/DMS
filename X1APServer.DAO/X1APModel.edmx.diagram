@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="30e3605dbf364474b93ce7aee0e24c34" Name="Diagram1">
+        <EntityTypeShape EntityType="X1APModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="X1APModel.ExportTemplateExtraQuest" Width="1.5" PointX="10.25" PointY="1.5" />
+        <EntityTypeShape EntityType="X1APModel.FileGroup" Width="1.5" PointX="0.75" PointY="2.75" />
+        <EntityTypeShape EntityType="X1APModel.FileSet" Width="1.5" PointX="8.75" PointY="5.75" />
+        <EntityTypeShape EntityType="X1APModel.FuncGroup" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="X1APModel.FunctionReportMap" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="X1APModel.Functions" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="X1APModel.OTPToken" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="X1APModel.OTPTSysMap" Width="1.5" PointX="13.75" PointY="10.75" />
+        <EntityTypeShape EntityType="X1APModel.Personal_Pinned_Question" Width="1.5" PointX="8" PointY="19.875" />
+        <EntityTypeShape EntityType="X1APModel.Pinned_Question" Width="1.5" PointX="3.75" PointY="25.875" />
+        <EntityTypeShape EntityType="X1APModel.QuestionValidation" Width="1.5" PointX="8.25" PointY="12.875" />
+        <EntityTypeShape EntityType="X1APModel.RoleAuthMap" Width="1.5" PointX="13.75" PointY="13.75" />
+        <EntityTypeShape EntityType="X1APModel.Roles" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="X1APModel.Schedule" Width="1.5" PointX="3" PointY="21.125" />
+        <EntityTypeShape EntityType="X1APModel.sysdiagrams" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="X1APModel.SysInfo" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="X1APModel.SystemFile" Width="1.5" PointX="5.75" PointY="1" />
+        <EntityTypeShape EntityType="X1APModel.TLogData" Width="1.5" PointX="15.75" PointY="9.75" />
+        <EntityTypeShape EntityType="X1APModel.TLogList" Width="1.5" PointX="10.75" PointY="15.75" />
+        <EntityTypeShape EntityType="X1APModel.TLogMain" Width="1.5" PointX="15.75" PointY="12.75" />
+        <EntityTypeShape EntityType="X1APModel.UserGroup" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="X1APModel.UserRoleMap" Width="1.5" PointX="16.75" PointY="3.75" />
+        <EntityTypeShape EntityType="X1APModel.Users" Width="1.5" PointX="15.75" PointY="16.75" />
+        <EntityTypeShape EntityType="X1APModel.UserToken" Width="1.5" PointX="17.75" PointY="6.75" />
+        <EntityTypeShape EntityType="X1APModel.ValidationCondition" Width="1.5" PointX="8.25" PointY="16" />
+        <EntityTypeShape EntityType="X1APModel.X1_PatientGroup" Width="1.5" PointX="3.75" PointY="1.25" />
+        <EntityTypeShape EntityType="X1APModel.X1_PatientGroupMap" Width="1.5" PointX="6" PointY="5.375" />
+        <EntityTypeShape EntityType="X1APModel.X1_PatientInfo" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="X1APModel.X1_Report_Answer_Detail" Width="1.5" PointX="11.25" PointY="12.25" />
+        <EntityTypeShape EntityType="X1APModel.X1_Report_Answer_Extra" Width="1.5" PointX="5.25" PointY="19.5" />
+        <EntityTypeShape EntityType="X1APModel.X1_Report_Answer_File" Width="1.5" PointX="8.25" PointY="8.875" />
+        <EntityTypeShape EntityType="X1APModel.X1_Report_Answer_Main" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="X1APModel.X1_Report_Authorization" Width="1.5" PointX="6" PointY="9.75" />
+        <EntityTypeShape EntityType="X1APModel.X1_Report_Export_File" Width="1.5" PointX="5.25" PointY="22" />
+        <EntityTypeShape EntityType="X1APModel.X1_Report_Export_Template" Width="1.5" PointX="8" PointY="1" />
+        <EntityTypeShape EntityType="X1APModel.X1_Report_Main" Width="1.5" PointX="0.75" PointY="13.25" />
+        <EntityTypeShape EntityType="X1APModel.X1_Report_Question" Width="1.5" PointX="6" PointY="13.25" />
+        <EntityTypeShape EntityType="X1APModel.X1_Report_Question_File" Width="1.5" PointX="3" PointY="14.5" />
+        <EntityTypeShape EntityType="X1APModel.X1_Report_Question_Group" Width="1.5" PointX="3" PointY="18" />
+        <EntityTypeShape EntityType="X1APModel.X1_Report_Question_Type" Width="1.5" PointX="3.75" PointY="5.5" />
+        <AssociationConnector Association="X1APModel.FK_ExportTemplateExtraQuest_X1_Report_Export_Template" />
+        <AssociationConnector Association="X1APModel.FK_Personal_Pinned_Question_Pinned_Question" />
+        <AssociationConnector Association="X1APModel.FK_Personal_Pinned_Question_X1_PatientInfo" />
+        <AssociationConnector Association="X1APModel.FK_QuestionValidation_X1_Report_Question" />
+        <AssociationConnector Association="X1APModel.FK_Schedule_X1_PatientInfo" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Export_Template_SystemFile" />
+        <AssociationConnector Association="X1APModel.FK_ValidationCondition_Question" />
+        <AssociationConnector Association="X1APModel.FK_X1_PatientGroupMap_X1_PatientGroup" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Authorization_X1_PatientGroup" />
+        <AssociationConnector Association="X1APModel.FK_X1_PatientGroupMap_X1_PatientInfo" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Answer_Main_X1_PatientInfo" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Answer_Detail_X1_Report_Answer_Detail" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Answer_Detail_X1_Report_Question" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Answer_Extra_X1_Report_Answer_Main" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Answer_File_X1_Report_Answer_Main" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Answer_File_X1_Report_Question" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Answer_Main_X1_Report_Main" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Export_File_X1_Report_Answer_Main" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Authorization_X1_Report_Main" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Question_File_X1_Report_Main" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Question_Group_X1_Report_Main" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Question_X1_Report_Main" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Question_File_X1_Report_Question" />
+        <AssociationConnector Association="X1APModel.FK_X1_Report_Question_X1_Report_Question_Type" />
+        <AssociationConnector Association="X1APModel.PinnedQuestionMap" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

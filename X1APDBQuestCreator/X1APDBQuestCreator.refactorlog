@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="87aa6efc-f56a-4e08-adcb-394b78ea1b9e" ChangeDateTime="03/05/2021 01:22:16">
+    <Property Name="ElementName" Value="[dbo].[QuestionValidation].[FirstColor]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[QuestionValidation]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ValidColor" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6392486d-97aa-4e7e-861c-d8b54622a973" ChangeDateTime="03/05/2021 01:22:21">
+    <Property Name="ElementName" Value="[dbo].[QuestionValidation].[SecondColor]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[QuestionValidation]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="InvalidColor" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="852f8d75-fe1c-46b2-bddc-2cca0ad5b9d9" ChangeDateTime="03/05/2021 02:53:02">
+    <Property Name="ElementName" Value="[dbo].[QuestionValidation].[ValidColor]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[QuestionValidation]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Color" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="aad2940b-4bb6-4c40-8408-8b047e0d8889" ChangeDateTime="03/10/2021 05:09:58">
+    <Property Name="ElementName" Value="[dbo].[ValidationCondition].[Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ValidationCondition]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AttributeName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7c138ae3-14d0-4151-ad4f-cc67eef0f511" ChangeDateTime="03/10/2021 05:10:25">
+    <Property Name="ElementName" Value="[dbo].[ValidationCondition].[Value]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ValidationCondition]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Value1" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="09b12da2-cc0a-4fcd-a3cd-c3add1e6e889" ChangeDateTime="03/10/2021 06:06:14">
+    <Property Name="ElementName" Value="[dbo].[ValidationCondition].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ValidationCondition]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ee1b4c09-583f-4d27-959f-16f4daa91a55" ChangeDateTime="03/10/2021 06:13:12">
+    <Property Name="ElementName" Value="[dbo].[FK_ValidationCondition_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[ValidationCondition]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_ValidationCondition_Question]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="082b4948-e2c8-40e8-81e5-789091e72ce9" ChangeDateTime="03/10/2021 06:21:35">
+    <Property Name="ElementName" Value="[dbo].[QuestionValidation].[ConditionID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[QuestionValidation]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GroupNum" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3130ccc4-0bb8-49bd-bac5-9cb6bf37e70b" ChangeDateTime="04/19/2021 07:32:56">
+    <Property Name="ElementName" Value="[dbo].[Pinned_Question].[QuestionID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Pinned_Question]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PinnedID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3ea4939b-a773-4e3f-a22f-50575221a4e6" ChangeDateTime="04/19/2021 07:36:30">
+    <Property Name="ElementName" Value="[dbo].[Personal_Pinned_Question].[QuestionID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Personal_Pinned_Question]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PinnedID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f5061120-56b5-45fa-8dfb-7001ca9c4f8d" ChangeDateTime="04/19/2021 07:38:20">
+    <Property Name="ElementName" Value="[dbo].[PinnedQuestionMap].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PinnedQuestionMap]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PinnedID" />
+  </Operation>
+</Operations>

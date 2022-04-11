@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>X1APDBQuestCreator</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{67752a5f-877c-4b23-af08-b9964a83b885}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>X1APDBQuestCreator</RootNamespace>
+    <AssemblyName>X1APDBQuestCreator</AssemblyName>
+    <ModelCollation>1028,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Chinese_Taiwan_Stroke_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Output\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Test|AnyCPU' ">
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DMDMS|AnyCPU' ">
+    <OutputPath>bin\Output\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\ExportTemplateExtraQuest.sql" />
+    <Build Include="dbo\Tables\X1_PatientGroup.sql" />
+    <Build Include="dbo\Tables\X1_PatientGroupMap.sql" />
+    <Build Include="dbo\Tables\X1_Report_Answer_File.sql" />
+    <Build Include="dbo\Tables\X1_Report_Authorization.sql" />
+    <Build Include="dbo\Tables\X1_Report_Question_File.sql" />
+    <Build Include="dbo\Tables\SystemFile.sql" />
+    <Build Include="dbo\Tables\X1_Report_Export_Template.sql" />
+    <Build Include="dbo\Tables\X1_Report_Question.sql" />
+    <Build Include="dbo\Tables\X1_PatientInfo.sql" />
+    <Build Include="dbo\Tables\X1_Report_Main.sql" />
+    <Build Include="dbo\Tables\X1_Report_Answer_Detail.sql" />
+    <Build Include="dbo\Tables\X1_Report_Answer_Main.sql" />
+    <Build Include="dbo\Tables\X1_Report_Export_File.sql" />
+    <Build Include="dbo\Tables\X1_Report_Question_Group.sql" />
+    <Build Include="dbo\Tables\X1_Report_Question_Type.sql" />
+    <Build Include="dbo\Tables\Pinned_Question.sql" />
+    <Build Include="dbo\Tables\QuestionValidation.sql" />
+    <Build Include="dbo\Tables\Personal_Pinned_Question.sql" />
+    <Build Include="dbo\Tables\Schedule.sql" />
+    <Build Include="Security\X1User_1.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Tables\ValidationCondition_1.sql" />
+    <Build Include="dbo\Tables\UserToken.sql" />
+    <Build Include="dbo\Tables\Users.sql" />
+    <Build Include="dbo\Tables\UserRoleMap.sql" />
+    <Build Include="dbo\Tables\UserGroup.sql" />
+    <Build Include="dbo\Tables\TLogMain.sql" />
+    <Build Include="dbo\Tables\TLogList.sql" />
+    <Build Include="dbo\Tables\TLogData.sql" />
+    <Build Include="dbo\Tables\SysInfo.sql" />
+    <Build Include="dbo\Tables\Roles.sql" />
+    <Build Include="dbo\Tables\RoleAuthMap.sql" />
+    <Build Include="dbo\Tables\OTPTSysMap.sql" />
+    <Build Include="dbo\Tables\OTPToken.sql" />
+    <Build Include="dbo\Tables\Functions.sql" />
+    <Build Include="dbo\Tables\FunctionReportMap.sql" />
+    <Build Include="dbo\Tables\FuncGroup.sql" />
+    <Build Include="dbo\Tables\FileSet.sql" />
+    <Build Include="dbo\Tables\FileGroup.sql" />
+    <Build Include="Security\PMSUser.sql" />
+    <Build Include="Security\X1User.sql" />
+    <Build Include="Security\PMSUser_1.sql" />
+    <Build Include="dbo\Tables\PinnedQuestionMap.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment1.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </PostDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="X1APDBQuestCreator.refactorlog" />
+  </ItemGroup>
+</Project>
