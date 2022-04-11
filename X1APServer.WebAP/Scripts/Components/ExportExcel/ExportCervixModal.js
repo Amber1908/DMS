@@ -83,11 +83,11 @@ const ExportCervixModal = (props) => {
                         <form onSubmit={handleSubmit}>
                             <div>
                                 <div className="form-group col-md-6">
-                                    <label htmlFor="startDate">抹片採檢日起始</label>
+                                    <label htmlFor="startDate">抹片收件日起始</label>
                                     <input type="date" className="form-control" id="startDate" name="startDate" value={formData.startDate} style={{ fontSize: "14px" }} onChange={handleFormChange} />
                                 </div>
                                 <div className="form-group col-md-6">
-                                    <label htmlFor="endDate">抹片採檢日結束</label>
+                                    <label htmlFor="endDate">抹片收件日結束</label>
                                     <input type="date" className="form-control" id="endDate" name="endDate" value={formData.endDate} style={{ fontSize: "14px" }} onChange={handleFormChange} />
                                 </div>
                             </div>
