@@ -131,10 +131,15 @@ const AddPatientWindow = (props) => {
     }
 
     return (
+
         <div className="QForm-Wrap">
             <form id="patientForm" onSubmit={props.handlePatientSubmit}>
                 <fieldset>
                     <QuestionGroup title="個案資料">
+                        
+                        <div className="Layer3" >
+                            <TextInput handleOnChange={props.handleInputChange} value={props.form.ID} colwidth={30} label="ID" name="ID" className="d-none" />
+                        </div>
                         <div className="Layer3">
                             <RadioGroup className="ui-col-30" handleOnChange={props.handleInputChange} value={props.form.PUCountry} className="item-wrap" label="國籍" name="PUCountry" options={[
                                 { text: "本國", value: "1" },
@@ -216,7 +221,8 @@ const AddPatient = (props) => {
         AddrCode: "",
         HCCode: "",
         Addr: "",
-        Domicile: ""
+        Domicile: "",
+        ID:id
     });
 
     const history = useHistory();
@@ -254,6 +260,7 @@ const AddPatient = (props) => {
                 "HCCode": "",
                 "Addr": "",
                 "Domicile": "",
+                
             });
         }
     }, [id]);
@@ -267,7 +274,8 @@ const AddPatient = (props) => {
             data: {
                 ...form,
                 FuncCode: GlobalConstants.FuncCode.AddPatient,
-                AuthCode: 1
+                AuthCode: 1,
+                ID: id,
             },
             success: () => {
                 alert("儲存成功");

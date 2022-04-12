@@ -92,6 +92,10 @@ namespace X1APServer.Service.Model
             /// </summary>
             [MaxLength(10)]
             public string Domicile { get; set; }
+            /// <summary>
+            /// ID
+            /// </summary>
+            public int ID { get; set; }
         }
 
         public class AddPatientInfoRsp : RSPBase

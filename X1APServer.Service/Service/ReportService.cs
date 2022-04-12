@@ -2635,7 +2635,7 @@ namespace X1APServer.Service
             {
                 if (ct.Status < 6)
                     continue;
-                //if (request.StartDate != null && request.StartDate >= ct.FillingDate)
+                //if (request.StartDate != null && request.StartDate >= Convert.ToDateTime(ct.cervixQuestions[28].Value).AddYears(1911))
                 //    continue;
                 if (request.StartDate != null && request.StartDate >= ct.FillingDate)//改成搜尋收件日期
                     continue;
