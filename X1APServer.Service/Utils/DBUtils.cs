@@ -49,24 +49,22 @@ namespace X1APServer.Service.Utils
                                                 let RQs = RQ.Where(x => x.ReportID == Fid && x.QuestionType != 9).ToList()
                                                 select (Xam, cer, RQs))
                 {
-                    foreach (var RQss in RQs)
-                    {
-                        var RDs = RD.Where(x => x.AnswerMID == Xam.ID && x.QuestionID == RQss.ID).FirstOrDefault();
-                        CervixQuestion cq = new CervixQuestion()
-                        {
-                            ID = RQss.ID,
-                            QuestionNo = RQss.QuestionNo,
-                            QuestionType = RQss.QuestionType,
-                            QuestionText = RQss.QuestionText,
-                            Description = RQss.Description,
-                            AnswerOption = RQss.AnswerOption,
-                            AID = RDs == null ? 0 : RDs.ID,
-                            Value = RDs == null ? "" : RDs.Value
-                        };
-                        cer.cervixQuestions.Add(cq);
-                    }
+                    cer.cervixQuestions.AddRange(from RQss in RQs
+                                                 let RDs = RD.Where(x => x.AnswerMID == Xam.ID && x.QuestionID == RQss.ID).FirstOrDefault()
+                                                 let cq = new CervixQuestion()
+                                                 {
+                                                     ID = RQss.ID,
+                                                     QuestionNo = RQss.QuestionNo,
+                                                     QuestionType = RQss.QuestionType,
+                                                     QuestionText = RQss.QuestionText,
+                                                     Description = RQss.Description,
+                                                     AnswerOption = RQss.AnswerOption,
+                                                     AID = RDs == null ? 0 : RDs.ID,
+                                                     Value = RDs == null ? "" : RDs.Value
+                                                 }
+                                                 select cq);
                     // 補上 Vix-30 複選題
-                    var RQs2 = RQ.Where(x => x.ReportID == Fid && x.QuestionNo == "Vix-30").FirstOrDefault();
+                    var RQs2 = RQ.FirstOrDefault(x => x.ReportID == Fid && x.QuestionNo == "Vix-30");
                     var RQs3 = RQ.Where(x => x.ReportID == Fid && x.ParentQuestID == RQs2.ID).ToList();
                     List<int> al = (from RQTemp in RQs3
                                     select RQTemp.ID).ToList();
