@@ -10,7 +10,7 @@ const ReportHistoryItem = (props) => {
 
     return (
         <Link className="ui-historyEntity type-Questionnaire" to={`${url}/${props.reportInfo.ID}`}>
-            <span className={`title ${scolor}`}>{props.index}　{GetDate(props.reportInfo.FillingDate)}　{scontent}</span>
+            <span className={`title ${scolor}`}>{props.index} 建檔日期:{GetDate(props.reportInfo.FillingDate)}　{scontent}</span>
             <span className="attribute">病患姓名: {props.reportInfo.PatientName}　</span>
             <span className="attribute">最後修改人員: {props.reportInfo.ModifyMan}　</span>
             <span className="attribute">最後修改時間: {GetDateTime(props.reportInfo.ModifyDate)}　</span>

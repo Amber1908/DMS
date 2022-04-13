@@ -14,7 +14,7 @@ namespace X1APServer.Service.Utils
             List<CervixTable> cers = new List<CervixTable>();
 
             try
-            {
+            {   
                 int Fid = _uow.Get<IX1_ReportMRepository>().Get(x => x.FuncCode.Contains("cervix") && x.IsPublish).ID;
                 var Xams = _uow.Get<IX1_ReportAnswerMRepository>().GetAll().Where(x => x.ReportID == Fid).ToList();
                 var CA = _uow.Get<IX1_PatientInfoRepository>().GetAll().ToList();
