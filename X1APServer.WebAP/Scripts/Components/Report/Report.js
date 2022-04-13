@@ -248,6 +248,7 @@ const ReportWindow = (props) => {
             case "hospitalname":
                 result.push(<HospitalNameAutosuggest key={"Ans_" + quest.ID} required={required} value={questValue} handleOnChange={props.handleInputOnChange} name={questName} />);
                 break;
+            //TingYu
             case "hospitalCodeandname":
                 result.push(<HospitalCodeAndNameAutosuggest key={"Ans_" + quest.ID} required={required} value={questValue} handleOnChange={props.handleInputOnChange} name={questName} />);
                 break;
