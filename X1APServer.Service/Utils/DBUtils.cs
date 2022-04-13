@@ -9,6 +9,35 @@ namespace X1APServer.Service.Utils
 {
     public static class DBUtils
     {
+        public static List<CervixTable> GetCervixTablesByDate(IX1UnitOfWork _uow, DateTime? startTime, DateTime? endTime)
+        {
+            List<CervixTable> cers = new List<CervixTable>();
+            try
+            {
+                //1.將AnswerMain表單中 QuestionID是29的撈出來(收件日期)
+                List<Repository.X1_Report_Answer_Detail> Q29s = _uow.Get<IX1_ReportAnswerDRepository>().GetAll().Where(x => x.QuestionID == 29).ToList();
+                //2.將AnswerMain表單中 value的值轉換成西元日期 再轉成string
+                List<Repository.X1_Report_Answer_Detail> NewQ29s = new List<Repository.X1_Report_Answer_Detail>();
+                foreach (var Q29 in Q29s)
+                {
+                    DateTime NewQ29 = Convert.ToDateTime(Q29.Value).AddYears(1911);
+                    //3.篩選出在startTime跟endTime之間的
+                    if (startTime >= NewQ29 && endTime <= NewQ29)
+                    {
+                        NewQ29s.Add(Q29);
+                    }
+                }
+
+                //4.封裝成 CervixTable
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return cers;
+        }
+
         public static List<CervixTable> GetCervixTable(IX1UnitOfWork _uow)
         {
             List<CervixTable> cers = new List<CervixTable>();
