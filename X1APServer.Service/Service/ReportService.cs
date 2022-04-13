@@ -2627,7 +2627,8 @@ namespace X1APServer.Service
         {
             var ecUpdate = _uow.Get<IX1_ReportAnswerMRepository>();
             List<CervixExport> cervixExports = new List<CervixExport>();
-            List<CervixTable> cervixTables = DBUtils.GetCervixTable(_uow);
+            //List<CervixTable> cervixTables = DBUtils.GetCervixTable(_uow);
+            List<CervixTable> cervixTables = DBUtils.GetCervixTablesByDate(_uow, request.StartDate, request.EndDate);
             string Vix30 = "";
             int tempInt = 0;
 

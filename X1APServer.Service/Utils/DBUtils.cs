@@ -9,6 +9,34 @@ namespace X1APServer.Service.Utils
 {
     public static class DBUtils
     {
+        public static List<CervixTable> GetCervixTablesByDate(IX1UnitOfWork _uow,DateTime? startTime, DateTime? endTime)
+        {
+            List<CervixTable> cers = new List<CervixTable>();
+            try
+            {
+                //1.將AnswerMain表單中 QuestionID是29的撈出來(收件日期)
+                List<Repository.X1_Report_Answer_Detail> Q29s = _uow.Get<IX1_ReportAnswerDRepository>().GetAll().Where(x=>x.QuestionID==29).ToList();
+                //2.將AnswerMain表單中 value的值轉換成西元日期 再轉成string
+                List<Repository.X1_Report_Answer_Detail> NewQ29s = new List<Repository.X1_Report_Answer_Detail>();
+                foreach (var Q29 in Q29s)
+                {
+                    DateTime NewQ29 = Convert.ToDateTime(Q29.Value).AddYears(1911);
+                    //3.篩選出在startTime跟endTime之間的
+                    if (startTime>= NewQ29&&endTime<= NewQ29)
+                    {
+                        NewQ29s.Add(Q29);
+                    }
+                }
+                
+                //4.封裝成 CervixTable
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return cers;
+        }
         public static List<CervixTable> GetCervixTable(IX1UnitOfWork _uow)
         {
             List<CervixTable> cers = new List<CervixTable>();
@@ -16,14 +44,14 @@ namespace X1APServer.Service.Utils
             try
             {   
                 int Fid = _uow.Get<IX1_ReportMRepository>().Get(x => x.FuncCode.Contains("cervix") && x.IsPublish).ID;
-                var Xams = _uow.Get<IX1_ReportAnswerMRepository>().GetAll().Where(x => x.ReportID == Fid).ToList();
-                var CA = _uow.Get<IX1_PatientInfoRepository>().GetAll().ToList();
-                var RQ = _uow.Get<IX1_ReportQuestionRepository>().GetAll().ToList();
-                var RD = _uow.Get<IX1_ReportAnswerDRepository>().GetAll().ToList();
+                List<Repository.X1_Report_Answer_Main> Xams = _uow.Get<IX1_ReportAnswerMRepository>().GetAll().Where(x => x.ReportID == Fid).ToList();
+                List<Repository.X1_PatientInfo> CA = _uow.Get<IX1_PatientInfoRepository>().GetAll().ToList();
+                List<Repository.X1_Report_Question> RQ = _uow.Get<IX1_ReportQuestionRepository>().GetAll().ToList();
+                List<Repository.X1_Report_Answer_Detail> RD = _uow.Get<IX1_ReportAnswerDRepository>().GetAll().ToList();
                
                 foreach (var Xam in Xams)
                 {
-                    var CAs = CA.Where(x => x.ID == Xam.PID).FirstOrDefault();
+                    Repository.X1_PatientInfo CAs = CA.FirstOrDefault(x => x.ID == Xam.PID);
 
                     CervixTable cer = new CervixTable()
                     {
@@ -70,7 +98,7 @@ namespace X1APServer.Service.Utils
                     }
 
                     // 補上 Vix-30 複選題
-                    var RQs2 = RQ.Where(x => x.ReportID == Fid && x.QuestionNo == "Vix-30").FirstOrDefault();
+                    var RQs2 = RQ.FirstOrDefault(x => x.ReportID == Fid && x.QuestionNo == "Vix-30");
                     var RQs3 = RQ.Where(x => x.ReportID == Fid && x.ParentQuestID == RQs2.ID).ToList();
                     List<int> al = new List<int>();
                     foreach(var RQTemp in RQs3)
