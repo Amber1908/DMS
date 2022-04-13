@@ -2627,8 +2627,8 @@ namespace X1APServer.Service
         {
             var ecUpdate = _uow.Get<IX1_ReportAnswerMRepository>();
             List<CervixExport> cervixExports = new List<CervixExport>();
-            //List<CervixTable> cervixTables = DBUtils.GetCervixTable(_uow);
-            List<CervixTable> cervixTables = DBUtils.GetCervixTablesByDate(_uow, request.StartDate, request.EndDate);
+            List<CervixTable> cervixTables = DBUtils.GetCervixTable(_uow);
+            //List<CervixTable> cervixTables = DBUtils.GetCervixTablesByDate(_uow, request.StartDate, request.EndDate);
             string Vix30 = "";
             int tempInt = 0;
 
@@ -2637,15 +2637,15 @@ namespace X1APServer.Service
                 if (ct.Status < 6)
                     continue;
                 //改成搜尋收件日期
-                if (request.StartDate != null && request.StartDate >= Convert.ToDateTime(ct.cervixQuestions[28].Value).AddYears(1911))
-                    continue;
-                if (request.EndDate != null && request.EndDate <= Convert.ToDateTime(ct.cervixQuestions[28].Value).AddYears(1911))
-                    continue;
+                //if (request.StartDate != null && request.StartDate >= Convert.ToDateTime(ct.cervixQuestions[28].Value).AddYears(1911))
+                //    continue;
+                //if (request.EndDate != null && request.EndDate <= Convert.ToDateTime(ct.cervixQuestions[28].Value).AddYears(1911))
+                //    continue;
 
-                //if (request.StartDate != null && request.StartDate >= ct.FillingDate)
-                //    continue;
-                //if (request.EndDate != null && request.EndDate <= ct.FillingDate)
-                //    continue;
+                if (request.StartDate != null && request.StartDate >= ct.FillingDate)
+                    continue;
+                if (request.EndDate != null && request.EndDate <= ct.FillingDate)
+                    continue;
                 if (request.Status != 0 && request.Status + 5 != ct.Status)
                     continue;
                 
