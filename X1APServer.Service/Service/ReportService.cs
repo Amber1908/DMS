@@ -8,6 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using AutoMapper;
+using Connection;
+using Dapper;
 using ExcelDataReader;
 using Newtonsoft.Json;
 using NPOI.SS.UserModel;
@@ -27,6 +29,7 @@ namespace X1APServer.Service
 {
     public class ReportService : IReportService
     {
+        private readonly Connection.ConnectionFactory _connectionFactory;
         private readonly IX1UnitOfWork _uow;
         private readonly IPatientService _patientSvc;
         private readonly IFileService _fileSvc;
@@ -2627,8 +2630,9 @@ namespace X1APServer.Service
         {
             var ecUpdate = _uow.Get<IX1_ReportAnswerMRepository>();
             List<CervixExport> cervixExports = new List<CervixExport>();
-            List<CervixTable> cervixTables = DBUtils.GetCervixTable(_uow);
-            //List<CervixTable> cervixTables = DBUtils.GetCervixTablesByDate(_uow, request.StartDate, request.EndDate);
+            //List<CervixTable> cervixTables = DBUtils.GetCervixTable(_uow);
+            //List<CervixTable> cervixTables = GetCervixTableByDapper();
+            List<CervixTable> cervixTables = DBUtils.GetCervixTablesByDate(_uow, request.StartDate, request.EndDate);
             string Vix30 = "";
             int tempInt = 0;
 
@@ -2810,6 +2814,7 @@ namespace X1APServer.Service
 
             return ResponseHelper.Ok();
         }
+
 
         public RSPBase ExportExcel(ExportExcelM.Request request, ref ExportExcelM.Response response, string rootPath)
         {
@@ -3287,6 +3292,27 @@ namespace X1APServer.Service
 
             return ResponseHelper.Ok();
         }
+        //TingYu
+        //public static List<CervixTable> GetCervixTableByDapper()
+        //{
+        //    List<CervixTable> cervixTable = new List<CervixTable>();
+        //    var connectionFactory = new ConnectionFactory();
+            
+        //    var sql = @"select RAM.ID,RAM.ReportID,RAM.FillingDate,RAM.CreateDate,RAM.ModifyDate,RAM.[Status],
+        //          Patient.ID as CaseID,Patient.PUCountry,Patient.PUName,Patient.PUDOB,Patient.IDNo,Patient.Cellphone,Patient.Education,Patient.AddrCode,Patient.Addr,Patient.HCCode,Patient.Addr,Patient.Domicile,
+        //          CervixQ.ID as QId,CervixQ.QuestionNo,CervixQ.QuestionType,CervixQ.QuestionText,CervixQ.[Description],CervixQ.AnswerOption,
+        //          Ans.ID as AId,Ans.[Value]
+        //        from X1_Report_Answer_Main AS RAM 
+        //        Left Join X1_PatientInfo As Patient on Patient.ID=RAM.PID
+        //        Left Join X1_Report_Question As CervixQ on CervixQ.ReportID=RAM.ReportID
+        //        Left Join X1_Report_Answer_Detail AS Ans on Ans.AnswerMID=RAM.ID and Ans.QuestionID=CervixQ.ID
+        //        where RAM.ReportID=1
+        //    ";
+        //    var dy = connectionFactory.CreateConnection(sql);
+        //    cervixTable = Slapper.AutoMapper.MapDynamic<CervixTable>(dy, false).ToList();
+
+        //    return cervixTable;
+        //}
 
         //public RSPBase GetAllSequenceNum(GetAllSequenceNumM.Request request, ref GetAllSequenceNumM.Response response)
         //{
@@ -3303,7 +3329,6 @@ namespace X1APServer.Service
             return ResponseHelper.Ok();
            
         }
-
 
     }
 }

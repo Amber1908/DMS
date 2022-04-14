@@ -1,14 +1,37 @@
-﻿using System;
+﻿using Connection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using X1APServer.Repository.Interface;
 using X1APServer.Repository.Utility.Interface;
 using X1APServer.Service.Model;
+using X1APServer.Service.Service;
 
 namespace X1APServer.Service.Utils
 {
     public static class DBUtils
     {
+        //public static List<CervixTable> GetCervixTableByDapper(IX1UnitOfWork _uow)
+        //{
+        //    List<CervixTable> cervixTable = new List<CervixTable>();
+        //    var connectionFactory = new ConnectionFactory();
+        //    var cn=_uow.Get().
+        //    var sql = @"select RAM.ID,RAM.ReportID,RAM.FillingDate,RAM.CreateDate,RAM.ModifyDate,RAM.[Status],
+		      //  Patient.ID as CaseID,Patient.PUCountry,Patient.PUName,Patient.PUDOB,Patient.IDNo,Patient.Cellphone,Patient.Education,Patient.AddrCode,Patient.Addr,Patient.HCCode,Patient.Addr,Patient.Domicile,
+		      //  CervixQ.ID as QId,CervixQ.QuestionNo,CervixQ.QuestionType,CervixQ.QuestionText,CervixQ.[Description],CervixQ.AnswerOption,
+		      //  Ans.ID as AId,Ans.[Value]
+        //        from X1_Report_Answer_Main AS RAM 
+        //        Left Join X1_PatientInfo As Patient on Patient.ID=RAM.PID
+        //        Left Join X1_Report_Question As CervixQ on CervixQ.ReportID=RAM.ReportID
+        //        Left Join X1_Report_Answer_Detail AS Ans on Ans.AnswerMID=RAM.ID and Ans.QuestionID=CervixQ.ID
+        //        where RAM.ReportID=1
+        //    ";
+        //    var dy = cn.Query<dynamic>(sql);
+        //    cervixTable = Slapper.AutoMapper.MapDynamic<CervixTable>(dy, false).ToList();
+
+        //    return cervixTable;
+        //}
+
         public static List<CervixTable> GetCervixTable(IX1UnitOfWork _uow)
         {
             List<CervixTable> cers = new List<CervixTable>();

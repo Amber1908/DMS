@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Dapper;
 using iDoctorTools.Models;
 using NLog;
 using WebApplication1.Infrastructure.Common;
 using WebApplication1.Misc;
 using X1APServer.Repository;
+using X1APServer.Repository.Utility.Interface;
 using X1APServer.Service.Interface;
 using X1APServer.Service.Model;
 using X1APServer.Service.Service.Interface;
@@ -23,15 +26,42 @@ namespace WebApplication1.WebApi
     {
         private IIDoctorService _idoctorSvc;
         private IX1APService _svc;
-
+        //TingYu
+        private Connection.ConnectionFactory _connectionFactory;
         private Logger logger = LogManager.GetCurrentClassLogger();
 
         public X1APServerController(IIDoctorService idoctorSvc, IX1APService svc)
         {
             _idoctorSvc = idoctorSvc;
             _svc = svc;
+            _connectionFactory = new Connection.ConnectionFactory();
         }
+        [HttpGet]
+        [Route("mapping/slapper")]
+        /// <summary>
+        /// 取得CervixTable
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
 
+        public List<CervixTable> MappingCervixTable()
+        {
+            List<CervixTable> cervixTable= new List<CervixTable>();
+            var cn = _connectionFactory.CreateConnection();
+            var sql = @"select RAM.ID,RAM.ReportID,RAM.FillingDate,RAM.CreateDate,RAM.ModifyDate,RAM.[Status],
+		        Patient.ID as CaseID,Patient.PUCountry,Patient.PUName,Patient.PUDOB,Patient.IDNo,Patient.Cellphone,Patient.Education,Patient.AddrCode,Patient.Addr,Patient.HCCode,Patient.Addr,Patient.Domicile,
+		        CervixQ.ID as QId,CervixQ.QuestionNo,CervixQ.QuestionType,CervixQ.QuestionText,CervixQ.[Description],CervixQ.AnswerOption,
+		        Ans.ID as AId,Ans.[Value]
+                from X1_Report_Answer_Main AS RAM 
+                Left Join X1_PatientInfo As Patient on Patient.ID=RAM.PID
+                Left Join X1_Report_Question As CervixQ on CervixQ.ReportID=RAM.ReportID
+                Left Join X1_Report_Answer_Detail AS Ans on Ans.AnswerMID=RAM.ID and Ans.QuestionID=CervixQ.ID
+                where RAM.ReportID=1
+            ";
+            var dy = cn.Query<dynamic>(sql);
+            cervixTable = Slapper.AutoMapper.MapDynamic<CervixTable>(dy, false).ToList();
+            return cervixTable;
+        }
         /// <summary>
         /// 取得醫生資訊
         /// </summary>
