@@ -3254,6 +3254,11 @@
             戶籍地區碼
             </summary>
         </member>
+        <member name="P:X1APServer.Service.Model.AddPatientInfoM.AddPatientInfoReq.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
         <member name="P:X1APServer.Service.Model.AddPatientInfoM.AddPatientInfoRsp.ID">
             <summary>
             ID

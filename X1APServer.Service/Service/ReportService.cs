@@ -2635,12 +2635,16 @@ namespace X1APServer.Service
             {
                 if (ct.Status < 6)
                     continue;
+                //改成搜尋收件日期
+                if (request.StartDate != null && request.StartDate >= Convert.ToDateTime(ct.cervixQuestions[28].Value).AddYears(1911))
+                    continue;
+                if (request.EndDate != null && request.EndDate <= Convert.ToDateTime(ct.cervixQuestions[28].Value).AddYears(1911))
+                    continue;
+
                 //if (request.StartDate != null && request.StartDate >= ct.FillingDate)
                 //    continue;
-                if (request.StartDate != null && request.StartDate >= ct.FillingDate)//改成搜尋收件日期
-                    continue;
-                if (request.EndDate != null && request.EndDate <= ct.FillingDate)
-                    continue;
+                //if (request.EndDate != null && request.EndDate <= ct.FillingDate)
+                //    continue;
                 if (request.Status != 0 && request.Status + 5 != ct.Status)
                     continue;
                 
