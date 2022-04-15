@@ -3296,8 +3296,8 @@ namespace X1APServer.Service
         //public static List<CervixTable> GetCervixTableByDapper()
         //{
         //    List<CervixTable> cervixTable = new List<CervixTable>();
-        //    var connectionFactory = new ConnectionFactory();
-            
+        //var connectionFactory = new ConnectionFactory();
+
         //    var sql = @"select RAM.ID,RAM.ReportID,RAM.FillingDate,RAM.CreateDate,RAM.ModifyDate,RAM.[Status],
         //          Patient.ID as CaseID,Patient.PUCountry,Patient.PUName,Patient.PUDOB,Patient.IDNo,Patient.Cellphone,Patient.Education,Patient.AddrCode,Patient.Addr,Patient.HCCode,Patient.Addr,Patient.Domicile,
         //          CervixQ.ID as QId,CervixQ.QuestionNo,CervixQ.QuestionType,CervixQ.QuestionText,CervixQ.[Description],CervixQ.AnswerOption,
