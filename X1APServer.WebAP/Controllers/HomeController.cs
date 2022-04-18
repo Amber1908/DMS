@@ -50,6 +50,7 @@ namespace X1APServer.Controllers
                     DBName = webSetting.web_db,
                     UserList = requestUserList
                 };
+                Session["WenDB"] = webSetting.web_db;
                 client.SyncUserList(serviceInfo, request);
 
                 var genTokenReq = new GenerateTokenM.Request()

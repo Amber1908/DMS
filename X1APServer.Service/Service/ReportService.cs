@@ -2631,8 +2631,6 @@ namespace X1APServer.Service
             var ecUpdate = _uow.Get<IX1_ReportAnswerMRepository>();
             List<CervixExport> cervixExports = new List<CervixExport>();
             List<CervixTable> cervixTables = DBUtils.GetCervixTable(_uow);
-            //List<CervixTable> cervixTables = GetCervixTableByDapper();
-            //List<CervixTable> cervixTables = DBUtils.GetCervixTablesByDate(_uow, request.StartDate, request.EndDate);
             string Vix30 = "";
             int tempInt = 0;
 
@@ -2688,14 +2686,41 @@ namespace X1APServer.Service
                             ce.PASDATE = ROC.CDate2WDate(cq.Value);
                             break;
                         case "Vix-19-1":
-                            ce.PASCODE = cq.Value;
+                            if (cq.Value.Trim()!=string.Empty)
+                            {
+                                ce.PASCODE = cq.Value;
+                            }
                             break;
                         case "Vix-19":
-                            ce.PASCODE = cq.Value;
+                            //沒有合併欄位
+                            if (cq.Value.Length<10)
+                            {
+                                ce.PASCODE = ce.PASCODE;
+                            }
+                            else
+                            {
+                                ce.PASCODE = cq.Value.Substring(0, 10);
+                            }
                             break;
                         case "Vix-24-1":
-                            ce.CHKCODE = cq.Value;
+                            if (cq.Value.Trim()!=string.Empty)
+                            {
+                                ce.CHKCODE = cq.Value;
+                            }
                             break;
+                        case "Vix-24":
+                            //沒有合併欄位
+                            if (cq.Value.Length < 10)
+                            {
+                                ce.CHKCODE = ce.CHKCODE;
+                            }
+                            else
+                            {
+                                ce.CHKCODE = cq.Value.Substring(0, 10);
+                            }
+                            break;
+
+                        
                         case "Vix-25":
                             ce.CHKREC = ROC.CDate2WDate(cq.Value);
                             break;

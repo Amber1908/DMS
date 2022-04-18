@@ -34,7 +34,9 @@ const ExportCervixModal = (props) => {
                 "EndDate": formData.endDate,
                 "Status": formData.formStatus,
                 "FuncCode": GlobalConstants.FuncCode.ViewWebsite,
-                "AuthCode": 1
+                "AuthCode": 1,
+               
+                //todo TingYu 加Web_sn  cookies[GlobalConstants.CookieName].WebSn
             },
             success: (rsp) => {
                 setExportBtnStatus(GlobalConstants.Status.INIT);

@@ -875,7 +875,8 @@ namespace WebApplication1.WebApi
                     Web_name = websetting.web_name,
                     Web_sn = websetting.web_sn
                 });
-
+                
+                
                 var AuthSvc = new AuthServiceClient();
                 var requestUserList = allUser.Select(u => new SyncUserListM.User()
                 {
@@ -894,6 +895,7 @@ namespace WebApplication1.WebApi
                     AccID = session.email,
                     DBName = websetting.web_db
                 };
+                //TingYu
                 var rsp = AuthSvc.GenerateToken(_serviceInfo, req);
 
                 AuthSvc.Close();
