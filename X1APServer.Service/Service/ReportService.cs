@@ -2568,6 +2568,11 @@ namespace X1APServer.Service
         private string GetCurrentQuestAns(List<AnsWithPatient> allAns, Quest currentQuest, int currentAnsMID)
         {
             var currentAns = allAns.FirstOrDefault(a => a.QuestID == currentQuest.ID && a.AnswerM.ID == currentAnsMID);
+            //todo
+            //if (currentAns == null)
+            //{
+            //    var ansM = allAns.Select(a => a.AnswerM.ID = currentAnsMID).ToList();
+            //}
             if (currentAns == null && currentQuest.Question.QuestionType == 9)
             {
                 var ans = "";
@@ -2605,6 +2610,14 @@ namespace X1APServer.Service
                 //題目若是單選或下拉檢查是否選擇"其他"選項
                 switch (currentQuest.Question.QuestionType)
                 {
+                    //case 21:
+                    //    if (currentQuest.CodingBookTitle)
+                    //    {
+                    //        //合併機構代碼跟機構名稱
+                    //        ans = currentAns.Answer.Substring(11);
+                    //        return ans;
+                    //    }
+                        //break;
                     case 7:
                     case 8:
                         if (currentAns.Answer.Equals("other"))
@@ -3010,10 +3023,33 @@ namespace X1APServer.Service
                         for (int i = 0; i < requestQuestList.Count; i++)
                         {
                             //多選題要將所有選項的答案串接
-                            rowData[remainColCount + i] = GetCurrentQuestAns(filterByReport, requestQuestList[i], reportAns.AnswerM.ID);
-                            // joe fix Null column
-                            if (rowData[remainColCount + i] == null || rowData[remainColCount + i] == "Null")
-                                rowData[remainColCount + i] = "";
+                            if (requestQuestList[i].ID==17)
+                            {
+                               var ans = GetCurrentQuestAns(filterByReport, requestQuestList[i], reportAns.AnswerM.ID);
+                               string num = ans.Substring(0,1);
+
+                                if (ans.Length>10 && DBUtils.isNumber(num))
+                                {
+                                    ans.Substring(11);
+                                    rowData[remainColCount + i] = ans.Substring(11);
+                                    rowData[remainColCount + i + 1] = ans.Substring(0, 10);
+                                }
+                                else
+                                {
+                                    rowData[remainColCount + i] = GetCurrentQuestAns(filterByReport, requestQuestList[i], reportAns.AnswerM.ID);
+                                    // joe fix Null column
+                                    if (rowData[remainColCount + i] == null || rowData[remainColCount + i] == "Null")
+                                        rowData[remainColCount + i] = "";
+                                }
+
+                            }
+                            else
+                            {
+                                rowData[remainColCount + i] = GetCurrentQuestAns(filterByReport, requestQuestList[i], reportAns.AnswerM.ID);
+                                // joe fix Null column
+                                if (rowData[remainColCount + i] == null || rowData[remainColCount + i] == "Null")
+                                    rowData[remainColCount + i] = "";
+                            }
                         }
 
                         if (!excelData.ContainsKey(report.ID))

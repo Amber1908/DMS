@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web.Configuration;
 using X1APServer.Repository.Interface;
 using X1APServer.Repository.Utility.Interface;
@@ -216,7 +217,22 @@ namespace X1APServer.Service.Utils
             return cers;
         }
 
+        //TINGYU 是否是數字
+        public static bool isNumber(string Number)
+        {
+            var hasUpperChar = new Regex(@"[A-Z]+");
+            var hasNumber = new Regex(@"[0-9]");
+            if (hasNumber.IsMatch(Number)|| hasUpperChar.IsMatch(Number))
+            {
+                return  true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
+
 }
 
 
