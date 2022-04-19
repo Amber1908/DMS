@@ -3023,33 +3023,10 @@ namespace X1APServer.Service
                         for (int i = 0; i < requestQuestList.Count; i++)
                         {
                             //多選題要將所有選項的答案串接
-                            if (requestQuestList[i].ID==17)
-                            {
-                               var ans = GetCurrentQuestAns(filterByReport, requestQuestList[i], reportAns.AnswerM.ID);
-                               string num = ans.Substring(0,1);
-
-                                if (ans.Length>10 && DBUtils.isNumber(num))
-                                {
-                                    ans.Substring(11);
-                                    rowData[remainColCount + i] = ans.Substring(11);
-                                    rowData[remainColCount + i + 1] = ans.Substring(0, 10);
-                                }
-                                else
-                                {
-                                    rowData[remainColCount + i] = GetCurrentQuestAns(filterByReport, requestQuestList[i], reportAns.AnswerM.ID);
-                                    // joe fix Null column
-                                    if (rowData[remainColCount + i] == null || rowData[remainColCount + i] == "Null")
-                                        rowData[remainColCount + i] = "";
-                                }
-
-                            }
-                            else
-                            {
-                                rowData[remainColCount + i] = GetCurrentQuestAns(filterByReport, requestQuestList[i], reportAns.AnswerM.ID);
-                                // joe fix Null column
-                                if (rowData[remainColCount + i] == null || rowData[remainColCount + i] == "Null")
-                                    rowData[remainColCount + i] = "";
-                            }
+                            rowData[remainColCount + i] = GetCurrentQuestAns(filterByReport, requestQuestList[i], reportAns.AnswerM.ID);
+                            // joe fix Null column
+                            if (rowData[remainColCount + i] == null || rowData[remainColCount + i] == "Null")
+                                rowData[remainColCount + i] = "";
                         }
 
                         if (!excelData.ContainsKey(report.ID))
