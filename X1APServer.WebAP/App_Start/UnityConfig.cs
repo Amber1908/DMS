@@ -4,7 +4,6 @@
 using Unity;
 using Unity.AspNet.Mvc;
 using X1APServer.Infrastructure.Common;
-
 using System;
 using System.Reflection;
 using System.Web.Http;
@@ -21,6 +20,7 @@ using X1APServer.Service.Interface;
 using WebApplication1.Infrastructure.Common.Interface;
 using System.Configuration;
 using NLog;
+using System.Web.Configuration;
 
 namespace X1APServer.WEB
 {
@@ -46,13 +46,12 @@ namespace X1APServer.WEB
         /// </summary>
         public static IUnityContainer Container => container.Value;
         #endregion
-
+        //todo TINGYU
         public static Func<IUnityContainer, object> getConnectionString = c =>
         {
             var connectionString = "";
             var sessionkey = HttpContext.Current.Request.Headers["SessionKey"];
             var WebSN = HttpContext.Current.Request.Headers["WebSN"];
-
             if (sessionkey != null)
             {
                 if (!GlobalVariable.Instance.ContainsKey(sessionkey))
@@ -61,8 +60,9 @@ namespace X1APServer.WEB
                     var dmsSetting = svc.GetDMSSetting(sessionkey);
                     GlobalVariable.Instance.TryAdd(sessionkey, dmsSetting.Web_db);
                 }
-
                 connectionString = string.Format(_connStrTemplate, GlobalVariable.Instance.Get(sessionkey));
+                //TingYU 拿到站台名稱
+                System.Web.HttpContext.Current.Session["Web_DB"] = GlobalVariable.Instance.Get(sessionkey);
             }
             else if(WebSN != null)
             {
@@ -73,6 +73,7 @@ namespace X1APServer.WEB
 
             return new X1APEntities(connectionString);
         };
+
 
         /// <summary>
         /// Registers the type mappings with the Unity container.
@@ -99,7 +100,7 @@ namespace X1APServer.WEB
             //container.RegisterType<X1APEntities, X1APEntities>(new PerRequestLifetimeManager());
             container.RegisterFactory<X1APEntities>(getConnectionString, new PerRequestLifetimeManager());
             container.RegisterType<DMSShareEntities, DMSShareEntities>(new PerRequestLifetimeManager());
-
+            
             //Logger
             //container.RegisterType<ILogger, EnterpriseLogger>();
             //container.RegisterType<ILogger, NLogger>();

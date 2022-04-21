@@ -1165,6 +1165,13 @@
             X1 Imaging 系統專用 API.
             </summary>
         </member>
+        <member name="M:WebApplication1.WebApi.X1APServerController.GetUserList(X1APServer.Service.Model.X1UserDataGetM.X1UserDataGetReq)">
+            <summary>
+            取得醫生資訊
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
         <member name="M:WebApplication1.WebApi.X1APServerController.GetCervixForm(X1APServer.Service.Model.GetCervixFormM.GetCervixFormReq)">
             <summary>
             取得檢體清單

@@ -55,7 +55,7 @@ namespace X1APServer.Service
             var response = await client.GetAsyncAndLog(url);
             var responseBody = await response.Content.ReadAsStringAsync();
             var rspObj = JsonConvert.DeserializeObject<HEALTHWEB>(responseBody);
-            //TINGYU 
+           
             return rspObj;
         }
 

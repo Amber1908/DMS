@@ -319,7 +319,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service\ConnectionFactory.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="Enum\QuestionType.cs" />
     <Compile Include="iDoctorModel\AREACODE.cs" />

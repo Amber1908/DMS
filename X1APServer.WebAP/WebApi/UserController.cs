@@ -895,13 +895,13 @@ namespace WebApplication1.WebApi
                     AccID = session.email,
                     DBName = websetting.web_db
                 };
-                //TingYu
                 var rsp = AuthSvc.GenerateToken(_serviceInfo, req);
 
                 AuthSvc.Close();
 
                 retResp.UserSecurityInfo = rsp.SecurityInfo;
                 retResp.SessionKey = session.sessionkey;
+
 
                 //if (!GlobalVariable.SessionDBMap.ContainsKey(session.sessionkey))
                 //{

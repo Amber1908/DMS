@@ -8,8 +8,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using AutoMapper;
-using Connection;
-using Dapper;
 using ExcelDataReader;
 using Newtonsoft.Json;
 using NPOI.SS.UserModel;
@@ -23,13 +21,14 @@ using X1APServer.Service.Interface;
 using X1APServer.Service.Misc;
 using X1APServer.Service.Model;
 using X1APServer.Service.Utils;
+using X1APServer.Service;
 using Xceed.Words.NET;
 
 namespace X1APServer.Service
 {
     public class ReportService : IReportService
     {
-        private readonly Connection.ConnectionFactory _connectionFactory;
+       
         private readonly IX1UnitOfWork _uow;
         private readonly IPatientService _patientSvc;
         private readonly IFileService _fileSvc;
@@ -38,14 +37,16 @@ namespace X1APServer.Service
         private static BMDC.Models.Auth.AuthCommon.ServiceInfo _serviceInfo = null;
         private List<string> _formatError;
         private readonly string _errorTemplate = "{0} 行:{1} 欄:{2}";
+        
 
         public ReportService(IX1UnitOfWork uow, IPatientService patientSvc, IFileService fileSvc)
         {
             _uow = uow;
             _patientSvc = patientSvc;
             _fileSvc = fileSvc;
+           
 
-            _serviceInfo = new BMDC.Models.Auth.AuthCommon.ServiceInfo()
+           _serviceInfo = new BMDC.Models.Auth.AuthCommon.ServiceInfo()
             {
                 SysCode = ConfigurationManager.AppSettings["WebSysCode"],
                 ServiceKey = ConfigurationManager.AppSettings["WebFrameServiceToken"]
@@ -2644,23 +2645,23 @@ namespace X1APServer.Service
             var ecUpdate = _uow.Get<IX1_ReportAnswerMRepository>();
             List<CervixExport> cervixExports = new List<CervixExport>();
             List<CervixTable> cervixTables = DBUtils.GetCervixTable(_uow);
+
             string Vix30 = "";
             int tempInt = 0;
-
             foreach (CervixTable ct in cervixTables)
             {
                 if (ct.Status < 6)
                     continue;
                 //改成搜尋收件日期
-                //if (request.StartDate != null && request.StartDate >= Convert.ToDateTime(ct.cervixQuestions[28].Value).AddYears(1911))
-                //    continue;
-                //if (request.EndDate != null && request.EndDate <= Convert.ToDateTime(ct.cervixQuestions[28].Value).AddYears(1911))
-                //    continue;
+                if (request.StartDate != null && request.StartDate >= Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("抹片收到日期")).Value).AddYears(1911))
+                continue;
+                if (request.EndDate != null && request.EndDate <= Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("抹片收到日期")).Value).AddYears(1911))
+               continue;
 
-                if (request.StartDate != null && request.StartDate >= ct.FillingDate)
-                    continue;
-                if (request.EndDate != null && request.EndDate <= ct.FillingDate)
-                    continue;
+                //if (request.StartDate != null && request.StartDate >= ct.FillingDate)
+                //    continue;
+                //if (request.EndDate != null && request.EndDate <= ct.FillingDate)
+                //    continue;
                 if (request.Status != 0 && request.Status + 5 != ct.Status)
                     continue;
                 
@@ -2698,22 +2699,8 @@ namespace X1APServer.Service
                         case "Vix-18":
                             ce.PASDATE = ROC.CDate2WDate(cq.Value);
                             break;
-                        case "Vix-19-1":
-                            if (cq.Value.Trim()!=string.Empty)
-                            {
-                                ce.PASCODE = cq.Value;
-                            }
-                            break;
                         case "Vix-19":
-                            //沒有合併欄位
-                            if (cq.Value.Length<10)
-                            {
-                                ce.PASCODE = ce.PASCODE;
-                            }
-                            else
-                            {
                                 ce.PASCODE = cq.Value.Substring(0, 10);
-                            }
                             break;
                         case "Vix-24-1":
                             if (cq.Value.Trim()!=string.Empty)
@@ -2732,13 +2719,8 @@ namespace X1APServer.Service
                                 ce.CHKCODE = cq.Value.Substring(0, 10);
                             }
                             break;
-
-                        
                         case "Vix-25":
                             ce.CHKREC = ROC.CDate2WDate(cq.Value);
-                            break;
-                        case "Vix-23":
-                            ce.CHKNO = cq.Value;
                             break;
                         case "Vix-28":
                             if (int.TryParse(cq.Value, out tempInt))
@@ -2770,6 +2752,14 @@ namespace X1APServer.Service
                             ce.CHKSURED = ROC.CDate2WDate(cq.Value);
                             break;
                         case "Vix-23-1":
+                            if (int.TryParse(cq.Value, out tempInt))
+                                ce.CHKQTY = tempInt;
+                            if (cq.QuestionText.Contains("抹片細胞病理編號"))
+                            {
+                                ce.CHKNO = cq.Value;
+                            }
+                            break;
+                        case "Vix-23-2":
                             if (int.TryParse(cq.Value, out tempInt))
                                 ce.CHKQTY = tempInt;
                             break;
