@@ -401,13 +401,14 @@ namespace X1APServer.Service
 
                 _uow.CommitTransaction();
         }
-            catch (Exception)
+            catch (Exception ex)
             {
+                var err = ex;
                 _uow.RollBackTransaction();
             throw;
         }
 
-        rSPBase.ReturnCode = ErrorCode.OK;
+    rSPBase.ReturnCode = ErrorCode.OK;
             rSPBase.ReturnMsg = "OK";
             return rSPBase;
         }
@@ -2701,12 +2702,6 @@ namespace X1APServer.Service
                             break;
                         case "Vix-19":
                                 ce.PASCODE = cq.Value.Substring(0, 10);
-                            break;
-                        case "Vix-24-1":
-                            if (cq.Value.Trim()!=string.Empty)
-                            {
-                                ce.CHKCODE = cq.Value;
-                            }
                             break;
                         case "Vix-24":
                                 ce.CHKCODE = cq.Value.Substring(0, 10);
