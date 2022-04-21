@@ -2709,15 +2709,7 @@ namespace X1APServer.Service
                             }
                             break;
                         case "Vix-24":
-                            //沒有合併欄位
-                            if (cq.Value.Length < 10)
-                            {
-                                ce.CHKCODE = ce.CHKCODE;
-                            }
-                            else
-                            {
                                 ce.CHKCODE = cq.Value.Substring(0, 10);
-                            }
                             break;
                         case "Vix-25":
                             ce.CHKREC = ROC.CDate2WDate(cq.Value);
@@ -2754,10 +2746,6 @@ namespace X1APServer.Service
                         case "Vix-23-1":
                             if (int.TryParse(cq.Value, out tempInt))
                                 ce.CHKQTY = tempInt;
-                            if (cq.QuestionText.Contains("抹片細胞病理編號"))
-                            {
-                                ce.CHKNO = cq.Value;
-                            }
                             break;
                         case "Vix-23-2":
                             if (int.TryParse(cq.Value, out tempInt))
