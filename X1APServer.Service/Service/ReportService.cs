@@ -2650,6 +2650,7 @@ namespace X1APServer.Service
 
             string Vix30 = "";
             int tempInt = 0;
+
             foreach (CervixTable ct in cervixTables)
             {
                 if (ct.Status < 6)
@@ -2660,10 +2661,18 @@ namespace X1APServer.Service
                 if (request.EndDate != null && request.EndDate <= Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("抹片收到日期")).Value).AddYears(1911))
                continue;
                 //確診日
-                if (request.DiagnosedstartDate != null && request.DiagnosedstartDate >= Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value).AddYears(1911))
-                    continue;
-                if (request.DiagnosedendDate != null && request.DiagnosedendDate >= Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value).AddYears(1911))
-                    continue;
+                if (request.DiagnosedstartDate != null&& ct.cervixQuestions.Any(x => x.QuestionText.Contains("確診日期")))
+                {
+                    DateTime diagnosedstartDate = Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value).AddYears(1911);
+                    if (request.DiagnosedstartDate>= diagnosedstartDate)
+                        continue;
+                }
+                if (request.DiagnosedendDate != null && ct.cervixQuestions.Any(x => x.QuestionText.Contains("確診日期")))
+                {
+                    DateTime diagnosedendDate = Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value).AddYears(1911);
+                    if (request.DiagnosedendDate <= diagnosedendDate)
+                        continue;
+                }
                 //if (request.StartDate != null && request.StartDate >= ct.FillingDate)
                 //    continue;
                 //if (request.EndDate != null && request.EndDate <= ct.FillingDate)
