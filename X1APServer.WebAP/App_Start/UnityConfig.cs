@@ -56,8 +56,6 @@ namespace X1APServer.WEB
                     GlobalVariable.Instance.TryAdd(sessionkey, dmsSetting.Web_db);
                 }
                 connectionString = string.Format(_connStrTemplate, GlobalVariable.Instance.Get(sessionkey));
-                //TingYU
-                //HttpContext.Current.Session["Web_DB"] = GlobalVariable.Instance.Get(sessionkey);
             }
             else if(WebSN != null)
             {
