@@ -605,7 +605,20 @@
             結束日期
             </summary>
         </member>
+        <member name="P:X1APServer.Service.Model.ExportCervixDataM.Request.DiagnosedstartDate">
+            <summary>
+            確診開始日期
+            </summary>
+        </member>
+        <member name="P:X1APServer.Service.Model.ExportCervixDataM.Request.DiagnosedendDate">
+            <summary>
+            確診結束日期
+            </summary>
+        </member>
         <member name="P:X1APServer.Service.Model.ExportCervixDataM.Request.Status">
+            <summary>
+            表單狀態
+            </summary>
             <summary>
             表單狀態
             </summary>

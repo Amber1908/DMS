@@ -2642,8 +2642,6 @@ namespace X1APServer.Service
 
         public RSPBase ExportCervixData(ExportCervixDataM.Request request, ref ExportCervixDataM.Response response, string rootPath,string WebDB)
         {
-            //TingYu 2.取得站台值
-            var webDB = HttpContext.Current.Request.Cookies["WebDB"];
 
 
             var ecUpdate = _uow.Get<IX1_ReportAnswerMRepository>();
@@ -2661,7 +2659,11 @@ namespace X1APServer.Service
                 continue;
                 if (request.EndDate != null && request.EndDate <= Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("抹片收到日期")).Value).AddYears(1911))
                continue;
-
+                //確診日
+                if (request.DiagnosedstartDate != null && request.DiagnosedstartDate >= Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value).AddYears(1911))
+                    continue;
+                if (request.DiagnosedendDate != null && request.DiagnosedendDate >= Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value).AddYears(1911))
+                    continue;
                 //if (request.StartDate != null && request.StartDate >= ct.FillingDate)
                 //    continue;
                 //if (request.EndDate != null && request.EndDate <= ct.FillingDate)

@@ -19,11 +19,21 @@ namespace X1APServer.Service.Model
             /// </summary>
             public DateTime? EndDate { get; set; }
             /// <summary>
+            /// 確診開始日期
+            /// </summary>
+            public DateTime? DiagnosedstartDate { get; set; }
+            /// <summary>
+            /// 確診結束日期
+            /// </summary>
+            public DateTime? DiagnosedendDate { get; set; }
+            /// <summary>
+            /// 表單狀態
+            /// </summary>
+            /// <summary>
             /// 表單狀態
             /// </summary>
             public int Status { get; set; }
 
-           
         }
 
         public class Response : RSPBase

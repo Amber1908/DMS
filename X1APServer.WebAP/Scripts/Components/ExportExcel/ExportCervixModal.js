@@ -32,6 +32,8 @@ const ExportCervixModal = (props) => {
             data: {
                 "StartDate": formData.startDate,
                 "EndDate": formData.endDate,
+                "DiagnosedstartDate": formData.DiagnosedstartDate,
+                "DiagnosedendDate": formData.DiagnosedendDate,
                 "Status": formData.formStatus,
                 "FuncCode": GlobalConstants.FuncCode.ViewWebsite,
                 "AuthCode": 1,
@@ -93,6 +95,17 @@ const ExportCervixModal = (props) => {
                                     <input type="date" className="form-control" id="endDate" name="endDate" value={formData.endDate} style={{ fontSize: "14px" }} onChange={handleFormChange} />
                                 </div>
                             </div>
+                            <div>
+                                <div className="form-group col-md-6">
+                                    <label htmlFor="startDate">確診起始</label>
+                                    <input type="date" className="form-control" id="DiagnosedstartDate" name="DiagnosedstartDate" value={formData.DiagnosedstartDate} style={{ fontSize: "14px" }} onChange={handleFormChange} />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label htmlFor="endDate">確診訖日</label>
+                                    <input type="date" className="form-control" id="DiagnosedendDate" name="DiagnosedendDate" value={formData.DiagnosedendDate} style={{ fontSize: "14px" }} onChange={handleFormChange} />
+                                </div>
+                            </div>
+
                             <div>
                                 <div className="QForm-Table-Label">檢驗單狀態</div>
                                 <div className="radio-item">
