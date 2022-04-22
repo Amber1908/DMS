@@ -1,6 +1,3 @@
-
-
-
 using Unity;
 using Unity.AspNet.Mvc;
 using X1APServer.Infrastructure.Common;
@@ -16,7 +13,6 @@ using System.Collections.Generic;
 using X1APServer.Service.Interface;
 using System.Diagnostics;
 using WebApplication1.Infrastructure.Common;
-using X1APServer.Service.Interface;
 using WebApplication1.Infrastructure.Common.Interface;
 using System.Configuration;
 using NLog;
@@ -30,7 +26,6 @@ namespace X1APServer.WEB
     public static class UnityConfig
     {
         private static readonly string _connStrTemplate = ConfigurationManager.AppSettings["ConnectionStringTemplate"];
-
         #region Unity Container
         private static Lazy<IUnityContainer> container =
           new Lazy<IUnityContainer>(() =>
@@ -61,8 +56,8 @@ namespace X1APServer.WEB
                     GlobalVariable.Instance.TryAdd(sessionkey, dmsSetting.Web_db);
                 }
                 connectionString = string.Format(_connStrTemplate, GlobalVariable.Instance.Get(sessionkey));
-                //TingYU 拿到站台名稱
-                System.Web.HttpContext.Current.Session["Web_DB"] = GlobalVariable.Instance.Get(sessionkey);
+                //TingYU
+                //HttpContext.Current.Session["Web_DB"] = GlobalVariable.Instance.Get(sessionkey);
             }
             else if(WebSN != null)
             {
@@ -73,6 +68,7 @@ namespace X1APServer.WEB
 
             return new X1APEntities(connectionString);
         };
+
 
 
         /// <summary>

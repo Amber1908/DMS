@@ -39,7 +39,6 @@ namespace WebApplication1.WebApi
         private IIDoctorService _idoctorSvc;
         private IDMSShareService _dmsShareSvc;
         private IFrameRequest _frameReq;
-        //private IReportService _reportService;
         private Logger logger = LogManager.GetCurrentClassLogger();
 
         public UserController(IIDoctorService idoctorSvc, IDMSShareService dmsShareSvc, IFrameRequest frameReq)

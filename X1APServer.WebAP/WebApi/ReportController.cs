@@ -13,6 +13,8 @@ using WebApplication1.Infrastructure.Common.Interface;
 using WebApplication1.Infrastructure.Filters;
 using WebApplication1.Infrastructure.Utility;
 using WebApplication1.Misc;
+using X1APServer.Repository.Utility.Interface;
+using X1APServer.Service;
 using X1APServer.Service.Interface;
 using X1APServer.Service.Model;
 
@@ -20,15 +22,18 @@ namespace WebApplication1.WebApi
 {
     public class ReportController : ApiController
     {
-
+        private readonly IDMSShareUnitOfWork _uow;
+        private readonly IIDoctorService _idoctorSvc;
         private static Logger logger = LogManager.GetCurrentClassLogger();
         private IReportService _svc = null;
         private IFrameRequest _frameReq;
         private AuthHandler _authHandler = null;
         private Guid guid;
 
-        public ReportController(IReportService svc, IFrameRequest frameReq)
+        public ReportController(IReportService svc, IFrameRequest frameReq, IDMSShareUnitOfWork uow, IIDoctorService idoctorSvc)
         {
+            _idoctorSvc = idoctorSvc;
+            _uow = uow;
             _svc = svc;
             _frameReq = frameReq;
             _authHandler = new AuthHandler(AuthHandler.System.X1Web);
@@ -1697,9 +1702,14 @@ namespace WebApplication1.WebApi
                     retResp.UserSecurityInfo = checkRS.UserSecurityInfo;
                 }
 
-                // 匯出 Report
+                // 匯出 Report  TingYU
+                var sessionkey = HttpContext.Current.Request.Headers["SessionKey"];
+                var DMSSharesetting = new DMSShareService(_uow, _idoctorSvc);
+                var WebDB = DMSSharesetting.GetDMSSetting(sessionkey).Web_db;
+
+
                 string rootPath = System.Web.Hosting.HostingEnvironment.MapPath("~");
-                var ExportReportRS = _svc.ExportCervixData(request, ref retResp, rootPath);
+                var ExportReportRS = _svc.ExportCervixData(request, ref retResp, rootPath, WebDB);
                 if (ExportReportRS.ReturnCode != ErrorCode.OK)
                 {
                     return Result.NormalResult(request, retResp, ErrorCode.ProcessError, ExportReportRS.ReturnMsg);

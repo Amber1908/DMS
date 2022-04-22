@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Dapper;
@@ -10,6 +11,7 @@ using WebApplication1.Infrastructure.Common;
 using WebApplication1.Misc;
 using X1APServer.Repository;
 using X1APServer.Repository.Utility.Interface;
+using X1APServer.Service;
 using X1APServer.Service.Interface;
 using X1APServer.Service.Model;
 using X1APServer.Service.Service.Interface;
@@ -26,13 +28,15 @@ namespace WebApplication1.WebApi
     {
         private IIDoctorService _idoctorSvc;
         private IX1APService _svc;
+        private readonly IDMSShareUnitOfWork _suow;
         //TingYu
         private Logger logger = LogManager.GetCurrentClassLogger();
 
-        public X1APServerController(IIDoctorService idoctorSvc, IX1APService svc)
+        public X1APServerController(IIDoctorService idoctorSvc, IX1APService svc, IDMSShareUnitOfWork suow)
         {
             _idoctorSvc = idoctorSvc;
             _svc = svc;
+            _suow = suow;
         }
         /// <summary>
         /// 取得醫生資訊
@@ -99,6 +103,7 @@ namespace WebApplication1.WebApi
             GetCervixTableM.GetCervixTableRsp retResp = new GetCervixTableM.GetCervixTableRsp();
             if (ModelState.IsValid)
             {
+
                 //查詢待處理清單
                 retResp = _svc.GetCervixTable(request);
                 if (retResp.ReturnCode != ErrorCode.OK)

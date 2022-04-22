@@ -23,12 +23,12 @@ using X1APServer.Service.Model;
 using X1APServer.Service.Utils;
 using X1APServer.Service;
 using Xceed.Words.NET;
+using System.Web;
 
 namespace X1APServer.Service
 {
     public class ReportService : IReportService
     {
-       
         private readonly IX1UnitOfWork _uow;
         private readonly IPatientService _patientSvc;
         private readonly IFileService _fileSvc;
@@ -44,9 +44,8 @@ namespace X1APServer.Service
             _uow = uow;
             _patientSvc = patientSvc;
             _fileSvc = fileSvc;
-           
 
-           _serviceInfo = new BMDC.Models.Auth.AuthCommon.ServiceInfo()
+            _serviceInfo = new BMDC.Models.Auth.AuthCommon.ServiceInfo()
             {
                 SysCode = ConfigurationManager.AppSettings["WebSysCode"],
                 ServiceKey = ConfigurationManager.AppSettings["WebFrameServiceToken"]
@@ -408,7 +407,7 @@ namespace X1APServer.Service
             throw;
         }
 
-    rSPBase.ReturnCode = ErrorCode.OK;
+            rSPBase.ReturnCode = ErrorCode.OK;
             rSPBase.ReturnMsg = "OK";
             return rSPBase;
         }
@@ -2641,11 +2640,15 @@ namespace X1APServer.Service
             }
         }
 
-        public RSPBase ExportCervixData(ExportCervixDataM.Request request, ref ExportCervixDataM.Response response, string rootPath)
+        public RSPBase ExportCervixData(ExportCervixDataM.Request request, ref ExportCervixDataM.Response response, string rootPath,string WebDB)
         {
+            //TingYu 2.取得站台值
+            var webDB = HttpContext.Current.Request.Cookies["WebDB"];
+
+
             var ecUpdate = _uow.Get<IX1_ReportAnswerMRepository>();
             List<CervixExport> cervixExports = new List<CervixExport>();
-            List<CervixTable> cervixTables = DBUtils.GetCervixTable(_uow);
+            List<CervixTable> cervixTables = DBUtils.GetCervixTable(_uow, WebDB);
 
             string Vix30 = "";
             int tempInt = 0;

@@ -224,7 +224,7 @@ namespace X1APServer.Service.Interface
         /// <param name="response"></param>
         /// <param name="rootPath"></param>
         /// <returns></returns>
-        RSPBase ExportCervixData(ExportCervixDataM.Request request, ref ExportCervixDataM.Response response, string rootPath);
+        RSPBase ExportCervixData(ExportCervixDataM.Request request, ref ExportCervixDataM.Response response, string rootPath,string WebDB);
         /// <summary>
         /// 匯出Excel
         /// </summary>

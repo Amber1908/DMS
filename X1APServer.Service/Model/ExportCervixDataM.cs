@@ -23,7 +23,7 @@ namespace X1APServer.Service.Model
             /// </summary>
             public int Status { get; set; }
 
-            public int Web_sn { get; set; }//TingYu
+           
         }
 
         public class Response : RSPBase

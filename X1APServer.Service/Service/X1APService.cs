@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using X1APServer.Repository;
 using X1APServer.Repository.Interface;
 using X1APServer.Repository.Utility.Interface;
@@ -23,10 +24,13 @@ namespace X1APServer.Service.Service
     public class X1APService : IX1APService
     {
         private readonly IX1UnitOfWork _uow;
-
-        public X1APService(IX1UnitOfWork uow)
+        private readonly IDMSShareUnitOfWork _suow;
+        private readonly IIDoctorService _idoctorSvc;
+        public X1APService(IX1UnitOfWork uow, IDMSShareUnitOfWork suow, IIDoctorService idoctorSvc)
         {
             _uow = uow;
+            _suow = suow;
+            _idoctorSvc = idoctorSvc;
         }
 
         public X1UserDataGetM.X1UserDataGetRsp GetUserList(X1UserDataGetM.X1UserDataGetReq request)
@@ -79,7 +83,10 @@ namespace X1APServer.Service.Service
 
             ret.CervixFormList = new List<GetCervixFormM.CervixForm>();
             // 準備 回傳 資料
-            List<CervixTable> cts = DBUtils.GetCervixTable(_uow);
+            var sessionkey = HttpContext.Current.Request.Headers["SessionKey"];
+            var DMSSharesetting = new DMSShareService(_suow, _idoctorSvc);
+            var WebDB = DMSSharesetting.GetDMSSetting(sessionkey).Web_db;
+            List<CervixTable> cts = DBUtils.GetCervixTable(_uow, WebDB);
 
             foreach (var ct in cts)
             {
@@ -126,8 +133,13 @@ namespace X1APServer.Service.Service
             ret.ReturnMsg = "OK";
 
             ret.cervixTables = new List<CervixTable>();
-            // 準備 回傳 資料
-            List<CervixTable> cts = DBUtils.GetCervixTable(_uow);
+            // 準備 回傳 資料 
+            var sessionkey = HttpContext.Current.Request.Headers["SessionKey"];
+            var DMSSharesetting = new DMSShareService(_suow, _idoctorSvc);
+            var WebDB = DMSSharesetting.GetDMSSetting(sessionkey).Web_db;
+
+
+            List<CervixTable> cts = DBUtils.GetCervixTable(_uow, WebDB);
             foreach (var ct in cts)
             {
                 if (request == null)

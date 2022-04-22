@@ -4856,7 +4856,7 @@
             <param name="response"></param>
             <returns></returns>
         </member>
-        <member name="M:X1APServer.Service.Interface.IReportService.ExportCervixData(X1APServer.Service.Model.ExportCervixDataM.Request,X1APServer.Service.Model.ExportCervixDataM.Response@,System.String)">
+        <member name="M:X1APServer.Service.Interface.IReportService.ExportCervixData(X1APServer.Service.Model.ExportCervixDataM.Request,X1APServer.Service.Model.ExportCervixDataM.Response@,System.String,System.String)">
             <summary>
             匯出子宮頸國健署資料
             </summary>

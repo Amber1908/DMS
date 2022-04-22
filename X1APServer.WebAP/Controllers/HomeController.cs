@@ -58,6 +58,7 @@ namespace X1APServer.Controllers
                     AccID = webSetting.email,
                     DBName = webSetting.web_db
                 };
+
                 var genTokenRsp = client.GenerateToken(serviceInfo, genTokenReq);
                 client.Close();
 
@@ -71,13 +72,15 @@ namespace X1APServer.Controllers
                     Web_sn = webSetting.web_sn
                 };
                 _dmsShareSvc.AddDMSSetting(addDMSSettingReq);
-
+                
                 var cookieContent = JsonConvert.SerializeObject(new
                 {
                     AccID = webSetting.email,
                     UserSecurityInfo = genTokenRsp.SecurityInfo,
                     SessionKey = webSetting.sessionkey,
-                    WebSn = webSetting.web_sn.ToString()
+                    WebSn = webSetting.web_sn.ToString(),
+                    //Tingyu 1.取得站台
+                    WebDB=webSetting.web_db
                 });
                 Response.Cookies.Clear();
                 var cookie = new HttpCookie("SecurityInfo", cookieContent);

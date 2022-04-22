@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Configuration;
+using Unity;
+using X1APServer.Repository;
 using X1APServer.Repository.Interface;
 using X1APServer.Repository.Utility.Interface;
 using X1APServer.Service.Interface;
@@ -19,8 +21,7 @@ namespace X1APServer.Service.Utils
     
     public static class DBUtils
     {
-
-        public static List<CervixTable> GetCervixTable(IX1UnitOfWork _uow)
+        public static List<CervixTable> GetCervixTable(IX1UnitOfWork _uow,string WebDB)
         {
             List<CervixTable> cers = new List<CervixTable>();
             
@@ -59,7 +60,7 @@ namespace X1APServer.Service.Utils
                         cervixQuestions = new List<CervixQuestion>()
                     };
                     //用 sql 組CervixQuestion
-                    cer.cervixQuestions = GetCervixQuestion(Xam.ID);
+                    cer.cervixQuestions = GetCervixQuestion(Xam.ID, WebDB);
                     cers.Add(cer);
                 }
             }
@@ -72,14 +73,15 @@ namespace X1APServer.Service.Utils
             return cers;
         }
         //TingYu sql 組CervixQuestion
-        public static List<CervixQuestion> GetCervixQuestion(int AIMID)
+        public static List<CervixQuestion> GetCervixQuestion(int AIMID,string WebDB)
         {
+
             List<CervixQuestion> cervixQuestions = new List<CervixQuestion>();
             //找出站台 改連線字串的catalog
-            string GetHealthWeb = System.Web.HttpContext.Current.Session["Web_DB"].ToString();
+            string GetHealthWeb = WebDB;
             string ConnString = WebConfigurationManager.ConnectionStrings["ConnectionStringTemplateStandard"].ToString();
-            var SessionKey = HttpContext.Current.Request.Headers["SessionKey"];
             string ConnectionString = string.Format(ConnString, GetHealthWeb);
+
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 try
@@ -231,6 +233,97 @@ namespace X1APServer.Service.Utils
                 return false;
             }
         }
+        private static readonly string _connStrTemplateStandard = ConfigurationManager.AppSettings["ConnectionStringTemplateStandard"];
+        public static string getS()
+        {
+            string connectionString="";
+            var container = new UnityContainer();
+            container.RegisterType<IDMSShareService, DMSShareService>();
+            
+            var sessionkey = HttpContext.Current.Request.Headers["SessionKey"];
+            var WebSN = HttpContext.Current.Request.Headers["WebSN"];
+            IDMSShareService dMSShare = container.Resolve<IDMSShareService>();
+            var Setting = dMSShare.GetDMSSetting(sessionkey);
+            connectionString = Setting.Web_db;
+            return connectionString;
+
+        }
+
+        private static Func<IUnityContainer, object> getConnectionStringTemplateStandard = c =>
+         {
+             
+             var connectionString = "";
+             var sessionkey = HttpContext.Current.Request.Headers["SessionKey"];
+             var WebSN = HttpContext.Current.Request.Headers["WebSN"];
+             if (sessionkey != null)
+             {
+                 if (!GlobalVariable.Instance.ContainsKey(sessionkey))
+                 {
+                     var svc = c.Resolve<IDMSShareService>();
+                     var dmsSetting = svc.GetDMSSetting(sessionkey);
+                     GlobalVariable.Instance.TryAdd(sessionkey, dmsSetting.Web_db);
+                 }
+                 connectionString = string.Format(_connStrTemplateStandard, GlobalVariable.Instance.Get(sessionkey));
+             }
+             else if (WebSN != null)
+             {
+                 var svc = c.Resolve<IDMSShareService>();
+                 var dmsSetting = svc.GetDMSSettingBySN(int.Parse(WebSN));
+                 connectionString = string.Format(_connStrTemplateStandard, dmsSetting.Web_db);
+             }
+             return connectionString;
+         };
+
+        public static Func<IUnityContainer, object> GetConnectionStringTemplateStandard { get => getConnectionStringTemplateStandard; set => getConnectionStringTemplateStandard = value; }
+
+        public class GlobalVariable
+        {
+            private static GlobalVariable instance = new GlobalVariable();
+
+            private Dictionary<string, string> _store { get; set; }
+
+            private GlobalVariable()
+            {
+                _store = new Dictionary<string, string>();
+            }
+
+            public static GlobalVariable Instance
+            {
+                get
+                {
+                    return instance;
+                }
+            }
+
+            public bool TryAdd(string key, string value)
+            {
+                try
+                {
+                    _store.Add(key, value);
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+
+            public string Get(string key)
+            {
+                string value;
+                _store.TryGetValue(key, out value);
+                return value;
+            }
+
+            public bool ContainsKey(string key)
+            {
+                return _store.ContainsKey(key);
+            }
+        }
+
+
+
     }
 
 }
