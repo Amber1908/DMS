@@ -2686,11 +2686,15 @@ namespace X1APServer.Service
                             ce.PASCODE = cq.Value;
                             break;
                         case "Vix-19":
-                            ce.PASCODE = cq.Value;
+                            ce.PASCODE = cq.Value.Substring(0, 10); ;
                             break;
-                        case "Vix-24-1":
-                            ce.CHKCODE = cq.Value;
+                        //case "Vix-24-1":
+                        //    ce.CHKCODE = cq.Value.Substring(0, 10);
+                            //break;
+                        case "Vix-24":
+                            ce.CHKCODE = cq.Value.Substring(0, 10);
                             break;
+
                         case "Vix-25":
                             ce.CHKREC = ROC.CDate2WDate(cq.Value);
                             break;
