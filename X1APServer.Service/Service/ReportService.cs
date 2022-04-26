@@ -2968,10 +2968,10 @@ namespace X1APServer.Service
                     //教育
                     rowData[12] = patientList[currentPatientIndex].Education.ToString();
                     //填寫日期
-                    rowData[13] = patientList.Max(a => a.FillingDate).ToString("yyyy-MM-dd");
+                    rowData[13] = patientAnsList.Max(a => a.FillingDate).ToString("yyyy-MM-dd");
 
                     //表單狀態 todo
-                    //rowData[14] = patientList[currentPatientIndex].
+                    //rowData[14] = patientAnsList.FirstOrDefault(x => x.PID == patientList[currentPatientIndex].ID).Status.ToString();
                     //依照設定的問題順序填入答案
                     for (int i = 0; i < questResult.Count; i++)
                     {
