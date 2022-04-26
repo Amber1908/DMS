@@ -1330,6 +1330,11 @@
             個案ID
             </summary>
         </member>
+        <member name="P:X1APServer.Service.Model.AnsWithPatient.PUCountry">
+            <summary>
+            國籍代號
+            </summary>
+        </member>
         <member name="P:X1APServer.Service.Model.AnsWithPatient.IDNo">
             <summary>
             身分證號
@@ -1350,9 +1355,49 @@
             性別
             </summary>
         </member>
+        <member name="P:X1APServer.Service.Model.AnsWithPatient.Education">
+            <summary>
+            教育
+            </summary>
+        </member>
+        <member name="P:X1APServer.Service.Model.AnsWithPatient.ContactPhone">
+            <summary>
+            聯絡人電話
+            </summary>
+        </member>
+        <member name="P:X1APServer.Service.Model.AnsWithPatient.Phone">
+            <summary>
+            電話
+            </summary>
+        </member>
+        <member name="P:X1APServer.Service.Model.AnsWithPatient.ContactRelation">
+            <summary>
+            聯絡人關係
+            </summary>
+        </member>
+        <member name="P:X1APServer.Service.Model.AnsWithPatient.AddrCode">
+            <summary>
+            現居地區
+            </summary>
+        </member>
+        <member name="P:X1APServer.Service.Model.AnsWithPatient.Addr">
+            <summary>
+            現居地址
+            </summary>
+        </member>
+        <member name="P:X1APServer.Service.Model.AnsWithPatient.Domicile">
+            <summary>
+            戶籍地區
+            </summary>
+        </member>
         <member name="P:X1APServer.Service.Model.AnsWithPatient.FillingDate">
             <summary>
             新增日期
+            </summary>
+        </member>
+        <member name="P:X1APServer.Service.Model.AnsWithPatient.Status">
+            <summary>
+            表單狀態
             </summary>
         </member>
         <member name="P:X1APServer.Service.Model.AnsWithPatient.QuestID">

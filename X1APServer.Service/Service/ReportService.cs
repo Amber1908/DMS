@@ -2723,6 +2723,9 @@ namespace X1APServer.Service
                         case "Vix-25":
                             ce.CHKREC = ROC.CDate2WDate(cq.Value);
                             break;
+                        case "Vix-23":
+                            ce.CHKNO = cq.Value;
+                            break;
                         case "Vix-28":
                             if (int.TryParse(cq.Value, out tempInt))
                                 ce.CHKQUL = tempInt;
@@ -2753,10 +2756,6 @@ namespace X1APServer.Service
                             ce.CHKSURED = ROC.CDate2WDate(cq.Value);
                             break;
                         case "Vix-23-1":
-                            if (int.TryParse(cq.Value, out tempInt))
-                                ce.CHKQTY = tempInt;
-                            break;
-                        case "Vix-23-2":
                             if (int.TryParse(cq.Value, out tempInt))
                                 ce.CHKQTY = tempInt;
                             break;
@@ -2883,14 +2882,22 @@ namespace X1APServer.Service
                                  orderby p.PUName, ansM.ReportID, ansM.FillingDate descending
                                  select new AnsWithPatient
                                  {
+                                     PUCountry=p.PUCountry,
                                      PID = p.ID,
                                      IDNo = p.IDNo,
                                      Name = p.PUName,
                                      Gender = p.Gender,
                                      Birth = p.PUDOB,
+                                     ContactPhone=p.ContactPhone,
+                                     ContactRelation=p.ContactRelation,
+                                     AddrCode=p.AddrCode,
+                                     Domicile=p.Domicile,
+                                     Addr=p.Addr,
+                                     Education=p.Education,
                                      QuestID = q.Quest.ID,
                                      Answer = qa.Value,
                                      FillingDate = ansM.FillingDate,
+                                     Status=ansM.Status,
                                      Question = q.Quest,
                                      AnswerM = ansM
                                  };
@@ -2910,7 +2917,7 @@ namespace X1APServer.Service
             var reportAnsList = reportAnsQuery.ToList();
 
             //病患固定欄位
-            var patientInfoColTitle = new string[] { "身分證字號", "姓名", "性別", "生日", "填寫日期" };
+            var patientInfoColTitle = new string[] { "國籍", "身分證字號", "姓名", "性別", "生日", "電話", "緊急聯絡人電話", "緊急聯絡人關係", "現居地區", "所屬衛生所醫療機構", "戶籍地區", "現居完整地址", "教育", "填寫日期", "表單狀態" };
             //Excel所有欄位名稱
             var colTitle = patientInfoColTitle.Concat(questResult.Select(x => x.CodingBookTitle)).ToArray();
             //保留欄位數
@@ -2930,23 +2937,41 @@ namespace X1APServer.Service
             {
                 //取目前病患的所有答案
                 var patientAnsList = reportAnsList.Where(a => a.PID == patientList[currentPatientIndex].ID).ToList();
-
-                while (patientAnsList.Count > 0)
                 {
                     int ansMID = -1, reportID = -1;
                     //此列資料
                     var rowData = new string[colCount];
+                    //國籍
+                    rowData[0] = patientList[currentPatientIndex].PUCountry.ToString();
                     //身分證字號
-                    rowData[0] = patientList[currentPatientIndex].IDNo;
+                    rowData[1] = patientList[currentPatientIndex].IDNo;
                     //姓名
-                    rowData[1] = patientList[currentPatientIndex].PUName;
+                    rowData[2] = patientList[currentPatientIndex].PUName;
                     //性別
-                    rowData[2] = patientList[currentPatientIndex].Gender.Equals("M") ? "男" : "女";
+                    rowData[3] = patientList[currentPatientIndex].Gender.Equals("M") ? "男" : "女";
                     //生日
-                    rowData[3] = patientList[currentPatientIndex].PUDOB.Value.ToString("yyyy-MM-dd");
+                    rowData[4] = patientList[currentPatientIndex].PUDOB.Value.ToString("yyyy-MM-dd");
+                    //電話
+                    rowData[5] = patientList[currentPatientIndex].Cellphone;
+                    //緊急聯絡人電話
+                    rowData[6] = patientList[currentPatientIndex].ContactPhone;
+                    //緊急聯絡人關係
+                    rowData[7] = patientList[currentPatientIndex].ContactRelation;
+                    //現居地區
+                    rowData[8] = patientList[currentPatientIndex].AddrCode;
+                    //所屬衛生所醫療機構
+                    rowData[9] = " ";
+                    //戶籍地區
+                    rowData[10] = patientList[currentPatientIndex].Domicile;
+                    //現居完整地址
+                    rowData[11] = patientList[currentPatientIndex].Addr;
+                    //教育
+                    rowData[12] = patientList[currentPatientIndex].Education.ToString();
                     //填寫日期
-                    rowData[4] = patientAnsList.Max(a => a.FillingDate).ToString("yyyy-MM-dd");
+                    rowData[13] = patientList.Max(a => a.FillingDate).ToString("yyyy-MM-dd");
 
+                    //表單狀態 todo
+                    //rowData[14] = patientList[currentPatientIndex].
                     //依照設定的問題順序填入答案
                     for (int i = 0; i < questResult.Count; i++)
                     {
