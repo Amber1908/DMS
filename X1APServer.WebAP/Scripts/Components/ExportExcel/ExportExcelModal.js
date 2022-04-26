@@ -64,6 +64,7 @@ const ExportExcelModal = (props) => {
 
     const reqExportExcel = () => {
         const reqReportIDs = reportMList.data.filter(r => r.checked).map(r => r.versionValue);
+        //const reqPatientIDs = patientList.data.filter(patient => patient.data.text == patientList.Patientname).map(r => r.value);
         const reqPatientIDs = patientList.data.filter(r => r.checked).map(r => r.value);
         setExportBtnStatus(GlobalConstants.Status.LOADING);
         PostWithAuth({
@@ -158,15 +159,22 @@ const ExportExcelModal = (props) => {
         setFormData(prev => ({ ...prev, [target.name]: target.value }));
     }
 
-    const handlePatientSearch = (e) => {
-        const target = e.target;
-        setPatientList(prev => {
-            let newState = produce(prev, draft => {
-                draft.data = draft.data.map(d => ({ ...d, hidden: !(d.text.indexOf(target.value) > -1) }))
-            });
-            return newState;
-        })
-    }
+    //const handlePatientChange = (e) => {
+    //    const target = e.target;
+    //    setPatientList(prev => ({ ...prev, Patientname: target.value }));
+    //}
+    
+    //const handlePatientSearch = (e) => {
+    //    const target = e.target;
+    //    setPatientList(prev => {
+    //        let newState = produce(prev, draft => {
+    //            draft.data = draft.data.map(d => ({ ...d, hidden: !(d.text.indexOf(target.value) > -1) }))
+    //        });
+            
+    //        console.log("draft.data:" + draft.data);
+    //        return newState;
+    //    })
+    //}
 
     const getDate = (dateStr) => {
         let date = new Date(dateStr);
