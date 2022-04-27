@@ -2375,7 +2375,7 @@ namespace X1APServer.Service
                                 name = patientFlag.PUName;
                                 gender = patientFlag.Gender;
                                 birth = (DateTime)patientFlag.PUDOB;
-                                cellphone = patientFlag.Cellphone;
+                                cellphone = patientFlag.Phone;
                                 contactphone = patientFlag.ContactPhone;
                                 contactrelation = patientFlag.ContactRelation;
                                 education = patientFlag.Education.ToString();
@@ -2420,7 +2420,7 @@ namespace X1APServer.Service
                                     Gender = gender,
                                     PUDOB = birth,
                                     AccID = request.AccID,
-                                    //Phone = cellphone,
+                                    Phone = cellphone,
                                     Cellphone = cellphone,
                                     ContactPhone = contactphone,
                                     ContactRelation = contactrelation,
