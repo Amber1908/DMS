@@ -64,9 +64,6 @@ const ExportExcelModal = (props) => {
 
     const reqExportExcel = () => {
         const reqReportIDs = reportMList.data.filter(r => r.checked).map(r => r.versionValue);
-        
-        //const reqPatientIDs = patientList.data.filter(patient => patient.data.text == patientList.Patientname).map(r => r.value);
-        //const reqPatientIDs = patientList.data.filter(r => r r.checked).map(r => r.value);
         const reqPatientIDs = patientList.data.filter(r => r.checked).map(r => r.value);
         setExportBtnStatus(GlobalConstants.Status.LOADING);
         PostWithAuth({
