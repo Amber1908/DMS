@@ -231,8 +231,8 @@ namespace X1APServer.Service
             }
 
             // 輸入驗證
-            //var patientFlag = _uow.Get<IX1_PatientInfoRepository>().Get(x => x.IDNo.Equals(ReqData.IDNo));
-            var patientFlag = _uow.Get<IX1_PatientInfoRepository>().Get(x => x.ID.Equals(ReqData.ID));
+            var patientFlag = _uow.Get<IX1_PatientInfoRepository>().Get(x => x.IDNo.Equals(ReqData.IDNo));
+            // var patientFlag = _uow.Get<IX1_PatientInfoRepository>().Get(x => x.ID.Equals(ReqData.ID));
             // 準備 insert 資料
             DateTime now = DateTime.Now;
 
