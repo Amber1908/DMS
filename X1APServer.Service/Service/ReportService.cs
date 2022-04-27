@@ -2420,6 +2420,7 @@ namespace X1APServer.Service
                                     Gender = gender,
                                     PUDOB = birth,
                                     AccID = request.AccID,
+                                    //excel表是cellphone 但是會存phone 在X1_PatientInfo
                                     Phone = cellphone,
                                     Cellphone = cellphone,
                                     ContactPhone = contactphone,
