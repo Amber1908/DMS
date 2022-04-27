@@ -2312,6 +2312,7 @@ namespace X1APServer.Service
                                 name = table.Rows[i][patientInfoDict[PatientInfoKey.Name]].ToString().Trim();
                                 gender = table.Rows[i][patientInfoDict[PatientInfoKey.Gender]].ToString().Trim().ToLower();
                                 birthStr = table.Rows[i][patientInfoDict[PatientInfoKey.Birth]].ToString().Trim();
+                                
                                 cellphone = table.Rows[i][patientInfoDict[PatientInfoKey.Cellphone]].ToString().Trim();
                                 contactphone = table.Rows[i][patientInfoDict[PatientInfoKey.ContactPhone]].ToString().Trim();
                                 contactrelation = table.Rows[i][patientInfoDict[PatientInfoKey.ContactRelation]].ToString().Trim();
@@ -2374,6 +2375,7 @@ namespace X1APServer.Service
                                 name = patientFlag.PUName;
                                 gender = patientFlag.Gender;
                                 birth = (DateTime)patientFlag.PUDOB;
+                                
                                 cellphone = patientFlag.Cellphone;
                                 contactphone = patientFlag.ContactPhone;
                                 contactrelation = patientFlag.ContactRelation;
@@ -2419,8 +2421,7 @@ namespace X1APServer.Service
                                     Gender = gender,
                                     PUDOB = birth,
                                     AccID = request.AccID,
-                                    
-                                    Phone = cellphone,
+                                    //Phone = cellphone,
                                     Cellphone = cellphone,
                                     ContactPhone = contactphone,
                                     ContactRelation = contactrelation,
@@ -2652,10 +2653,10 @@ namespace X1APServer.Service
             {
                 if (ct.Status < 6)
                     continue;
-                //改成搜尋收件日期
-                if (request.StartDate != null && request.StartDate >= Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("抹片收到日期")).Value).AddYears(1911))
+                //改成搜尋收件日期 
+                if (request.StartDate != null && request.StartDate > Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("抹片收到日期")).Value).AddYears(1911))
                 continue;
-                if (request.EndDate != null && request.EndDate <= Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("抹片收到日期")).Value).AddYears(1911))
+                if (request.EndDate != null && request.EndDate < Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("抹片收到日期")).Value).AddYears(1911))
                continue;
                 //確診日
                 if (request.DiagnosedstartDate != null&& ct.cervixQuestions.Any(x => x.QuestionText.Contains("確診日期")))
