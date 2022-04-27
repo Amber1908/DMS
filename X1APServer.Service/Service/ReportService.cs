@@ -2312,8 +2312,7 @@ namespace X1APServer.Service
                                 name = table.Rows[i][patientInfoDict[PatientInfoKey.Name]].ToString().Trim();
                                 gender = table.Rows[i][patientInfoDict[PatientInfoKey.Gender]].ToString().Trim().ToLower();
                                 birthStr = table.Rows[i][patientInfoDict[PatientInfoKey.Birth]].ToString().Trim();
-
-                                //cellphone = table.Rows[i][patientInfoDict[PatientInfoKey.Cellphone]].ToString().Trim();
+                                cellphone = table.Rows[i][patientInfoDict[PatientInfoKey.Cellphone]].ToString().Trim();
                                 contactphone = table.Rows[i][patientInfoDict[PatientInfoKey.ContactPhone]].ToString().Trim();
                                 contactrelation = table.Rows[i][patientInfoDict[PatientInfoKey.ContactRelation]].ToString().Trim();
                                 education = table.Rows[i][patientInfoDict[PatientInfoKey.Education]].ToString().Trim();
@@ -2642,8 +2641,6 @@ namespace X1APServer.Service
 
         public RSPBase ExportCervixData(ExportCervixDataM.Request request, ref ExportCervixDataM.Response response, string rootPath,string WebDB)
         {
-
-
             var ecUpdate = _uow.Get<IX1_ReportAnswerMRepository>();
             List<CervixExport> cervixExports = new List<CervixExport>();
             List<CervixTable> cervixTables = DBUtils.GetCervixTable(_uow, WebDB);
@@ -2664,13 +2661,13 @@ namespace X1APServer.Service
                 if (request.DiagnosedstartDate != null&& ct.cervixQuestions.Any(x => x.QuestionText.Contains("確診日期")))
                 {
                     DateTime diagnosedstartDate = Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value).AddYears(1911);
-                    if (request.DiagnosedstartDate>= diagnosedstartDate)
+                    if (request.DiagnosedstartDate> diagnosedstartDate)
                         continue;
                 }
                 if (request.DiagnosedendDate != null && ct.cervixQuestions.Any(x => x.QuestionText.Contains("確診日期")))
                 {
                     DateTime diagnosedendDate = Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value).AddYears(1911);
-                    if (request.DiagnosedendDate <= diagnosedendDate)
+                    if (request.DiagnosedendDate < diagnosedendDate)
                         continue;
                 }
                 //if (request.StartDate != null && request.StartDate >= ct.FillingDate)

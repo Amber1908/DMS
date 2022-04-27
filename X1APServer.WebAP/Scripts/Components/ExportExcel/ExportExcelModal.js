@@ -102,8 +102,9 @@ const ExportExcelModal = (props) => {
         }
     }, [cookies[GlobalConstants.CookieName]])
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+        
         reqExportExcel();
     }
 
@@ -168,10 +169,16 @@ const ExportExcelModal = (props) => {
     
     const handlePatientSearch = (e) => {
         const target = e.target;
+        //const value=target.value;
+        //console.log(e);
+        //const newPatientList = patientList.filter(patient => (
+        //    patient.data.text.includes(value)
+        //));
+        //setPatientList(newPatientList);
         setPatientList(prev => {
             let newState = produce(prev, draft => {
-                draft.data = draft.data.map(d => ({ ...d, hidden: !(d.text.indexOf(target.value) > -1) }))
-            });
+                 draft.data = draft.data.map(d => ({ ...d, hidden: !(d.text.indexOf(target.value) > -1) }))
+                });
             return newState;
         })
     }
