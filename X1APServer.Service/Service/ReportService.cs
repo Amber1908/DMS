@@ -2375,7 +2375,6 @@ namespace X1APServer.Service
                                 name = patientFlag.PUName;
                                 gender = patientFlag.Gender;
                                 birth = (DateTime)patientFlag.PUDOB;
-                                
                                 cellphone = patientFlag.Cellphone;
                                 contactphone = patientFlag.ContactPhone;
                                 contactrelation = patientFlag.ContactRelation;
