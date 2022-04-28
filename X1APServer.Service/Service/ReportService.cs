@@ -2109,7 +2109,24 @@ namespace X1APServer.Service
                                 }
                             }
                         }
+                        break;
+                    case 19://檢查日期 不為空 TingYU
+                        var valueDate = table.Rows[row][q.ColumnNum].ToString().Trim();
+                        var isNoValue = string.IsNullOrEmpty(valueDate);
+                        if (isNoValue && q.QuestId==27)
+                        {
+                            _formatError.Add(string.Format(_errorTemplate, "請填寫日期", row + 1, ConvertIntToExcelColumn(q.ColumnNum)));
 
+                        }
+                        else
+                        {
+                            var questionId = "Q_" + q.QuestId;
+                            _answers.Add(new UpdateReportM.ReportAnswerD()
+                            {
+                                QuestionID = questionId,
+                                Value = table.Rows[row][q.ColumnNum].ToString().Trim()
+                            });
+                        }
                         break;
                     default:
                         var questionID = "Q_" + q.QuestId;
@@ -2306,7 +2323,7 @@ namespace X1APServer.Service
                                     _formatError.Add("病患不存在且沒有生日欄位 行: " + (i + 1));
                                     flag = true;
                                 }
-
+                                
                                 if (flag) throw new CustomException();
 
                                 country = table.Rows[i][patientInfoDict[PatientInfoKey.PUCountry]].ToString().Trim();
@@ -2321,7 +2338,7 @@ namespace X1APServer.Service
                                 hccode = table.Rows[i][patientInfoDict[PatientInfoKey.HCCode]].ToString().Trim();
                                 addr = table.Rows[i][patientInfoDict[PatientInfoKey.Addr]].ToString().Trim();
                                 domicile = table.Rows[i][patientInfoDict[PatientInfoKey.Domicile]].ToString().Trim();
-
+                                
                                 if (string.IsNullOrEmpty(country))
                                 {
                                     _formatError.Add(string.Format(_errorTemplate, "國籍為空", i + 1, ConvertIntToExcelColumn(patientInfoDict[PatientInfoKey.PUCountry])));
@@ -2478,15 +2495,11 @@ namespace X1APServer.Service
                                     //addReportReq.SequenceNum = seqNum;
                                     //TingYu 檢查確診日 為空不加入
                                     var isNoConfirmedDate = addReportReq.Answers.Where(x => x.QuestionID.Contains("Q_55")).Any(y => y.Value == "");
-                                    var isNoReceiptDate = addReportReq.Answers.Where(x => x.QuestionID.Contains("Q_27")).Any(y => y.Value == "");
                                     if (isNoConfirmedDate)
                                     {
                                         addReportReq.Answers.Remove(addReportReq.Answers.Where(x => x.QuestionID.Contains("Q_55")).FirstOrDefault());
                                     }
-                                    if (isNoReceiptDate)
-                                    {
-                                        addReportReq.Answers.Remove(addReportReq.Answers.Where(x => x.QuestionID.Contains("Q_27")).FirstOrDefault());
-                                    }
+                                    
                                     requestList.Add(addReportReq);
                                 }
                             }

@@ -39,7 +39,8 @@ namespace X1APServer.Service.ExtMethod
         [Description("表單狀態")]
         Status,
         [Description("填寫日期,測試時間")]
-        FillingDate
+        FillingDate,
+       
     }
 
     public static class EnumExt
