@@ -2244,6 +2244,7 @@ namespace X1APServer.Service
                             var questQuery = reportQuest.Where(q => q.QuestionNo != null && q.QuestionNo.Replace(" ", "").Equals(questNo));
                             var quest = questQuery.FirstOrDefault();
                             var questCount = questQuery.Count();
+                            //檢查
                             if (questCount > 1)
                             {
                                 _formatError.Add(string.Format(_errorTemplate, $"問題編號({x.value})重複: " + questNo, questIDRowIndex + 1, ConvertIntToExcelColumn(x.index)));
@@ -2312,7 +2313,6 @@ namespace X1APServer.Service
                                 name = table.Rows[i][patientInfoDict[PatientInfoKey.Name]].ToString().Trim();
                                 gender = table.Rows[i][patientInfoDict[PatientInfoKey.Gender]].ToString().Trim().ToLower();
                                 birthStr = table.Rows[i][patientInfoDict[PatientInfoKey.Birth]].ToString().Trim();
-                                
                                 cellphone = table.Rows[i][patientInfoDict[PatientInfoKey.Cellphone]].ToString().Trim();
                                 contactphone = table.Rows[i][patientInfoDict[PatientInfoKey.ContactPhone]].ToString().Trim();
                                 contactrelation = table.Rows[i][patientInfoDict[PatientInfoKey.ContactRelation]].ToString().Trim();
@@ -2476,6 +2476,17 @@ namespace X1APServer.Service
                                 {
                                     var addReportReq = ProcessCellData(entry, table, i, patientRsp.ID, request.AccID, fillingDate, status);
                                     //addReportReq.SequenceNum = seqNum;
+                                    //TingYu 檢查確診日 為空不加入
+                                    var isNoConfirmedDate = addReportReq.Answers.Where(x => x.QuestionID.Contains("Q_55")).Any(y => y.Value == "");
+                                    var isNoReceiptDate = addReportReq.Answers.Where(x => x.QuestionID.Contains("Q_27")).Any(y => y.Value == "");
+                                    if (isNoConfirmedDate)
+                                    {
+                                        addReportReq.Answers.Remove(addReportReq.Answers.Where(x => x.QuestionID.Contains("Q_55")).FirstOrDefault());
+                                    }
+                                    if (isNoReceiptDate)
+                                    {
+                                        addReportReq.Answers.Remove(addReportReq.Answers.Where(x => x.QuestionID.Contains("Q_27")).FirstOrDefault());
+                                    }
                                     requestList.Add(addReportReq);
                                 }
                             }
@@ -2661,15 +2672,21 @@ namespace X1APServer.Service
                 //確診日
                 if (request.DiagnosedstartDate != null&& ct.cervixQuestions.Any(x => x.QuestionText.Contains("確診日期")))
                 {
-                    DateTime diagnosedstartDate = Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value).AddYears(1911);
-                    if (request.DiagnosedstartDate> diagnosedstartDate)
-                        continue;
+                    if (Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value)!=null)
+                    {
+                        DateTime diagnosedstartDate = Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value).AddYears(1911);
+                        if (request.DiagnosedstartDate > diagnosedstartDate)
+                            continue;
+                    }
                 }
                 if (request.DiagnosedendDate != null && ct.cervixQuestions.Any(x => x.QuestionText.Contains("確診日期")))
                 {
-                    DateTime diagnosedendDate = Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value).AddYears(1911);
-                    if (request.DiagnosedendDate < diagnosedendDate)
-                        continue;
+                    if (Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value) != null)
+                    {
+                        DateTime diagnosedendDate = Convert.ToDateTime(ct.cervixQuestions.First(x => x.QuestionText.Contains("確診日期")).Value).AddYears(1911);
+                        if (request.DiagnosedendDate < diagnosedendDate)
+                            continue;
+                    }
                 }
                 //if (request.StartDate != null && request.StartDate >= ct.FillingDate)
                 //    continue;
