@@ -41,7 +41,7 @@ namespace X1APServer.WEB
         /// </summary>
         public static IUnityContainer Container => container.Value;
         #endregion
-        //todo TINGYU
+       
         public static Func<IUnityContainer, object> getConnectionString = c =>
         {
             var connectionString = "";
