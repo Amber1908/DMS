@@ -2338,7 +2338,6 @@ namespace X1APServer.Service
                                 hccode = table.Rows[i][patientInfoDict[PatientInfoKey.HCCode]].ToString().Trim();
                                 addr = table.Rows[i][patientInfoDict[PatientInfoKey.Addr]].ToString().Trim();
                                 domicile = table.Rows[i][patientInfoDict[PatientInfoKey.Domicile]].ToString().Trim();
-                                
                                 if (string.IsNullOrEmpty(country))
                                 {
                                     _formatError.Add(string.Format(_errorTemplate, "國籍為空", i + 1, ConvertIntToExcelColumn(patientInfoDict[PatientInfoKey.PUCountry])));
@@ -2495,12 +2494,21 @@ namespace X1APServer.Service
                                     //addReportReq.SequenceNum = seqNum;
                                     //TingYu 檢查確診日 為空不加入
                                     var isNoConfirmedDate = addReportReq.Answers.Where(x => x.QuestionID.Contains("Q_55")).Any(y => y.Value == "");
+                                    
                                     if (isNoConfirmedDate)
                                     {
                                         addReportReq.Answers.Remove(addReportReq.Answers.Where(x => x.QuestionID.Contains("Q_55")).FirstOrDefault());
                                     }
-                                    
-                                    requestList.Add(addReportReq);
+
+                                    if (_formatError.Count > 0)
+                                    {
+                                        request.ForceInsert = false;
+                                        insertFlag = false;
+                                    }
+                                    else
+                                    {
+                                        requestList.Add(addReportReq);
+                                    }
                                 }
                             }
                         }
@@ -2635,14 +2643,6 @@ namespace X1APServer.Service
                 //題目若是單選或下拉檢查是否選擇"其他"選項
                 switch (currentQuest.Question.QuestionType)
                 {
-                    //case 21:
-                    //    if (currentQuest.CodingBookTitle)
-                    //    {
-                    //        //合併機構代碼跟機構名稱
-                    //        ans = currentAns.Answer.Substring(11);
-                    //        return ans;
-                    //    }
-                        //break;
                     case 7:
                     case 8:
                         if (currentAns.Answer.Equals("other"))
