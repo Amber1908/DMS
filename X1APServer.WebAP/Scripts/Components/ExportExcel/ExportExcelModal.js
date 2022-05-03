@@ -159,13 +159,10 @@ const ExportExcelModal = (props) => {
         setFormData(prev => ({ ...prev, [target.name]: target.value }));
     }
 
-    //const handlePatientChange = (e) => {
-    //    const target = e.target;
-    //    setPatientList(prev => ({ ...prev, Patientname: target.value }));
-    //}
     
     const handlePatientSearch = (e) => {
         const target = e.target;
+        
         setPatientList(prev => {
             let newState = produce(prev, draft => {
                  draft.data = draft.data.map(d => ({ ...d, hidden: !(d.text.indexOf(target.value) > -1) }))
