@@ -101,7 +101,6 @@ const ExportExcelModal = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
         reqExportExcel();
     }
 
@@ -160,16 +159,15 @@ const ExportExcelModal = (props) => {
     }
 
     
-    const handlePatientSearch = (e) => {
-        const target = e.target;
+     const target = e.target;
         
         setPatientList(prev => {
             let newState = produce(prev, draft => {
-                 draft.data = draft.data.map(d => ({ ...d, hidden: !(d.text.indexOf(target.value) > -1) }))
+                draft.data = draft.data.map(d => ({ ...d, hidden: !(d.text.indexOf(target.value) > -1), checked:(d.text.indexOf(target.value)>-1) }))
                 });
             return newState;
         })
-    }
+   }
 
     const getDate = (dateStr) => {
         let date = new Date(dateStr);
