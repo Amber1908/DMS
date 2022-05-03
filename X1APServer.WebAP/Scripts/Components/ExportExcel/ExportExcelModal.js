@@ -159,6 +159,7 @@ const ExportExcelModal = (props) => {
     }
 
     
+    const handlePatientSearch = (e) => {
      const target = e.target;
         
         setPatientList(prev => {
