@@ -209,7 +209,7 @@ const App = () => {
 
     let logoElement = null;
     if (webInfo.logo != null) {
-        logoElement = <img className="navLogo" src={`https://idoctor.tools/iDoctorTools/showimage.aspx?SN=${webInfo.logo}`} />;
+        logoElement = <img className="navLogo" src={`https://idoctor.tools/showimage.aspx?SN=${webInfo.logo}`} />;
     }
 
     return (

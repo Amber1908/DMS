@@ -2691,6 +2691,7 @@ namespace X1APServer.Service
                         if (request.DiagnosedstartDate > diagnosedstartDate)
                             continue;
                     }
+                    
                 }
                 if (request.DiagnosedendDate != null && ct.cervixQuestions.Any(x => x.QuestionText.Contains("確診日期")))
                 {
@@ -2700,6 +2701,7 @@ namespace X1APServer.Service
                         if (request.DiagnosedendDate < diagnosedendDate)
                             continue;
                     }
+                    
                 }
                 //if (request.StartDate != null && request.StartDate >= ct.FillingDate)
                 //    continue;

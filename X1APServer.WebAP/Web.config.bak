@@ -26,7 +26,7 @@
     <add key="IgnoreRequestPort" value="false" />
     <add key="UserFilePath" value="D:\工作項目\BMDC\DMS\iDoctorLocal\DMS\X1APServer.WebAP\App_Data\Server\UserFiles" />
     <!--iDoctor API Url-->
-    <add key="IDoctorAPIUrl" value="https://idoctor.tools/iDoctorTools/api" />
+    <add key="IDoctorAPIUrl" value="https://idoctor.tools/api" />
     <add key="ConnectionStringTemplate" value="metadata=res://*/X1APModel.csdl|res://*/X1APModel.ssdl|res://*/X1APModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Password=&quot;&quot;/'],lp123&quot;&quot;;Persist Security Info=True;User ID=X1User;Initial Catalog={0};Data Source=10.129.100.101,1433\\SQLEXPRESS&quot;" />
   </appSettings>
   <loggingConfiguration name="" tracingEnabled="true" defaultCategory="Exception">
