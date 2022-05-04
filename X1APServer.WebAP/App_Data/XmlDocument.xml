@@ -1160,6 +1160,13 @@
             <param name="request"></param>
             <returns></returns>
         </member>
+        <member name="M:WebApplication1.WebApi.UserController.EnterByItself(System.String)">
+            <summary>
+            處理醫院代碼搜尋輸入中字 自動按ctrl+enter
+            </summary>
+            <param></param>
+            <returns></returns>
+        </member>
         <member name="T:WebApplication1.WebApi.X1APServerController">
             <summary>
             X1 Imaging 系統專用 API.

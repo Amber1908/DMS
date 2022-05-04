@@ -250,7 +250,7 @@ const ReportWindow = (props) => {
                 break;
             //TingYu
             case "hospitalCodeandname":
-                result.push(<HospitalCodeAndNameAutosuggest key={"Ans_" + quest.ID} required={required} value={questValue} handleOnChange={props.handleInputOnChange} name={questName} />);
+                result.push(<HospitalCodeAndNameAutosuggest key={"Ans_" + quest.ID} required={required} value={questValue} handleOnChange={props.handleInputOnChange} name={questName}/>);
                 break;
         }
         return result;
@@ -263,6 +263,7 @@ const ReportWindow = (props) => {
 
     return (
         <div className="QForm-Wrap">
+            {/*Ting-yu 按enter表單不要送出 <form id="Report" onSubmit={props.handleSaveReportClick}>*/}
             <form id="Report" onSubmit={props.handleSaveReportClick}>
                 <fieldset className={props.formInfo.class}>{questGroup}</fieldset>
             </form>
@@ -327,6 +328,7 @@ const Report = (props) => {
             ignoreAsyncTaskRef.current = true;
         };
     }, [reportID]);
+    
 
     // 是新表單紀錄?
     const isNewReport = () => {
@@ -396,7 +398,6 @@ const Report = (props) => {
             setState(ReportState.ViewOnly);
         }
     }
-
     // Input 改變
     const handleInputOnChange = (e) => {
         const { name, value } = e.target;
@@ -409,10 +410,12 @@ const Report = (props) => {
         }));
     };
 
-    // 儲存表單
+    // 儲存表單 TINGYU
     const handleSaveReportClick = (e) => {
         e.preventDefault();
-        // 設定為檢視表單狀態
+        e.stopPropagation();
+        // 設定為檢視表單狀態i
+       
         setState(ReportState.View);
         // 轉換資料格式為API格式
         const { normalQuestList, fileQuestList } = prepareRequestData();
@@ -546,9 +549,11 @@ const Report = (props) => {
             setFormInfo({ class: "ev-lockForm", disabled: true });
         });
     };
+    
 
     // 點編輯，解鎖表單
     const handleEditClick = (e) => {
+       
         setState(ReportState.Edit);
         // 解除鎖定
         setFormInfo({

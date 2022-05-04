@@ -799,7 +799,7 @@ namespace WebApplication1.WebApi
                 if(!string.IsNullOrEmpty(request.code))
                     retResp.Data = await _idoctorSvc.GetHospitalCodeLazy(request.code);
                 
-                //EnterByItself(request.code);
+                EnterByItself(request.code);
                 return Result.NormalResult(request, retResp);
 
             }
@@ -1078,35 +1078,20 @@ namespace WebApplication1.WebApi
            
         }
 
-        //todo
+        /// <summary>
+        /// 處理醫院代碼搜尋輸入中字 自動按ctrl+enter
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         public void EnterByItself(string code)
-       {
-            
-            string[] ch= { "初始"," "};
-            
+        {
             string input = @"^[\u4e00-\u9fa5]+$";
             bool isCh = Regex.IsMatch(code, input);
             if (!isCh)
             {
                 return;
             }
-            if (code.Length >2 )
-            {
-                return;
-            }
-            if (ch[0] == "初始"&& ch[1].Length==0)
-            {
-                ch[1] = code;
-                System.Windows.Forms.SendKeys.SendWait("{Enter}");
-                return;
-            }
-            if (ch[0] != "初始")
-            {
-                return;
-            }
-            System.Windows.Forms.SendKeys.SendWait("{Enter}");
-            ch[0] = code;
+            System.Windows.Forms.SendKeys.SendWait("^+{Enter}");
         }
-
     }
 }

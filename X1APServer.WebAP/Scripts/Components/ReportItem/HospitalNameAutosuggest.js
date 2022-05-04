@@ -96,7 +96,7 @@ const HospitalNameAutosuggest = (props) => {
             {suggestion.HospitalCode}
         </div>
     );
-
+    
     return (
         <div style={{ width: "100%" }}>
             <div className={"input-item edit"}>
@@ -115,7 +115,7 @@ const HospitalNameAutosuggest = (props) => {
 
 HospitalNameAutosuggest.defaultProps = {
     style: {},
-    handleOnChange: () => { }
+    handleOnChange: () => {  }
 }
 
 HospitalNameAutosuggest.propTypes = {
