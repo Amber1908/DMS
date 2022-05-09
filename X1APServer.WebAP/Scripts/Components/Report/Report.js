@@ -403,7 +403,6 @@ const Report = (props) => {
         const { name, value } = e.target;
         // name 為空忽略改變
         if (name == null) return;
-
         setFormData((prev) => ({
             ...prev,
             [name]: value,

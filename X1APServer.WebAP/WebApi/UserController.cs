@@ -26,7 +26,10 @@ using WebApplication1.Infrastructure.Common.Interface;
 using static X1APServer.Service.Model.GetAreaCodeLazyM;
 using System.Text.RegularExpressions;
 using X1APServer.Service.Service;
-
+using Microsoft.TeamFoundation.Common.Internal;
+using System.Windows.Input;
+using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace WebApplication1.WebApi
 {
@@ -43,7 +46,7 @@ namespace WebApplication1.WebApi
 
         public UserController(IIDoctorService idoctorSvc, IDMSShareService dmsShareSvc, IFrameRequest frameReq)
         {
-            
+
             _serviceInfo = new AuthCommon.ServiceInfo()
             {
                 SysCode = _SysCode,
@@ -70,7 +73,7 @@ namespace WebApplication1.WebApi
             if (ModelState.IsValid)
             {
                 var response = await _idoctorSvc.UserLogin(request.AccID, request.AccPWD);
-                
+
                 switch (response.statuscode)
                 {
                     case "0000":
@@ -677,7 +680,7 @@ namespace WebApplication1.WebApi
             if (ModelState.IsValid)
             {
                 retResp = await _idoctorSvc.GetHealthWebByUser(email);
-                
+
                 return Result.NormalResult(email, retResp);
             }
             else
@@ -724,7 +727,7 @@ namespace WebApplication1.WebApi
             {
                 retResp.Data = await _idoctorSvc.GetAreaCode();
 
-                foreach(AREACODE aa in retResp.Data)
+                foreach (AREACODE aa in retResp.Data)
                 {
                     AREACODELAZY az = new AREACODELAZY()
                     {
@@ -775,15 +778,13 @@ namespace WebApplication1.WebApi
         /// <returns></returns>
         [HttpPost]
         public async Task<GetHospitalCodeLazyM.Response> GetHospitalCodeLazy(GetHospitalCodeLazyM.Request request)
-        
         {
+            
             GetHospitalCodeLazyM.Response retResp = new GetHospitalCodeLazyM.Response();
-           
+
             if (ModelState.IsValid)
             {
-                
                 var checkRS = await _authHandler.CheckFuncAuth(request);
-                
 
                 if (checkRS.ReturnCode != ErrorCode.OK)
                 {
@@ -795,11 +796,11 @@ namespace WebApplication1.WebApi
                     retResp.TokenChgFlag = checkRS.TokenChgFlag;
                     retResp.UserSecurityInfo = checkRS.UserSecurityInfo;
                 }
-
-                if(!string.IsNullOrEmpty(request.code))
-                    retResp.Data = await _idoctorSvc.GetHospitalCodeLazy(request.code);
                 
-                EnterByItself(request.code);
+                if (!string.IsNullOrEmpty(request.code))
+                    retResp.Data = await _idoctorSvc.GetHospitalCodeLazy(request.code);
+                //EnterByItself(request.code);
+                //Thread.Sleep(500);
                 return Result.NormalResult(request, retResp);
 
             }
@@ -874,8 +875,8 @@ namespace WebApplication1.WebApi
                     Web_name = websetting.web_name,
                     Web_sn = websetting.web_sn
                 });
-                
-                
+
+
                 var AuthSvc = new AuthServiceClient();
                 var requestUserList = allUser.Select(u => new SyncUserListM.User()
                 {
@@ -890,7 +891,8 @@ namespace WebApplication1.WebApi
                 };
                 AuthSvc.SyncUserList(_serviceInfo, syncReq);
 
-                var req = new GenerateTokenM.Request() {
+                var req = new GenerateTokenM.Request()
+                {
                     AccID = session.email,
                     DBName = websetting.web_db
                 };
@@ -1075,7 +1077,7 @@ namespace WebApplication1.WebApi
                 string errorMessage = ModelStateUtility.GetErrorMessage(ModelState);
                 return Result.NormalResult(request, retResp, ErrorCode.ArgInvalid, errorMessage);
             }
-           
+
         }
 
         /// <summary>
@@ -1086,12 +1088,16 @@ namespace WebApplication1.WebApi
         public void EnterByItself(string code)
         {
             string input = @"^[\u4e00-\u9fa5]+$";
+            string output = code;
             bool isCh = Regex.IsMatch(code, input);
             if (!isCh)
             {
                 return;
             }
-            System.Windows.Forms.SendKeys.SendWait("^+{Enter}");
+            //System.Windows.Forms.SendKeys.SendWait("^+{Enter}");
+            //System.Windows.Forms.SendKeys.SendWait("{BACKSPACE}");
+            //System.Windows.Forms.SendKeys.SendWait("");
+            // System.Windows.Forms.SendKeys.SendWait(output);
         }
     }
 }
