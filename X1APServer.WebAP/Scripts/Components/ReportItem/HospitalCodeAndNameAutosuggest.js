@@ -6,6 +6,10 @@ import { GlobalConstants } from '../../Utilities/CommonUtility';
 import { usePostAuth, useLazyLoading } from '../../CustomHook/CustomHook';
 import { set } from 'lodash';
 
+var setTimeout05;
+var setTimeout03;
+var setTimeout01;
+
 const getSuggestionValue = suggestion => suggestion.HospitalCode +" "+suggestion.HospitalName
 
 const HospitalCodeAndNameAutosuggest = (props) => {
@@ -28,94 +32,7 @@ const HospitalCodeAndNameAutosuggest = (props) => {
     }, [props.value])
     // Teach Autosuggest how to calculate suggestions for any given input value.
     const getSuggestions = (value, reason) => {
-        var setTimeout05sec;
-        var setTimeout03sec;
-        var setTimeout01sec;
-        function myStopFunctionset(valueLength) {
-            switch (valueLength) {
-                case 1:
-                    clearTimeout(setTimeout03sec)
-                    clearTimeout(setTimeout01sec)
-                    brake;
-                case 2:
-                    clearTimeout(setTimeout05sec)
-                    clearTimeout(setTimeout01sec)
-                    brake;
-                case 3:
-                    clearTimeout(setTimeout05sec)
-                    clearTimeout(setTimeout03sec)
-                    brake;
-            };
-        }
-
-        if (reason === 'input-changed' && value.length < 2) {
-            setTimeout05sec=
-            setTimeout(function () {
-                PostWithAuth({
-                    url: "/User/GetHospitalCodeLazy",
-                    data: {
-                        code: value,
-                        "FuncCode": GlobalConstants.FuncCode.ViewWebsite,
-                        "AuthCode": 1
-                    },
-                    success: (response) => {
-                        if (response.Data == null || response.Data.length == 0) return;
-
-                        setAutoSuggestValue(prev => {
-                            return {
-                                ...prev,
-                                suggestions: prev.suggestions.concat(response.Data),
-                            };
-                        });
-                    }
-                });
-            }, 500)
-           myStopFunctionset(value.length);
-        } else if (reason === 'input-changed' && value.length < 3) {
-            setTimeout(function () {
-                PostWithAuth({
-                    url: "/User/GetHospitalCodeLazy",
-                    data: {
-                        code: value,
-                        "FuncCode": GlobalConstants.FuncCode.ViewWebsite,
-                        "AuthCode": 1
-                    },
-                    success: (response) => {
-                        if (response.Data == null || response.Data.length == 0) return;
-
-                        setAutoSuggestValue(prev => {
-                            return {
-                                ...prev,
-                                suggestions: prev.suggestions.concat(response.Data),
-                            };
-                        });
-                    }
-                });
-            }, 300)
-            myStopFunctionset(value.length);
-        } else if (reason === 'input-changed' && value.length <4) {
-            setTimeout(function () {
-                PostWithAuth({
-                    url: "/User/GetHospitalCodeLazy",
-                    data: {
-                        code: value,
-                        "FuncCode": GlobalConstants.FuncCode.ViewWebsite,
-                        "AuthCode": 1
-                    },
-                    success: (response) => {
-                        if (response.Data == null || response.Data.length == 0) return;
-
-                        setAutoSuggestValue(prev => {
-                            return {
-                                ...prev,
-                                suggestions: prev.suggestions.concat(response.Data),
-                            };
-                        });
-                    }
-                });
-            }, 100)
-            myStopFunctionset(value.length);
-        } else {
+        function getSuggestionsResult() {
             PostWithAuth({
                 url: "/User/GetHospitalCodeLazy",
                 data: {
@@ -134,7 +51,42 @@ const HospitalCodeAndNameAutosuggest = (props) => {
                     });
                 }
             });
+        };
+
+        function mySleep(valueLength) {
+            switch (valueLength) {
+                case 1:
+                    clearTimeout(setTimeout01);
+                    clearTimeout(setTimeout03);
+                    setTimeout05 = setTimeout(getSuggestionsResult, 350);
+                    console.log("setTimeout05//setTimeout01:" + setTimeout01, "setTimeout03:" + setTimeout03, "setTimeout05:" + setTimeout05)
+                    break;
+                case 2:
+                    clearTimeout(setTimeout01);
+                    clearTimeout(setTimeout05);
+                    setTimeout03 = setTimeout(getSuggestionsResult, 350);
+                    console.log("setTimeout03//setTimeout01:" + setTimeout01, "setTimeout03:" + setTimeout03, "setTimeout05:" + setTimeout05)
+                    break;
+                case 3:
+                    clearTimeout(setTimeout03);
+                    clearTimeout(setTimeout05);
+                    setTimeout01 = setTimeout(getSuggestionsResult, 200);
+                    console.log("setTimeout01//setTimeout01:" + setTimeout01, "setTimeout03:" + setTimeout03, "setTimeout05:" + setTimeout05)
+                    break;
+
+                default:
+                    clearTimeout(setTimeout01);
+                    clearTimeout(setTimeout03);
+                    clearTimeout(setTimeout05);
+                    console.log("default//setTimeout01:" + setTimeout01, "setTimeout03:" + setTimeout03, "setTimeout05:" + setTimeout05)
+                    getSuggestionsResult();
+            };
+
         }
+        if (reason === 'input-changed') {
+            mySleep(value.length);
+        }
+
     };
     const onChange = (event, { newValue }) => {
             setAutoSuggestValue(prev => {
